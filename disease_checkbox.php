@@ -88,9 +88,6 @@ else
 
     mysql_close();  // on ferme la connexion
     } 
-?> 
-				
-						
-									
+?> 							
 </body>
 </html>
