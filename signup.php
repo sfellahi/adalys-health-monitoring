@@ -50,14 +50,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		<?php
 // Connexion à la base de données
 		// $link = mysql_connect("localhost", "root", "root")
-		$link = mysql_connect("localhost", "root", "")
-		or die("Impossible de se connecter : " . mysql_error());
-		
-		// Rendre la base de données bdd, la base courante
-		$db_selected = mysql_select_db('adalys', $link);
-		if (!$db_selected){
-			die ('Impossible de sélectionner la base de données : ' . mysql_error());
-		}		
+		$link = mysqli_connect("localhost", "root", "","adalys");
+		if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }	
 
 //On verifie que le formulaire a ete envoye
 if(isset( $_POST['email'],$_POST['password']) and $_POST['email']!='')
@@ -76,20 +73,21 @@ if(isset( $_POST['email'],$_POST['password']) and $_POST['email']!='')
 			if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
 			{
 				//On echape les variables pour pouvoir les mettre dans une requette SQL
-				$email = mysql_real_escape_string($_POST['email']);				
-				$password = mysql_real_escape_string(md5($_POST['password']));
+				$email = mysqli_real_escape_string($link,$_POST['email']);				
+				$password = mysqli_real_escape_string($link,md5($_POST['password']));
 				//On verifie sil ny a pas deja un utilisateur inscrit avec le email choisis
-				$dn = mysql_num_rows(mysql_query('select id_user from user where identifiant="'.$email.'"'));
+				$dn = mysqli_num_rows(mysqli_query($link,'select id_user from user where identifiant="'.$email.'"'));
 				if($dn==0)
 				{
 				//On recupere le nombre dutilisateurs pour donner un identifiant a lutilisateur actuel
-					$dn2 = mysql_num_rows(mysql_query('select id_user from user'));
+					$dn2 = mysqli_num_rows(mysqli_query($link,'select id_user from user'));
 					$id = $dn2+1;
 					
 					
 					
 					//On enregistre les informations dans la base de donnee
-					if(mysql_query('insert into user(identifiant, password) values ("'.$email.'","'.$password.'")'))
+                                        
+					if(mysqli_query($link,'insert into user (identifiant, password) values ("'.$email.'","'.$password.'")'))
 					{
 											
 								//Si ca a fonctionné, on n'affiche pas le formulaire

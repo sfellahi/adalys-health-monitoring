@@ -40,9 +40,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </head> 
 <body class="disease_checkbox">
 	<form method="POST" action="disease_checkbox.php">
-<center>
-<input type="text" name="reponse_checkbox" size="20" value="reponse_checkbox" maxlength="35"> <br>
-<input type="text" name="colonne_assoc" size="20" value="colonne_assoc" maxlength="35"><br>
+<div style="width:200px;margin-left:auto;margin-right:auto;">
+Question :<input type="text" name="colonne_assoc" size="20" value="" maxlength="35"><br>
+R&eacute;ponse (s&eacute;parer les r&eacute;ponses avec des ;) : <input type="text" name="reponse_checkbox" size="20" value="" maxlength="35"> <br>
+</div>
 <input type="submit" value="Envoyer" name="envoyer">
 </center>
 </form>
@@ -67,26 +68,22 @@ else
     {
        // connexion à la base
     // Connexion à la base de données
-		$link = mysql_connect("localhost", "root", "")
-		// $link = mysql_connect("localhost", "root", "")
-		or die("Impossible de se connecter : " . mysql_error());
-		
-		// Rendre la base de données bdd, la base courante
-		$db_selected = mysql_select_db('maladie', $link);
-		if (!$db_selected){
-			die ('Impossible de sélectionner la base de données : ' . mysql_error());
-		}	
+$link = mysqli_connect("localhost", "root", "","maladie2");
+		if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }	
     
     // on écrit la requête sql
-    $sql = "INSERT INTO checkbox(id_checkbox, reponse_checkbox, colonne_assoc) VALUES('','$reponse_checkbox','$colonne_assoc')";
+   echo  $sql = "INSERT INTO checkbox(reponse_checkbox, question) VALUES('$reponse_checkbox','$colonne_assoc')";
     
     // on insère les informations du formulaire dans la table
-    mysql_query($sql) or die('Erreur SQL !'.$sql.'<br>'.mysql_error());
+    mysqli_query($link,$sql);
 
     // on affiche le résultat pour le visiteur
     echo 'Vos infos on été ajoutées.';
 
-    mysql_close();  // on ferme la connexion
+    mysqli_close($link);  // on ferme la connexion
     } 
 ?> 							
 </body>

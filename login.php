@@ -70,15 +70,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 <?php
 // Connexion à la base de données
-		$link = mysql_connect("localhost", "root", "")
-		// $link = mysql_connect("localhost", "root", "")
-		or die("Impossible de se connecter : " . mysql_error());
+		$link = mysqli_connect("localhost", "root", "","adalys");
+		if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
 		
 		// Rendre la base de données bdd, la base courante
-		$db_selected = mysql_select_db('adalys', $link);
-		if (!$db_selected){
-			die ('Impossible de sélectionner la base de données : ' . mysql_error());
-		}	
+	
 
 $opseudo = '';
 	//On verifie si le formulaire a ete envoye
@@ -88,20 +88,21 @@ $opseudo = '';
 		if(get_magic_quotes_gpc())
 		{
 			$opseudo = stripslashes($_POST['email']);
-			$email = mysql_real_escape_string(stripslashes($_POST['email']));
+                        $email = mysqli_real_escape_string($link,stripslashes($_POST['email']));
 			$password = stripslashes(md5($_POST['password']));
 		}
 		else
 		{
-		$email = mysql_real_escape_string($_POST['email']);
+		 $email = mysqli_real_escape_string($link,$_POST['email']);
 		$password = stripslashes(md5($_POST['password']));
 		}
 		//On recupere le mot de passe de lutilisateur
-		 $req = mysql_query('select password,id_user from user where identifiant="'.$email.'"');
-		 $dn = mysql_fetch_array($req);
+                 $select_id_pass="SELECT password,id_user FROM user WHERE identifiant='".$email."'";
+		 $req = $link->query($select_id_pass);
+                $dn = mysqli_fetch_array($req);
 		
 		//On le compare a celui quil a entre et on verifie si le membre existe
-		if($dn['password']==$password and mysql_num_rows($req)>0)
+		if($dn['password']==$password and mysqli_num_rows($req)>0)
 		{
 			//Si le mot de passe est bon, on ne vas pas afficher le formulaire
 			$form = false;
@@ -110,7 +111,10 @@ $opseudo = '';
 			$_SESSION['id'] = $dn['id_user'];
 			
 			//On récupère les infos de l'user connecté
-			if(isset($_SESSION['email'])){$dnn = mysql_fetch_array(mysql_query('select identifiant from user where identifiant="'.$_SESSION['email'].'"'));
+                        
+			if(isset($_SESSION['email'])){
+                            $req_usern=$link->query('select identifiant from user where identifiant="'.$_SESSION['email'].'"');
+                            $dnn = mysqli_fetch_array($req_usern);
 			}
 			echo "ok";
 		}
@@ -120,7 +124,7 @@ $opseudo = '';
 				$form = true;
 				$message = 'La combinaison que vous avez entr&eacute; n\'est pas bonne.';
 			}
-		}
+        }
 		else
 		{
 			$form = true;
