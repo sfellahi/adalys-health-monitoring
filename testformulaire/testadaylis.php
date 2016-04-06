@@ -3,30 +3,27 @@
 
 // mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
 
-
-						
- $connect=@mysql_connect('localhost','root') 
-						or die("Impossible de se connecter au serveur MySQL");
-						
- $bdd = @mysql_select_db('maladie2') 
-						or die("Impossible de selectionner la BDD");
-
+		$link = mysqli_connect("localhost", "root", "","adalys");
+		if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
 header('Content-Type: text/html; charset=utf-8'); 
 
 
 $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question ORDER BY id_question ASC";
 
-$resultat_recup_question=mysql_query($recup_question) or die(mysql_error()); 
+$resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
 ?> 
 <form method="POST" action="enregistrer_patient.php">
 <?php 
- while($temp_recup_question = mysql_fetch_assoc($resultat_recup_question)){
+ while($temp_recup_question = mysqli_fetch_assoc($resultat_recup_question)){
  
  
  $select_question="SELECT *  FROM ".$temp_recup_question['type_question']." WHERE id_".$temp_recup_question['type_question']."=".$temp_recup_question['id_type']." ";
- $resultat_slect_question=mysql_query($select_question) or die(mysql_error()); 
+ $resultat_slect_question=mysqli_query($link,$select_question) or die(mysqli_error($link)); 
  
-		while($temp_select_question = mysql_fetch_assoc($resultat_slect_question)){
+		while($temp_select_question = mysqli_fetch_assoc($resultat_slect_question)){
 		if($temp_recup_question['type_question']=='checkbox'){
 	
 		$aa="reponse_".$temp_recup_question['type_question']."";
