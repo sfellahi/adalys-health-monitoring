@@ -3871,11 +3871,12 @@ ul.nofitications-dropdown {
 }
 .boxes {
 	background-color: #fdfff0;
-	border: 3px solid #07e84c;
-	-moz-border-radius: 34px;
-	-webkit-border-radius: 34px;
-	border-radius: 34px;
-	-moz-box-shadow: 0px 0px 15px 2px #96ff94;
-	-webkit-box-shadow: 0px 0px 15px 2px #96ff94;
-	box-shadow: 0px 0px 15px 2px #96ff94;
+	border: 1px solid #7ACB01;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0px 0px 1px 1px #7ACB01;
+	-webkit-box-shadow: 0px 0px 1px 1px #7ACB01;
+	box-shadow: 0px 0px 1px 1px #7ACB01;
+        padding-left:5px;
 }
