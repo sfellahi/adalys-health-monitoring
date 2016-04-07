@@ -70,7 +70,7 @@ $resultat_recup_question = mysqli_query($link, $recup_question) or die(mysqli_er
                         echo $temp_select_question[$aa];
                         ?> 
                         <br/>
-                        <textarea name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"></textarea>
+                        <textarea name="<?php echo $temp_recup_question['colonne_assoc']; ?>" rows="7" cols="60" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"></textarea>
                         <?php
                         echo "<br/>";
                     } elseif ($temp_recup_question['type_question'] == 'selection') {
