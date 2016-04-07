@@ -9,17 +9,6 @@ h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 
-.boxes {
-	background-color: #fdfff0;
-	border: 3px solid #07e84c;
-	-moz-border-radius: 34px;
-	-webkit-border-radius: 34px;
-	border-radius: 34px;
-	-moz-box-shadow: 0px 0px 15px 2px #96ff94;
-	-webkit-box-shadow: 0px 0px 15px 2px #96ff94;
-	box-shadow: 0px 0px 15px 2px #96ff94;
-}
-
 html, body{
 	font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;

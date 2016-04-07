@@ -1,16 +1,19 @@
 <?php
+include("html/mainheader.html");
+include("html/menu.html");
 // Connexion au serveur MySQL
 
 // mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
 
-		$link = mysqli_connect("localhost", "root", "","adalys");
+		$link = mysqli_connect("localhost", "root", "root","maladie2");
 		if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-header('Content-Type: text/html; charset=utf-8'); 
-
-
+?>
+<div id="page-wrapper">
+			<div class="main-page">
+				<?php
 $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question ORDER BY id_question ASC";
 
 $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
@@ -33,7 +36,7 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		echo $temp_select_question['question'];?><br/><?php
 	while($i<$k){
 ?>
-	<input type="checkbox" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>" value="<?php echo $solution_checkbox[$i];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>"><?php echo $solution_checkbox[$i];?></label>
+	<input type="checkbox" class="cbp-spmenu-push" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>" value="<?php echo $solution_checkbox[$i];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>"><?php echo $solution_checkbox[$i];?></label>
 	<?php $i++;
 	}
 	echo "<br/>";
@@ -94,4 +97,10 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
  }
  ?>
 <input type="submit" value="enregistrer">
- </form><?php 
+ </form>
+
+</div>
+</div>
+ <?php
+ include("html/mainfooter.html");
+ ?>

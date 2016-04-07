@@ -1,34 +1,57 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Baxster an Admin Panel Category Flat Bootstrap Responsive Website Template | Login :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Baxster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<!-- font CSS -->
-<link rel="icon" href="favicon.ico" type="image/x-icon" >
-<!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons -->
-<!--webfonts-->
-<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-<!--//webfonts--> 
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-</head> 
+<?php
+include("html/header.html");
+include("config.php");
+
+$opseudo = '';
+	//On verifie si le formulaire a ete envoye
+	if(isset($_POST['email'], $_POST['password']))
+	{
+		//On echappe les variables pour pouvoir les mettre dans des requetes SQL
+		if(get_magic_quotes_gpc())
+		{
+			$opseudo = stripslashes($_POST['email']);
+			$email = mysqli_real_escape_string($link,$_POST['email']);
+			$password = stripslashes(md5($_POST['password']));
+		}
+		else
+		{
+			$email = mysqli_real_escape_string($link,$_POST['email']);
+			$password = stripslashes(md5($_POST['password']));
+		}
+		//On recupere le mot de passe de lutilisateur
+		$req = $link -> query('select password,id from users where email="'.$email.'"');
+		$dn = mysqli_fetch_array($req);
+		
+		//On le compare a celui quil a entre et on verifie si le membre existe
+		if($dn['password']==$password and mysqli_num_rows($req)>0)
+			{
+			//Si le mot de passe est bon, on ne vas pas afficher le formulaire
+			$form = false;
+			//On enregistre son email dans la session email et son identifiant dans la session userid
+			$_SESSION['email'] = $_POST['email'];
+			$_SESSION['id'] = $dn['id'];
+			
+			//On récupère les infos de l'user connecté
+			if(isset($_SESSION['email']))
+				{
+				$req_usern=$link->query('select email from users where email="'.$_SESSION['email'].'"');
+				$dnn = mysqli_fetch_array($req_usern);
+				}
+				 header('Location: index.php');
+				 exit();
+			}
+			else
+			{
+				//Sinon, on indique que la combinaison nest pas bonne
+				$form = true;
+				$message = 'La combinaison que vous avez entr&eacute; n\'est pas bonne.';
+			}
+		}
+		else
+		{
+			$form = true;
+		}
+?>
 <body class="login-bg">
 		<div class="login-body">
 			<div class="login-heading">
@@ -53,90 +76,30 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"> </div>
 					</div>
 					<input type="submit" name="Sign In" value="Login">
+					<?php
+						if($form)
+						{
+						//On affiche un message sil y a lieu
+						if(isset($message))
+							{							
+						?>
+							<div class="bs-example">
+								<div class="alert alert-danger fade in">
+									<a href="#" class="close" data-dismiss="alert">&times;</a>   
+									<?php
+									echo $message;
+									?>
+								</div>
+							</div>
+						<?php
+
+							}
+						}
+					?>
 					<div class="signup-text">
 						<a href="signup.php">Don't have an account? Create one now</a>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="go-back login-go-back">
-				<a href="index.html">Go To Home</a>
-			</div>
-		<div class="copyright login-copyright">
-           <p>© 2016 Baxster . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>    
-		</div>
-</body>
-</html>
-
-<?php
-// Connexion à la base de données
-		$link = mysqli_connect("localhost", "root", "","adalys");
-		if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-		
-		// Rendre la base de données bdd, la base courante
-	
-
-$opseudo = '';
-	//On verifie si le formulaire a ete envoye
-	if(isset($_POST['email'], $_POST['password']))
-	{
-		//On echappe les variables pour pouvoir les mettre dans des requetes SQL
-		if(get_magic_quotes_gpc())
-		{
-			$opseudo = stripslashes($_POST['email']);
-                        $email = mysqli_real_escape_string($link,stripslashes($_POST['email']));
-			$password = stripslashes(md5($_POST['password']));
-		}
-		else
-		{
-		 $email = mysqli_real_escape_string($link,$_POST['email']);
-		$password = stripslashes(md5($_POST['password']));
-		}
-		//On recupere le mot de passe de lutilisateur
-                 $select_id_pass="SELECT password,id_user FROM user WHERE identifiant='".$email."'";
-		 $req = $link->query($select_id_pass);
-                $dn = mysqli_fetch_array($req);
-		
-		//On le compare a celui quil a entre et on verifie si le membre existe
-		if($dn['password']==$password and mysqli_num_rows($req)>0)
-		{
-			//Si le mot de passe est bon, on ne vas pas afficher le formulaire
-			$form = false;
-			//On enregistre son email dans la session email et son identifiant dans la session userid
-			$_SESSION['email'] = $_POST['email'];
-			$_SESSION['id'] = $dn['id_user'];
-			
-			//On récupère les infos de l'user connecté
-                        
-			if(isset($_SESSION['email'])){
-                            $req_usern=$link->query('select identifiant from user where identifiant="'.$_SESSION['email'].'"');
-                            $dnn = mysqli_fetch_array($req_usern);
-			}
-			echo "ok";
-		}
-			else
-			{
-				//Sinon, on indique que la combinaison nest pas bonne
-				$form = true;
-				$message = 'La combinaison que vous avez entr&eacute; n\'est pas bonne.';
-			}
-        }
-		else
-		{
-			$form = true;
-		}
-		if($form)
-		{
-			//On affiche un message s'il y a lieu
-		if(isset($message))
-		{
-			echo '<section>'.$message.'</section>';
-		}
-		//On affiche le formulaire
-
-	}
-	?>
+<?php include("html/footer.html"); ?>
