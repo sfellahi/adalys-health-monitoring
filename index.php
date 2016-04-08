@@ -68,7 +68,14 @@ include("html/menu.html");
 					<div class="clearfix"> </div>
 				</div>
 				<!-- //four-grids -->
-			
+			<?php  
+			echo'<a href="modification1.php" > Modification des profils </a>';
+			echo'<br>';
+			echo'<a href="suppression1.php" > Suppression des profils </a>';
+			echo'<br>';
+ 			echo'<a href="signup.php" > Création des profils </a>';?>
 			</div>
 		</div>
-<?php include("html/mainfooter.html");?>
+<?php include("html/mainfooter.html");
+
+?>

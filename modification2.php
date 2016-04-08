@@ -58,7 +58,7 @@ include("html/menu.html");
 </form>
   <?php
   }//fin if 
-  echo'<a href="modification1.php" > Modifications des profils </a>';
+  echo'<a href="modification1.php" > Modification des profils </a>';
   echo'<br>';
   echo'<a href="signup.php" > créer un profil </a>';
   ?>
