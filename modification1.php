@@ -28,7 +28,7 @@ include("html/menu.html");
     while( $result = mysql_fetch_object( $requete ) )
     {
        echo(
-           "<div align=\"center\">"
+           "<div align=\"left\">"
            .$result->nom." ".$result->prenom." ".$result->email
            ." <a href=\"modification2.php?idPersonne=".$result->id."\">modifier</a></div>\n"
        ) ;

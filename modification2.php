@@ -35,7 +35,7 @@ include("html/menu.html");
   <form name="insertion" action="modification3.php" method="POST">
   <input type="hidden" name="id" value="<?php echo($id) ;?>">
   <table border="3" align="center" cellspacing="2" cellpadding="2">
-    <tr align="center">
+    <tr align="left">
       <td>nom</td>
       <td><input type="text" name="nom" value="<?php echo($result->nom) ;?>"></td>
     </tr>
