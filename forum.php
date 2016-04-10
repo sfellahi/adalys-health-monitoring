@@ -11,8 +11,8 @@ include("html/menu.html");
     <body>
 
     <!-- on place un lien permettant d'accéder à la page contenant le formulaire d'insertion d'un nouveau sujet -->
-    <a href="./insert_sujet.php">Insérer un sujet</a>
-
+    <a href="./insert_sujet.php">Insérer un sujet</a></br>
+	<a href="./recherche_forum.php">Rechercher un sujet</a>
     <br /><br />
 
     <?php
