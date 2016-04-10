@@ -20,7 +20,7 @@ $base = mysql_connect('localhost', 'root', '');
     echo '<a href="./stat_mois.php">Les stats du mois</a><br />';
     echo '<a href="./stat_annee.php">Les stats de l\'année</a><br /><br />';
 
-    echo 'Voir les statistiques d\'un autre mois :<br /><br />';
+    echo '- Voir les statistiques d\'un autre mois :<br /><br />';
 
     // formulaire permettant de choisir une date afin de voir les statistiques de cette date
     echo '<form action="./stat_mois.php" method="post">';
@@ -63,7 +63,7 @@ $base = mysql_connect('localhost', 'root', '');
     $total_visiteur_depuis_debut = mysql_num_rows ($result);
     mysql_free_result($result);
 
-    echo 'Depuis la création du site, '.$total_pages_visitees_depuis_creation.' pages ont été visitées par '.$total_visiteur_depuis_debut.' visiteurs.<br /><br /><hr>';
+    echo '- Depuis la création du site, '.$total_pages_visitees_depuis_creation.' pages ont été visitées par '.$total_visiteur_depuis_debut.' visiteurs.<br /><br /><hr>';
 
 
     // on teste si $_POST['mois'], $_POST['annee'] sont vides et déclarées : si oui, c'est que l'on veut voir les statistiques du mois en cours, sinon (elles ne sont pas vides), c'est que l'on a remplit le formulaire qui suit afin de voir les statistiques d'un autre mois
@@ -101,7 +101,7 @@ $base = mysql_connect('localhost', 'root', '');
     sscanf($date_mois, "%4s-%2s-%2s %2s:%2s:%2s", $date_Y, $date_m, $date_d, $date_H, $date_i, $date_s);
 
     // on affiche le nombre de pages vues en fonction des jours
-    echo '<br />Les statistiques du '.$date_m.'/'.$date_Y.' : <br /><br />';
+    echo '<br />- Les statistiques du '.$date_m.'/'.$date_Y.' : <br /><br />';
 
     for($i = 1; $i <= 31; $i++) {
     	if (!isset($visite_par_jour[$i])) {
@@ -119,11 +119,11 @@ $base = mysql_connect('localhost', 'root', '');
     $total_visiteur = mysql_num_rows ($result);
     mysql_free_result($result);
 
-    echo '<br />Soit un total de '.$total_pages_vu.' pages vues par '.$total_visiteur.' visiteurs.<br /><br />';
+    echo '<br />- Soit un total de '.$total_pages_vu.' pages vues par '.$total_visiteur.' visiteurs.<br /><br />';
 
 
     // on recherche les pages qui ont été les plus vues sur le mois (on calcule au passage le nombre de fois qu'elles ont été vu)
-    echo '<br />Les pages les plus vues :<br /><br />';
+    echo '<br />- Les pages les plus vues :<br /><br />';
 
     $sql = 'SELECT distinct(page), count(page) as nb_page FROM statistiques WHERE date LIKE "'.$date_mois.'%" GROUP BY page ORDER BY nb_page DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
@@ -136,7 +136,7 @@ $base = mysql_connect('localhost', 'root', '');
 
 
     // on recherche les visiteurs qui ont été les plus connectes au site sur le mois (on calcule au passage le nombre de page qu'ils ont chargé)
-    echo '<br />Les visiteurs les plus connectés :<br /><br />';
+    echo '<br />- Les visiteurs les plus connectés :<br /><br />';
 
     $sql = 'SELECT distinct(host), count(host) as nb_host FROM statistiques WHERE date LIKE "'.$date_mois.'%" GROUP BY host ORDER BY nb_host DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
@@ -149,7 +149,7 @@ $base = mysql_connect('localhost', 'root', '');
 
 
     // on recherche les meilleurs  referer sur le mois
-    echo '<br />Les meilleurs referer :<br /><br />';
+    echo '<br />- Les meilleurs referer :<br /><br />';
 
     $sql = 'SELECT distinct(referer), count(referer) as nb_referer FROM statistiques WHERE date LIKE "'.$date_mois.'%" AND referer!="" GROUP BY referer ORDER BY nb_referer DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
@@ -162,7 +162,7 @@ $base = mysql_connect('localhost', 'root', '');
 
 
     // on recherche les navigateurs et les OS utilisés par les visiteurs (on calcule au passage le nombre de page qui ont été chargés avec ces systèmes)
-    echo '<br />Les navigateurs et OS :<br /><br />';
+    echo '<br />- Les navigateurs et OS :<br /><br />';
 
     $sql = 'SELECT distinct(navigateur), count(navigateur) as nb_navigateur FROM statistiques WHERE date LIKE "'.$date_mois.'%" GROUP BY navigateur ORDER BY nb_navigateur DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());

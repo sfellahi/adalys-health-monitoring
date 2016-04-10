@@ -20,7 +20,7 @@ include("html/menu.html");
     echo '<a href="./stat_mois.php">Les stats du mois</a><br />';
     echo '<a href="./stat_annee.php">Les stats de l\'année</a><br /><br />';
 
-    echo 'Voir les statistiques d\'une autre année :<br /><br />';
+    echo '- Voir les statistiques d\'une autre année :<br /><br />';
 
     // formulaire permettant de choisir une date afin de voir les statistiques d'une autre année
     echo '<form action="./stat_annee.php" method="post">';
@@ -49,7 +49,7 @@ include("html/menu.html");
     $total_visiteur_depuis_debut = mysql_num_rows ($result);
     mysql_free_result($result);
 
-    echo 'Depuis la création du site, '.$total_pages_visitees_depuis_creation.' pages ont été visitées par '.$total_visiteur_depuis_debut.' visiteurs.<br /><br /><hr>';
+    echo '- Depuis la création du site, '.$total_pages_visitees_depuis_creation.' pages ont été visitées par '.$total_visiteur_depuis_debut.' visiteurs.<br /><br /><hr>';
 
 
     // on teste si $_POST['annee'] est vide et déclarée : si oui, c'est que l'on veut voir les statistiques de l'année en cours, sinon (elle n'est pas vide), c'est que l'on a remplit le formulaire qui précède afin de voir les statistiques d'une autre année
@@ -86,7 +86,7 @@ include("html/menu.html");
 
 
     // on affiche le nombre de pages vues en fonction des mois
-    echo '<br />Les statistiques de l\'année '.$date_annee.' : <br /><br />';
+    echo '<br />- Les statistiques de l\'année '.$date_annee.' : <br /><br />';
 
     for($i = 1; $i <= 12; $i++) {
     	if (!isset($visite_par_mois[$i])) {
@@ -104,11 +104,11 @@ include("html/menu.html");
     $total_visiteur = mysql_num_rows ($result);
     mysql_free_result($result);
 
-    echo '<br />Soit un total de '.$total_pages_vu.' pages vues par '.$total_visiteur.' visiteurs.<br /><br />';
+    echo '<br />- Soit un total de '.$total_pages_vu.' pages vues par '.$total_visiteur.' visiteurs.<br /><br />';
 
 
     // on recherche les pages qui ont été les plus vues sur le mois (on calcule au passage le nombre de fois qu'elles ont été vu)
-    echo '<br />Les pages les plus vues :<br /><br />';
+    echo '<br />- Les pages les plus vues :<br /><br />';
 
     $sql = 'SELECT distinct(page), count(page) as nb_page FROM statistiques WHERE date LIKE "'.$date_annee.'%" GROUP BY page ORDER BY nb_page DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
@@ -121,7 +121,7 @@ include("html/menu.html");
 
 
     // on recherche les visiteurs qui ont été les plus connectes au site sur le mois (on calcule au passage le nombre de page qu'ils ont chargé)
-    echo '<br />Les visiteurs les plus connectés :<br /><br />';
+    echo '<br />- Les visiteurs les plus connectés :<br /><br />';
 
     $sql = 'SELECT distinct(host), count(host) as nb_host FROM statistiques WHERE date LIKE "'.$date_annee.'%" GROUP BY host ORDER BY nb_host DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
@@ -134,7 +134,7 @@ include("html/menu.html");
 
 
     // on recherche les meilleurs referer sur l'année
-    echo '<br />Les meilleurs referer :<br /><br />';
+    echo '<br />- Les meilleurs referer :<br /><br />';
 
     $sql = 'SELECT distinct(referer), count(referer) as nb_referer FROM statistiques WHERE date LIKE "'.$date_annee.'%" AND referer!="" GROUP BY referer ORDER BY nb_referer DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
@@ -147,7 +147,7 @@ include("html/menu.html");
 
 
     // on recherche les navigateurs et les OS utilisés par les visiteurs (on calcule au passage le nombre de page qui ont été chargés avec ces systèmes)
-    echo '<br />Les navigateurs et OS :<br /><br />';
+    echo '<br />- Les navigateurs et OS :<br /><br />';
 
     $sql = 'SELECT distinct(navigateur), count(navigateur) as nb_navigateur FROM statistiques WHERE date LIKE "'.$date_annee.'%" GROUP BY navigateur ORDER BY nb_navigateur DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
