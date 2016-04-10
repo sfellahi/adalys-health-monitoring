@@ -15,7 +15,7 @@ include("html/menu.html");
     $nb_resultats = mysql_num_rows($query); 
     if($nb_resultats != 0) 
     {
-     
+    	
     ?>
     <h3>Résultats de votre recherche.</h3>
     <p>Nous avons trouvé <?php echo $nb_resultats; 
@@ -54,7 +54,8 @@ include("html/menu.html");
     <p>Rechercher dans le forum (l'auteur du sujet)</p>
      <form action="<?php $_SERVER['PHP_SELF'] ?>" method="Post">
     <input type="text" name="requete" size="10">
-    <input type="submit" value="Ok">
+    <input type="submit" value="Ok"></br>
+    <a href="./forum.php">Revenir au forum</a></br>
     </form>
     <?php
     }
