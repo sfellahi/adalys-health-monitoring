@@ -35,7 +35,7 @@ include("html/menu.html");
     } 
     ?><br/>
     <br/>
-    <a href="recherche.php">Faire une nouvelle recherche</a></p>
+    <a href="recherche_forum.php">Faire une nouvelle recherche</a></p>
     <a href="./forum.php">Revenir au forum</a>
     <?php
     } 
@@ -43,7 +43,7 @@ include("html/menu.html");
     { 
     ?>
     <h3>Pas de résultats</h3>
-    <p>Nous n'avons trouvé aucun résultats pour votre requête "<?php echo $_POST['requete']; ?>". <a href="recherche.php">Réessayez</a> avec autre chose.</p>
+    <p>Nous n'avons trouvé aucun résultats pour votre requête "<?php echo $_POST['requete']; ?>". <a href="recherche_forum.php">Réessayez</a> avec autre chose.</p>
     <?php
     }
     mysql_close(); 
