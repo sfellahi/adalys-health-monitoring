@@ -74,5 +74,6 @@ include("html/menu.html");
     <?php
     if (isset($erreur)) echo '<br /><br />',$erreur;
     ?>
+    <a href="./forum.php">Retour au forum</a>
     </body>
     </html>
