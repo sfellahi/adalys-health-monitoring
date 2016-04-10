@@ -71,6 +71,8 @@ include("html/menu.html");
 			<?php  
 			echo'<a href="modification1.php" > Modification des profils </a>';
 			echo'<br>';
+                        echo '<a href="testadaylis.php>test formulaire</a>"';
+			echo'<br>';
 			echo'<a href="suppression1.php" > Suppression des profils </a>';
 			echo'<br>';
  			echo'<a href="signup.php" > Création des profils </a>';?>
