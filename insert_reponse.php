@@ -26,7 +26,7 @@ include("html/menu.html");
 
     		// préparation de la requête d'insertion (table forum_reponses)
     		$sql = 'INSERT INTO forum_reponses VALUES("", "'.mysql_escape_string($_POST['auteur']).'", "'.mysql_escape_string($_POST['message']).'", "'.$date.'", "'.$_GET['numero_du_sujet'].'")';
-
+    		echo'<a href="./forum.php">Retour au forum</a>';
     		// on lance la requête (mysql_query) et on impose un message d'erreur si la requête ne se passe pas bien (or die)
     		mysql_query($sql) or die('Erreur SQL !'.$sql.'<br />'.mysql_error());
 
