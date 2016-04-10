@@ -73,7 +73,10 @@ include("html/menu.html");
 			echo'<br>';
 			echo'<a href="suppression1.php" > Suppression des profils </a>';
 			echo'<br>';
- 			echo'<a href="signup.php" > Création des profils </a>';?>
+ 			echo'<a href="signup.php" > Création des profils </a>';
+ 			echo'<br>';
+ 			echo'<a href="stat_jour.php" > Voir les statistiques accés utilisateurs </a>';
+									?>
 			</div>
 		</div>
 <?php include("html/mainfooter.html");
