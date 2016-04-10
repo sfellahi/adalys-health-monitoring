@@ -11,7 +11,7 @@ include("html/menu.html");
     mysql_select_db ('adalys', $base) ;
     $requete = htmlentities($_POST['requete'], ENT_QUOTES); 
      
-    $query = mysql_query("SELECT * FROM forum_sujets WHERE auteur LIKE '%$requete%' ORDER BY id DESC") or die (mysql_error()); 
+    $query = mysql_query("SELECT * FROM forum_sujets WHERE titre LIKE '%$requete%' ORDER BY id DESC") or die (mysql_error()); 
     $nb_resultats = mysql_num_rows($query); 
     if($nb_resultats != 0) 
     {
@@ -51,7 +51,7 @@ include("html/menu.html");
     else
     { 
     ?>
-    <p>Rechercher dans le forum (l'auteur du sujet)</p>
+    <p>Rechercher dans le forum (titre du sujet)</p>
      <form action="<?php $_SERVER['PHP_SELF'] ?>" method="Post">
     <input type="text" name="requete" size="10">
     <input type="submit" value="Ok"></br>
