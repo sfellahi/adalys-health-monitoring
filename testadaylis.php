@@ -2,12 +2,7 @@
 include("html/mainheader.html");
 include("html/menu.html");
 // Connexion au serveur MySQL
-// mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
-
-$link = mysqli_connect("localhost", "root", "", "maladie2");
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+include("config.php");
 ?>
 <div id="page-wrapper">
     <div class="main-page">
