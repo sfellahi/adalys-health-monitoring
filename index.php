@@ -76,7 +76,10 @@ include("html/menu.html");
  			echo'<a href="signup.php" > Création des profils </a>';
  			echo'<br>';
  			echo'<a href="stat_jour.php" > Voir les statistiques accés utilisateurs </a>';
-									?>
+ 			echo'<br>';
+ 			echo'<a href="index_membre.php" > Se connecter à la messagerie </a>';
+			echo'<br>';
+ 			echo'<a href="forum.php" > Voir le forum </a>';						?>
 			</div>
 		</div>
 <?php include("html/mainfooter.html");
