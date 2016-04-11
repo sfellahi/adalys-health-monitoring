@@ -178,7 +178,7 @@ $base = mysql_connect('localhost', 'root', '');
 
 
     // on recherche les navigateurs et les OS utilisés par les visiteurs (on calcule au passage le nombre de page qui ont été chargés avec ces systèmes)
-    echo '<br />- Les navigateurs et OS :<br /><br />';
+    echo '<br /> - Les navigateurs et OS :<br /><br />';
 
     $sql = 'SELECT distinct(navigateur), count(navigateur) as nb_navigateur FROM statistiques WHERE date LIKE "'.$date_jour.'%" GROUP BY navigateur ORDER BY nb_navigateur DESC LIMIT 0,15';
     $result = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());

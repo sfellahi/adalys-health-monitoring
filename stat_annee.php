@@ -20,7 +20,7 @@ include("html/menu.html");
     echo '<a href="./stat_mois.php">Les stats du mois</a><br />';
     echo '<a href="./stat_annee.php">Les stats de l\'année</a><br /><br />';
 
-    echo '- Voir les statistiques d\'une autre année :<br /><br />';
+    echo ' - Voir les statistiques d\'une autre année :<br /><br />';
 
     // formulaire permettant de choisir une date afin de voir les statistiques d'une autre année
     echo '<form action="./stat_annee.php" method="post">';

@@ -119,7 +119,7 @@ $base = mysql_connect('localhost', 'root', '');
     $total_visiteur = mysql_num_rows ($result);
     mysql_free_result($result);
 
-    echo '<br />- Soit un total de '.$total_pages_vu.' pages vues par '.$total_visiteur.' visiteurs.<br /><br />';
+    echo '<br /> - Soit un total de '.$total_pages_vu.' pages vues par '.$total_visiteur.' visiteurs.<br /><br />';
 
 
     // on recherche les pages qui ont été les plus vues sur le mois (on calcule au passage le nombre de fois qu'elles ont été vu)
