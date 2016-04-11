@@ -13,8 +13,8 @@
   //adresse:
   $email = $_POST["email"] ;
   //code postal:
-  $password        = $_POST["password"] ;
- 
+  // $password = stripslashes(md5($_POST['password']));
+ $password = $_POST['password'];
   //création de la requête SQL:
   $sql = "INSERT  INTO users (nom, prenom, email, password)
             VALUES ( '$nom', '$prenom', '$email', '$password') " ;
