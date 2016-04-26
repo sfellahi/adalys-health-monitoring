@@ -2,6 +2,11 @@
 include("html/header.html");
 include("config.php");
 
+if(isset($_SESSION['email']))
+{
+header('Location: index.php');
+exit();
+}
 $opseudo = '';
 	//On verifie si le formulaire a ete envoye
 	if(isset($_POST['email'], $_POST['password']))
@@ -29,7 +34,7 @@ $opseudo = '';
 			$form = false;
 			//On enregistre son email dans la session email et son identifiant dans la session userid
 			$_SESSION['email'] = $_POST['email'];
-			$_SESSION['id'] = $dn['id'];
+			$_SESSION['userid'] = $dn['id'];
 			
 			//On récupère les infos de l'user connecté
 			if(isset($_SESSION['email']))
@@ -66,12 +71,12 @@ $opseudo = '';
 							<ul>
 								<li>
 									<input type="checkbox" id="brand1" value="">
-									<label for="brand1"><span></span>Remember me</label>
+									<label for="brand1"><span></span>Remember me</label><input type="checkbox" name="memorize" id="memorize" value="yes" /><br />
 								</li>
 							</ul>
 						</div>
 						<div class="forgot">
-							<a href="#">Forgot password?</a>
+							<a href="pass_forgot.php">Forgot password?</a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>

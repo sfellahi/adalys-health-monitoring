@@ -1,49 +1,61 @@
 <?php
-include("html/mainheader.html");
-include("html/menu.html");
-?>
-<div id="page-wrapper">
-<div class="main-page">
-<?php 
-//connexion au serveur:
-$cnx = mysql_connect( "localhost", "root", "" );
-//sélection de la base de données:
-$db= mysql_select_db( "adalys" );
-//création de la requête SQL:
-$sql = "SELECT * FROM users ORDER BY id";
-//exécution de notre requête SQL:
-$requete = mysql_query( $sql, $cnx ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
-//récupération avec mysql_fetch_array(), et affichage de nos résultats :
+//This page display the profile of an user
+include("html/mainheader.php");
 
-
-echo( "<table border=\"3\" cellpadding=\"5\" cellspacing=\"0\" align=\"left\">\n" );
-echo( "<tr>
-<td><div align=\"center\">id</div></td>
-<td><div align=\"center\">nom</div></td>
-<td><div align=\"center\">prenom</div></td>
-<td><div align=\"center\">date_inscription</div></td>
-<td><div align=\"center\">date_cloture</div></td>
-<td><div align=\"center\">email</div></td>
-<td><div align=\"center\">date_naissance</div></td>
-</tr>" );
- 
-while( $result = mysql_fetch_array( $requete ) )
+if(isset($_GET['id']))
 {
-echo( "<tr>\n" );
-echo( "<td><div align=\"center\">".$result["id"]."</div></td>\n" );
-echo( "<td><div align=\"center\">".$result["nom"]."</div></td>\n" );
-echo( "<td><div align=\"center\">".$result["prenom"]."</div></td>\n" );
-echo( "<td><div align=\"center\">".$result["date_inscription"]."</div></td>\n" );
-echo( "<td><div align=\"center\">".$result["date_cloture"]."</div></td>\n" );
-echo( "<td><div align=\"center\">".$result["email"]."</div></td>\n" );
-echo( "<td><div align=\"center\">".$result["date_naissance"]."</div></td>\n" );
-echo( "</tr>\n" );
+	$id = intval($_GET['id']);
+	$dn = $link -> query('select email, date_inscription from users where id="'.$id.'"');
+	if(mysqli_num_rows($dn)>0)
+	{
+		$dnn = mysqli_fetch_array($dn);
+?>
+This is the profile of "<?php echo htmlentities($dnn['email']); ?>" :
+<?php
+if($_SESSION['userid']==$id)
+{
+?>
+<br />
+<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+			<a href="edit_profile.php" class="button">Editer mon profile</a>
+			</div>
+
+<?php
 }
 ?>
-</div>
-</div>
-<?php 
-include("html/mainfooter.html");
-echo( "</table><br>\n" );
+<div id="page-wrapper">
+			<div class="main-page">
+<table style="width:500px;">
+	<tr>
+    	<td><?php
+	echo 'Cet utilisateur n a pas d avatar.';
+?></td>
+    	<td class="left"><h1><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></h1>
+        Cet utilisateur a rejoint le site le <?php echo $dnn['date_inscription']; ?></td>
+    </tr>
+</table>
+</div>	
+<?php
+if(isset($_SESSION['email']) and $_SESSION['email']!=$dnn['email'])
+{
 ?>
 
+<br /><a href="new_pm.php?recip=<?php echo urlencode($dnn['email']); ?>" class="big">Envoyer un MP à "<?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?>"</a>
+</div>
+</div>
+<?php
+}
+	}
+	else
+	{
+		echo 'This user doesn\'t exist.';
+	}
+}
+else
+{
+	echo 'The ID of this user is not defined.';
+}
+include("html/mainfooter.html");

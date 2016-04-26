@@ -103,7 +103,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 				<h1>Sign up</h1>
 			</div>
 			<div class="login-info">
-				<form action="insertion2.php" method="POST">
+				<form action="signup.php" method="post">
 					<input type="text" class="user" name="nom" placeholder="Nom">
 					<input type="text" class="user" name="prenom" placeholder="Prenom">
 					<input type="text" class="user" name="email" placeholder="Email*" required="">
