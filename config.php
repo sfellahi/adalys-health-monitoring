@@ -18,6 +18,7 @@ $admin='ray_95@hotmail.fr';
 
 //Nom du fichier de laccueil
 $url_home = 'index.php';
+$url_forum = 'forum.php';
 
 //Nom du design
 $design = 'default';
