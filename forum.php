@@ -37,6 +37,7 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 <table class="categories_table">
 	<tr>
     	<th class="forum_cat">Categorie</th>
+        <th class="forum_cat">Description</th>
     	<th class="forum_ntop">Topics</th>
     	<th class="forum_nrep">Reponses</th>
 <?php
@@ -55,8 +56,8 @@ while($dnn1 = mysqli_fetch_array($dn1))
 {
 ?>
 	<tr>
-    	<td class="forum_cat"><a href="list_topics.php?parent=<?php echo $dnn1['id']; ?>" class="title"><?php echo htmlentities($dnn1['name'], ENT_QUOTES, 'UTF-8'); ?></a>
-        <div class="description"><?php echo $dnn1['description']; ?></div></td>
+    	<td class="forum_cat"><a href="list_topics.php?parent=<?php echo $dnn1['id']; ?>" class="title"><?php echo htmlentities($dnn1['name'], ENT_QUOTES, 'UTF-8'); ?></a></td>
+        <td><div class="description"><?php echo $dnn1['description']; ?></div></td>
     	<td><?php echo $dnn1['topics']; ?></td>
     	<td><?php echo $dnn1['replies']; ?></td>
 <?php

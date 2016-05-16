@@ -6,6 +6,12 @@
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
+// Connexion à la base de données
+		$link2 = mysqli_connect("localhost", "root", "root","maladie2");
+		if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
 		
 		// Rendre la base de données bdd, la base courante
 		

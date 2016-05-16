@@ -17,7 +17,7 @@ if(isset($_POST['name'], $_POST['description']) and $_POST['name']!='')
 		$name = stripslashes($name);
 		$description = stripslashes($description);
 	}
-	$name = mysqli_real_escape_string($name);
+	$name = mysqli_real_escape_string($link,$name);
 	$description = mysqli_real_escape_string($link,$description);
 	if(mysqli_query($link,'insert into categories (id, name, description, position) select ifnull(max(id), 0)+1, "'.$name.'", "'.$description.'", count(id)+1 from categories'))
 	{

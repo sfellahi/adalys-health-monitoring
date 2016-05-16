@@ -197,7 +197,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<a href="#"><i class="fa fa-book nav_icon"></i>Patients <span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">
 									<li>
-										<a href="buttons.html">Ajouter un patient</a>
+										<a href="formulaire.php">Ajouter un patient</a>
 									</li>
 									<li>
 										<a href="typography.html">Liste des patients</a>
