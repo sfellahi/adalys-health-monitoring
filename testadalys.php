@@ -3,7 +3,7 @@ include("html/mainheader.php");
 
 // mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
 
-		$link = mysqli_connect("localhost", "root", "root","maladie2");
+		$link = mysqli_connect("localhost", "root", "","maladie2");
 		if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -68,7 +68,8 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		}				
 		elseif($temp_recup_question['type_question']=='textarea'){
 		
-		$aa="reponse_".$temp_recup_question['type_question']."";
+		//$aa="reponse_".$temp_recup_question['type_question']."";
+                $aa="question";
 		echo $temp_select_question[$aa];
 		?> 
 		<br/>

@@ -14,6 +14,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 		$_POST['email'] = stripslashes($_POST['email']);
 		$_POST['password'] = stripslashes($_POST['password']);
 		$_POST['passverif'] = stripslashes($_POST['passverif']);
+               
 	}	
 		//On verifie si le mot de passe a 6 caracteres ou plus
 		if(strlen($_POST['password'])>=6)
@@ -25,6 +26,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 					//On verifie si lemail est valide
 					if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
 					{
+                                                 $admin='admin';
 						//On echape les variables pour pouvoir les mettre dans une requette SQL
 						$email = mysqli_real_escape_string($link,$_POST['email']);				
 						$password = mysqli_real_escape_string($link,$_POST['password']);
@@ -40,7 +42,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 							$id = $dn2+1;
 							
 								//On enregistre les informations dans la base de donnee
-								if(mysqli_query($link,'insert into users(nom,prenom,email, password,date_naissance) values ("'.$nom.'","'.$prenom.'","'.$email.'","'.md5($password).'","'.$date.'")'))
+								if(mysqli_query($link,'insert into users(nom,prenom,email,profil,password,date_naissance) values ("'.$nom.'","'.$prenom.'","'.$email.'","'.$admin.'","'.md5($password).'","'.$date.'")'))
 								{
 														
 											//Si ca a fonctionné, on n'affiche pas le formulaire
@@ -50,8 +52,10 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 								else
 								{
 									//Sinon on dit quil y a eu une erreur
+                                                                    echo 'insert into users(nom,prenom,email,profil,password,date_naissance) values ("'.$nom.'","'.$prenom.'","'.$email.'","'.$admin.'","'.md5($password).'","'.$date.'")';
 									$form = true;
 									$message = 'Une erreur est survenue lors de l\'inscription.';
+                                                                     
 								}
 							}
 							else
