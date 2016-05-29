@@ -24,7 +24,7 @@ $opseudo = '';
 			$password = stripslashes(md5($_POST['password']));
 		}
 		//On recupere le mot de passe de lutilisateur
-		$req = $link -> query('select password,id,profil from users where email="'.$email.'"');
+		$req = $link -> query('select password,id from users where email="'.$email.'"');
 		$dn = mysqli_fetch_array($req);
 		
 		//On le compare a celui quil a entre et on verifie si le membre existe
@@ -35,7 +35,7 @@ $opseudo = '';
 			//On enregistre son email dans la session email et son identifiant dans la session userid
 			$_SESSION['email'] = $_POST['email'];
 			$_SESSION['userid'] = $dn['id'];
-			$_SESSION['profil'] = $dn['profil'];
+			
 			//On récupère les infos de l'user connecté
 			if(isset($_SESSION['email']))
 				{

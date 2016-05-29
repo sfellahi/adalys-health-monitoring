@@ -1,9 +1,5 @@
 <?php
 include('config.php');
-// session_start();
-if(empty($_SESSION['userid'])){  
-    header('Location: login.php');
-}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -198,10 +194,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							</li>
 							
 							<li>
-								<a href="#"><i class="fa fa-book nav_icon"></i>Patients <span class="fa arrow"></span></a>
+								<a href="#"><i class="fa fa-book nav_icon"></i>Patients<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">
 									<li>
-										<a href="formulaire.php">Ajouter un patient</a>
+										<a href="">Ajouter un patient</a>
 									</li>
 									<li>
 										<a href="typography.html">Liste des patients</a>
@@ -219,6 +215,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							$nb_new_pm = mysqli_fetch_array($req3);
 							$nb_new_pm = $nb_new_pm['nb_new_pm'];
 							}
+
+							if(isset($_SESSION['email'])){
+
 							?>
 							
 							<li>
@@ -233,9 +232,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</ul>
 								<!-- //nav-second-level -->
 							</li>
+							<?php
+							}
+							?>
+							<li>
+								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets<span class="fa arrow"></span></a>								
+								<!-- //nav-second-level -->
+								<ul class="nav nav-second-level collapse">
+									<li>
+										<a href="new_project.php">Créer un projet</a>
+									</li>
+									<li>
+										<a href="list_project.php">Liste des projets</a>
+									</li>
+								</ul>
+								<!-- //nav-second-level -->
+							</li>
+								
 							
 							<li>
-								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Documents</span></a>								
+								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
 								<!-- //nav-second-level -->
 							</li>
 							<li>

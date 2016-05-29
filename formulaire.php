@@ -1,13 +1,17 @@
  <?php
 //This page displays the list of the forum's categories
 include('html/mainheader.php');
+$id=$_GET['id'];
 ?>
  
 <link href="styleflo.css" rel="stylesheet" type="text/css">
 <div id="page-wrapper">
             <div class="main-page">
 <body>
-<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php">
+<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+
+<label for="message">Onglet</label><br />
+<input type="text" name="onglet" required="required">
 
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">

@@ -28,13 +28,12 @@ else
 if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 {
 ?>
-<div id="page-wrapper">
-            <div class="main-page">
 	<a href="new_category.php" class="btn btn-primary">Nouvelle Categorie</a>
 <?php
 }
 ?>
-<table class="categories_table">
+<div id="page-wrapper">
+            <div class="main-page"><table class="categories_table">
 	<tr>
     	<th class="forum_cat">Categorie</th>
         <th class="forum_cat">Description</th>
