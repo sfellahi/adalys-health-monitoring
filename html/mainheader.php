@@ -214,26 +214,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							
                             <?php 
                         	}
-							
-
-							if(isset($_SESSION['email'])){
-
-							?>
-							
-							<li>
-								<a href="#"><i class="fa fa-envelope nav_icon"></i>Email<span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level collapse">
-									<li>
-										<a href="list_pm.php">Boite de reception(<?php echo $nb_new_pm; ?>)</a>
-									</li>
-									<li>
-										<a href="new_pm.php">Envoyer un email</a>
-									</li>
-								</ul>
-								<!-- //nav-second-level -->
-							</li>
-							<?php
-							}
+						?><?php
                                                         if($_SESSION['profil']=="admin")
 							{
 							?>
@@ -257,16 +238,31 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
 								<!-- //nav-second-level -->
 							</li>
+						<?php 	
+
+							if(isset($_SESSION['email'])){
+
+							?>
+							
 							<li>
-								<a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>Statistiques</a>
+								<a href="#"><i class="fa fa-envelope nav_icon"></i>Email<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li>
+										<a href="list_pm.php">Boite de reception(<?php echo $nb_new_pm; ?>)</a>
+									</li>
+									<li>
+										<a href="new_pm.php">Envoyer un email</a>
+									</li>
+								</ul>
+								<!-- //nav-second-level -->
 							</li>
+							<?php
+							}?>
 							<li>
 								<a href="forum.php" class="community-nav"><i class="fa fa-users nav_icon"></i>Communaut&eacute</a>
 							</li>
 							
-							<li>
-								<a href="community.html" class="help-nav"><i class="fa fa-question-circle nav_icon"></i></i>Aide</a>
-							</li>
+						
 						</ul>
 					</div>
 					<!-- //sidebar-collapse -->

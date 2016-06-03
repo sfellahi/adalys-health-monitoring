@@ -40,7 +40,11 @@ while($temp_question = mysqli_fetch_array($result_question))
  //  echo "<br/>";
     ?>
 <script>
-    var typeinit= <?php ?>
+    var typeinit= <?php echo $typequestion; ?>
+     var nameinit= <?php echo $colonne_assoc; ?>
+      var questioninit= <?php echo $question; ?>
+       var reponsesinit= <?php echo $reponses; ?>
+        var requiredinit= <?php echo ""; ?>
      arrayname.push(typeinit,nameinit,questioninit,reponsesinit,requiredinit);
     </script>
    <?php
