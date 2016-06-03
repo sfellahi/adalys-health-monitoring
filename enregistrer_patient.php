@@ -1,11 +1,11 @@
 <?php
-include("html/mainheader.html");
+include("html/mainheader.php");
 // Connexion au serveur MySQL
 
 // mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
 
 
-		$link = mysqli_connect("localhost", "root", "","maladie2");
+		$link = mysqli_connect("localhost", "root", "root","maladie2");
 		if (mysqli_connect_errno())
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();

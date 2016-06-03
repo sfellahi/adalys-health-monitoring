@@ -197,7 +197,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<li>
 								<a href="index.php" class="active"><i class="fa fa-home nav_icon"></i>Accueil</a>
 							</li>
-							 <?php if(isset($_SESSION['profil'])=="user")
+							 <?php if($_SESSION['profil']=="user")
 							{ ?>
 							<li>
 								<a href="#"><i class="fa fa-book nav_icon"></i>Patients<span class="fa arrow"></span></a>
