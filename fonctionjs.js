@@ -1,104 +1,49 @@
-<script>
-    var arrayname= [];  
-</script>
- <?php
-//This page displays the list of the forum's categories
-include('html/mainheader.php');
-$id=$_GET['id'];?> 
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
  
-<link href="styleflo.css" rel="stylesheet" type="text/css">
-<div id="page-wrapper" >
-            <div class="main-page" >
-<body style="height:3000px;">
-<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-
-<label for="message">Onglet</label><br />
-<input type="text" name="onglet" required="required">
-
-<span class="formuajout questiontype">Type :</span>
-<select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
-<option value="selection">Selection</option>
-<option value="text">texte</option>
-<option value="textarea">textarea</option>
-<option value="number">nombre</option>
-<option value="checkbox">checkbox</option>
-<option value="radio">radio</option>
-</select>
-
-<span class="formuajout questionname">Nominatif (unique et sans espace) :</span>
- <input type="text" class="formuajout reponsename " id="name">
-
-<span class="formuajout questionquestion">Question :</span>
- <input type="text" class="formuajout reponsequestion" id="question">
-
-<span class="formuajout questionreponse">Reponses possibles<br/>(s&eacute;parer les r&eacute;ponses par ;) : </span>
-<input type="text"  class="formuajout reponsereponse" id="reponses">
-
-<span class="formuajout questionobligatoire">Champ obligatoire : </span>
-<input type="radio"  class="formuajout reponseobligatoire1" name="required" id="oui" value="oui">
-<span class="formuajout questionobligatoiretext1">Oui</span>
-<input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
-<span class="formuajout questionobligatoiretext2">Non</span>
-    <?php 
-$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
-$result_question = mysqli_query($link2,$sql_recup_question);
-if ($result_question) {
-
-while($temp_question = mysqli_fetch_array($result_question))
-    {
-    $typequestion=$temp_question['type_question'];
-    $colonne_assoc=$temp_question['colonne_assoc']; 
-   $qrequired=$temp_question['qrequired'];
-    if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
-    $sql_recup_question_reponses="SELECT question,reponse_".$typequestion." FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
-    $result_recup_question_reponses = mysqli_query($link2,$sql_recup_question_reponses);
-    while($temp_recup_question_reponses = mysqli_fetch_array($result_recup_question_reponses))
-    {
-     $question=$temp_recup_question_reponses['question']; 
-     $a="reponse_".$typequestion."";
-     $reponses=$temp_recup_question_reponses[$a];     
+ function in_array(string, array){
+    var result = false;
+    for(i=0; i<array.length; i++){
+        if(array[i] == string){
+            result = true;
+        }
     }
-    }
-    else{
-    $sql_recup_question="SELECT question FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
-    $result_recup_question = mysqli_query($link2,$sql_recup_question);
-    while($temp_recup_question = mysqli_fetch_array($result_recup_question))
-    {
-       $question=$temp_recup_question['question']; 
-       $reponses="NULL"; 
-    }
-    }
-   //     var type= '<?php echo $typequestion; ';
-   //  var name= '<?php echo $colonne_assoc; ';
-    //  var question= '<?php echo $question; ';
-     //  var reponses= '<?php echo $reponses; ';
-       // var required= '<?php echo $qrequired; ';
-echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$question."','".$reponses."','".$qrequired."');</script>";
+    return result;
 }
-    }
-?>
-   <input type="button" id="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
 
-   <br /><br />
-   <INPUT TYPE="hidden" NAME="value1">
-   <input type="submit" style="" value="soumettre"/>
-</form>
-</body>
-            </div>
-</div>
-     <?php // include("html/mainfooter.html");?>
-<script src="fonctionjs.js"></script>
- <script>
-function appelFonction(type,name,question,reponse,required){
-    alert('ok');
-    var formulaire = window.document.formulaireDynamique;
-    var type= type;
-     var name= name;
-      var question= question;
-       var reponses= reponse;
-        var required= required;
-        var element=document.getElementById('ajouter');
+// suppression des champs inutiles 
+function Formulaireadaptatif(choixdutype){
+if((choixdutype=='text')||(choixdutype=='number')||(choixdutype=='textarea')){
+document.getElementById('reponses').disabled = true;
+}
+else{
+document.getElementById('reponses').disabled = false;
+}
+if(choixdutype=='checkbox'){
+document.getElementById('oui').disabled = true;
+document.getElementById('non').disabled = true;
+}
+else{
+document.getElementById('oui').disabled = false;
+document.getElementById('non').disabled = false;
+}
+}
+function ajout(element){
+	  var formulaire = window.document.formulaireDynamique;
+	// On recuperer les data : name reponses question 
+	  var question = document.getElementById("question").value;
+	  var name = document.getElementById("name").value;
+	  // test si le nominatif est présent et unique 
+	  // test si la question est non null 
+	  if(in_array(name, arrayname) || name=="" || question==""){
+	  alert('Une question et une nominatif unique sont n\351c\351ssaire');
+	  }
+	  else{
+	  var reponses = document.getElementById("reponses").value;
+	  // On separes les réponses pour pouvoir créer les radio ou checkbox
 	  var res = reponses.split(";");
 	  // on recupere le nombre de reponse 
 	  var taillereponses = res.length;
@@ -115,19 +60,30 @@ function appelFonction(type,name,question,reponse,required){
 	  
 	  // On crée une ligne avec la question
 	  var nominatifquestion = document.createTextNode(question);
-
+  
+	  // On recupere le type de question
+	  var e= document.getElementById("typequestion");
+	  
+	  // Si jamais le type est textarea on change le type crée
+	  var type = e.options[e.selectedIndex].value;
+	  	    // condition obligatoire 
+	  if(document.getElementById("oui").checked){  var required = "oui";}
+	  else{ var required = "non";}
 	  
 	  
 	  // A PARTIR DE LA ON SEPARER LES TPES DE QUESTION
 	  
 	  
 	  
-	  if(type=='textarea'){
+	  if(type==='textarea'){
 	  var typechamp="textarea";
 	  }
 	  // Si jamais c'est un checkbox ou une radio 
-	  if(type=="radio" || type=="checkbox"){
-	
+	  if(type==="radio" || type==="checkbox"){
+	  if(reponses===""){
+	  alert('des r\351ponses sont n\351c\351ssaires');
+	  }
+	  else{
 	  // On crée les differentes radio et checkbox 
 	  for (var i = 0; i < taillereponses; i++) {  
 	  
@@ -137,7 +93,7 @@ function appelFonction(type,name,question,reponse,required){
       
       champ.type = type;
 	  
- if(type=="checkbox"){
+ if(type==="checkbox"){
 // mise en place d'ID
 	   champ.id="checkbox"+i; 
 	   champ.className = "checkbox";
@@ -146,7 +102,7 @@ function appelFonction(type,name,question,reponse,required){
 		  
 		  champ.className = "radio";
 	  // Si le bouton radio est requis
-	  	  	  if(required=="oui"){
+	  	  	  if(required==="oui"){
 	  champ.required="required";
 	  }
 	  // mise en place d'ID 
@@ -155,7 +111,7 @@ function appelFonction(type,name,question,reponse,required){
 	
       champ.value = res[i];
 	    var nominatifreponses = document.createTextNode(res[i]);
-		if(i=='0'){ 
+		if(i==='0'){ 
 		// On initialise une question et un saut de ligne
 		bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
@@ -183,9 +139,13 @@ function appelFonction(type,name,question,reponse,required){
       formulaire.insertBefore(sup, element);
       formulaire.insertBefore(bloc, element);
 	  arrayname.push(type,name,question,reponses,required);
-		
+		}
 }
 else if(type==="selection"){
+	  if(reponses===""){
+	  alert('des r\351ponses sont n\351c\351ssaires');
+	  } 
+	  else{
       var champ = document.createElement("select");
 	  
 	  champ.name = name;
@@ -197,7 +157,7 @@ for (var j = 0; j < taillereponses; j++) {
     option.text = res[j];
     champ.appendChild(option);
 }
-	  	  if(required==="oui"){
+	  	  if(required=="oui"){
 	  champ.required="required";
 	  }
 bloc.appendChild(nominatifquestion);
@@ -221,14 +181,14 @@ bloc.appendChild(nominatifquestion);
       formulaire.insertBefore(sup, element);
       formulaire.insertBefore(bloc, element);
 	   arrayname.push(type,name,question,reponses,required);
-   }
+}   }
 	 else{
       var champ = document.createElement(typechamp);
       // Les valeurs encodée dans le formulaire seront stockées dans un tableau
       champ.name = name;
       champ.type = type;
 	  champ.className = "input_text";
-	  if(required==="oui"){ champ.required="required"; }
+	  if(required=="oui"){ champ.required="required"; }
 	
 	  
 // On ajoute les reponses possible dans le paragraphe 
@@ -251,5 +211,22 @@ bloc.appendChild(nominatifquestion);
 	   arrayname.push(type,name,question,reponses,required);
         }
 
+
+ } 
+ document.formulaireDynamique.value1.value = arrayname;
+   }
+function suppression(element,type,name,question,reponses,required){
+   var formulaire = window.document.formulaireDynamique;
+    arrayname.splice(arrayname.indexOf(type),1);
+    arrayname.splice(arrayname.indexOf(name),1);
+    arrayname.splice(arrayname.indexOf(question),1);
+    arrayname.splice(arrayname.indexOf(reponses),1);
+    arrayname.splice(arrayname.indexOf(required),1);
+   // alert(name);
+   formulaire.removeChild(element.nextSibling);
+   // Supprime le bouton de suppression
+  
+   formulaire.removeChild(element);
+   document.formulaireDynamique.value1.value = arrayname;
 }
-</script>
+
