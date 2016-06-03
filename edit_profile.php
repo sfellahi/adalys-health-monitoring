@@ -65,3 +65,4 @@ if(isset($_POST['password'], $_POST['passverif']))
         	</div>
         </div>
     </form>
+<?php include("html/mainfooter.html");?>
