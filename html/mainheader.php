@@ -1,5 +1,10 @@
 <?php
 include('config.php');
+
+if(empty($_SESSION['email'])){    
+    header('Location: login.php');
+
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -192,7 +197,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<li>
 								<a href="index.php" class="active"><i class="fa fa-home nav_icon"></i>Accueil</a>
 							</li>
-							
+							 <?php if(isset($_SESSION['profil'])=="user")
+							{ ?>
 							<li>
 								<a href="#"><i class="fa fa-book nav_icon"></i>Patients<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">
@@ -206,7 +212,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<!-- /nav-second-level -->
 							</li>
 							
-							<?php
+                                                        <?php }
 							if(isset($_SESSION['email']))
 							{
 							$req=$link->query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.email from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="no" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="no" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
@@ -234,7 +240,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							</li>
 							<?php
 							}
+                                                        if($_SESSION['profil']=="admin")
+							{
 							?>
+                                                        
 							<li>
 								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets<span class="fa arrow"></span></a>								
 								<!-- //nav-second-level -->
@@ -248,8 +257,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</ul>
 								<!-- //nav-second-level -->
 							</li>
-								
-							
+                                                        <?php }	
+							?>
 							<li>
 								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
 								<!-- //nav-second-level -->

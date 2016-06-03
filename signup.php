@@ -47,6 +47,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 											//Si ca a fonctionné, on n'affiche pas le formulaire
 											$form = false;							
 											$message = 'Vous avez été bien inscrit';
+                                                                                        ?><meta http-equiv="refresh" content="1; URL=login.php"><?php 
 								}
 								else
 								{

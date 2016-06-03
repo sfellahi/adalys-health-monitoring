@@ -4,7 +4,7 @@ include('html/mainheader.php');
 
 if(isset($_SESSION['email']))
 {
-	unset($_SESSION['email'], $_SESSION['userid']);
+	unset($_SESSION['email'], $_SESSION['userid'],$_SESSION['profil']);
 	setcookie('email', '', time()-100);
 	setcookie('password', '', time()-100);
 
