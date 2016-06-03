@@ -18,6 +18,7 @@ if(isset($_POST['projet']))
 			<div class="main-page">
 				<div class="message">Le projet a ete cree.<br />
 				</div></div></div>
+     <?php include("html/mainfooter.html");?>
 				<meta http-equiv="refresh" content="2; URL=list_project.php">
 	<?php
 	}
@@ -42,4 +43,7 @@ else {
 
  </form>
  <?php
- }
+ }?>
+                        </div>
+</div>
+                                     <?php include("html/mainfooter.html");?>

@@ -42,7 +42,8 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 				?>
 				<div id="page-wrapper">
             <div class="main-page"><?php
-				echo 'An error occured while moving the category.';?></div></div><?php
+				echo 'An error occured while moving the category.';?></div></div>
+                                         <?php include("html/mainfooter.html");
 			}
 		}
 		else
@@ -50,7 +51,7 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 			?>
 			<div id="page-wrapper">
             <div class="main-page"><?php
-				echo '<h2>The action you want to do is impossible.</h2>';?></div></div><?php
+				echo '<h2>The action you want to do is impossible.</h2>';?></div></div>     <?php include("html/mainfooter.html");
 			
 		}
 	}

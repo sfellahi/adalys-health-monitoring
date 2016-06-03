@@ -48,6 +48,7 @@ else
 }
 ?>
 </div></div>
+     <?php include("html/mainfooter.html");?>
 <?php
 }
 else

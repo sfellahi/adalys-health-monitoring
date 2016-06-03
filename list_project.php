@@ -19,8 +19,10 @@ while($dnn1 = mysqli_fetch_array($dn1))
     	<td class="forum_cat"><a href="list_formulaire.php?parent=<?php echo $dnn1['id_project']; ?>" class="title"><?php echo $dnn1['nom_project']; ?></td>
     	<td><?php echo $dnn1['date_debut']; ?></td>
     	<td><?php echo $dnn1['nombre_patient']; ?></td>
-	</tr></div></div>
+	</tr>
 <?php
     }
 }
 ?>
+</table> </div></div>
+     <?php include("html/mainfooter.html");?>

@@ -45,6 +45,7 @@ $id=$_GET['id'];
    <input type="submit" style="" value="soumettre"/>
 </form>
 </body></div></div>
+     <?php include("html/mainfooter.html");?>
  <script>
  var arraybasededonnee = ["type","name","reponses","questions"];
  var arrayname= [];
