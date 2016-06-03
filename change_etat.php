@@ -12,7 +12,6 @@ if(isset($_POST['etat']))
 			?>
 			<div id="page-wrapper">
 			<div class="main-page">
-				<?php echo $etat; ?>
 				<div class="message">L'etat a ete modifié.<br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>

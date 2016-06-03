@@ -14,6 +14,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 		$_POST['email'] = stripslashes($_POST['email']);
 		$_POST['password'] = stripslashes($_POST['password']);
 		$_POST['passverif'] = stripslashes($_POST['passverif']);
+		$_POST['profil'] = stripslashes($_POST['profil']);
 	}	
 		//On verifie si le mot de passe a 6 caracteres ou plus
 		if(strlen($_POST['password'])>=6)
@@ -31,7 +32,7 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 						$nom = mysqli_real_escape_string($link,$_POST['nom']);
 						$prenom = mysqli_real_escape_string($link,$_POST['prenom']);
 						$date = mysqli_real_escape_string($link,$_POST['date']);
-						$profil = "user" ;
+						$profil = mysqli_real_escape_string($link,$_POST['profil']);
 						//On verifie sil ny a pas deja un utilisateur inscrit avec le email choisis
 						$dn = mysqli_num_rows(mysqli_query($link,'select id from users where email="'.$email.'"'));
 						if($dn==0)
@@ -112,6 +113,12 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 					<input type="password" name="password" class="lock" placeholder="Password*" required="">
 					<input type="password" name="passverif" class="lock" placeholder="Confirm Password*" required="">
 					<input type="date" name="date" required=""/>
+					Vous êtes un :
+					<select name="profil" class="user">
+					  	<option value="user" selected>Utilisateur</option>
+					  	<option value="medecin">Medecin</option>
+						<option value="organisme">Organisme</option>
+					</select>
 					<input type="submit" name="Sign In" value="Sign up">
 					<?php
 					if($form)
