@@ -2,6 +2,50 @@
 //This page displays the list of the forum's categories
 include('html/mainheader.php');
 $id=$_GET['id'];
+echo $sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc FROM ordre_question WHERE id_formulaire=".$id."";
+$result_question = mysqli_query($link2,$sql_recup_question);
+if ($result_question) {
+
+while($temp_question = mysqli_fetch_array($result_question))
+    {
+    $typequestion=$temp_question['type_question'];
+    $colonne_assoc=$temp_question['colonne_assoc']; 
+   
+    if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
+    $sql_recup_question_reponses="SELECT question,reponse_".$typequestion." FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
+    $result_recup_question_reponses = mysqli_query($link2,$sql_recup_question_reponses);
+    while($temp_recup_question_reponses = mysqli_fetch_array($result_recup_question_reponses))
+    {
+     $question=$temp_recup_question_reponses['question']; 
+     $a="reponse_".$typequestion."";
+     $reponses=$temp_recup_question_reponses[$a];     
+    }
+    }
+    else{
+    $sql_recup_question="SELECT question FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
+    $result_recup_question = mysqli_query($link2,$sql_recup_question);
+    while($temp_recup_question = mysqli_fetch_array($result_recup_question))
+    {
+       $question=$temp_recup_question['question']; 
+       $reponses="NULL"; 
+    }
+    }
+ //  echo  $typequestion;
+ //  echo "<br/>";
+ //    echo  $colonne_assoc;
+ //  echo "<br/>";
+ //      if(isset($question)){echo $question;}
+ //  echo "<br/>";
+ //    if(isset($reponses)){echo $reponses;}
+ //  echo "<br/>";
+    ?>
+<script>
+    var typeinit= <?php ?>
+     arrayname.push(typeinit,nameinit,questioninit,reponsesinit,requiredinit);
+    </script>
+   <?php
+}
+    }
 ?>
  
 <link href="styleflo.css" rel="stylesheet" type="text/css">
@@ -16,7 +60,7 @@ $id=$_GET['id'];
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
-<option value="texte">texte</option>
+<option value="text">texte</option>
 <option value="textarea">textarea</option>
 <option value="number">nombre</option>
 <option value="checkbox">checkbox</option>
@@ -38,7 +82,7 @@ $id=$_GET['id'];
 <input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
 <span class="formuajout questionobligatoiretext2">Non</span>
 
-   <input type="button" onClick="ajout(this);" style="position:fixed;top:500px;left:530px;" value="ajouter un champ"/>
+   <input type="button" onClick="ajout(this);" style="" value="ajouter un champ"/>
 
    <br /><br />
    <INPUT TYPE="hidden" NAME="value1">
@@ -61,7 +105,7 @@ $id=$_GET['id'];
 
 // suppression des champs inutiles 
 function Formulaireadaptatif(choixdutype){
-if((choixdutype=='texte')||(choixdutype=='number')||(choixdutype=='textarea')){
+if((choixdutype=='text')||(choixdutype=='number')||(choixdutype=='textarea')){
 document.getElementById('reponses').disabled = true;
 }
 else{
