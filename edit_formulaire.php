@@ -27,3 +27,4 @@ if(isset($_GET['parent']))
 	<a href="edit_formulaire.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Formulaire</a></div></div>
 <?php
 }
+include("html/mainfooter.html");?>

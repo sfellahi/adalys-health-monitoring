@@ -92,4 +92,4 @@ if(intval(mysqli_num_rows($req2))==0)
 </div>
 <?php
 }
-?>
+include("html/mainfooter.html");?>

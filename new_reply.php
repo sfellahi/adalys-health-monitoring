@@ -72,4 +72,4 @@ else
 {
 	echo '<h2>The ID of the topic you want to reply is not defined.</h2>';
 }
-?>
+include("html/mainfooter.html");?>

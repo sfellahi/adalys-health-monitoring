@@ -55,4 +55,4 @@ else
 {
 	echo '<h2>You must be logged as an administrator to access this page: <a href="login.php">Login</a> - <a href="signup.php">Sign Up</a></h2>';
 }
-?>
+include("html/mainfooter.html");?>

@@ -89,4 +89,4 @@ else
 {
 	echo '<h2>The ID of the category you want to visit is not defined.</h2>';
 }
-?>
+include("html/mainfooter.html");?>

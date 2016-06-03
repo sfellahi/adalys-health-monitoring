@@ -19,7 +19,7 @@ if(isset($_POST['formulaire']))
 				<div class="message">Le formulaire a ete cree.<br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="2; URL=list_project.php">
+				<meta http-equiv="refresh" content="2; URL=list_formulaire.php?parent=<?php echo $id; ?>">
 	<?php
 		}
 	}
