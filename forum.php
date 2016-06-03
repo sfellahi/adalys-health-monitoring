@@ -82,4 +82,4 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 	<a href="new_category.php" class="btn btn-primary">Nouvelle Categorie</a></div></div>
 <?php
 }
-?>
+include("html/mainfooter.html");?>
