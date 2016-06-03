@@ -61,45 +61,45 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</a>
 				</div>
+				<?php
+										if(isset($_SESSION['email']))
+											{
+											$req=$link->query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.email from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="no" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="no" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
+											$req2=$link->query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.email from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="yes" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="yes" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
+											$req3=$link->query('select count(*) as nb_new_pm from pm where ((user1="'.$_SESSION['userid'].'" and user1read="no") or (user2="'.$_SESSION['userid'].'" and user2read="no")) and id2="1"');
+											$nb_new_pm = mysqli_fetch_array($req3);
+											$nb_new_pm = $nb_new_pm['nb_new_pm'];
+											}
+										?>
 				<!--//logo-->
 				<div class="header-right header-right-grid">
 					<div class="profile_details_left"><!--notifications of menu start -->
 						<ul class="nofitications-dropdown">
 							<li class="dropdown head-dpdn">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge"><?php echo $nb_new_pm; ?></span></a>
 								<ul class="dropdown-menu anti-dropdown-menu">
 									<li>
 										<div class="notification_header">
-											<h3>You have 3 new messages</h3>
+											<h3>Vous avez <?php echo $nb_new_pm; ?> messages</h3>
 										</div>
 									</li>
-									<li><a href="#">
+									<?php
+									while($dn1 = mysqli_fetch_array($req))
+									{
+									?>
+									<li><a href="read_pm.php?id=<?php echo $dn1['id']; ?>">
 									   <div class="user_img"><img src="images/1.png" alt=""></div>
 									   <div class="notification_desc">
-										<p>Lorem ipsum dolor amet</p>
-										<p><span>1 hour ago</span></p>
+										<p><?php echo htmlentities($dn1['title'], ENT_QUOTES, 'UTF-8'); ?></p>
 										</div>
 									   <div class="clearfix"></div>	
 									</a></li>
-									<li class="odd"><a href="#">
-										<div class="user_img"><img src="images/2.png" alt=""></div>
-									   <div class="notification_desc">
-										<p>Lorem ipsum dolor amet </p>
-										<p><span>1 hour ago</span></p>
-										</div>
-									  <div class="clearfix"></div>	
-									</a></li>
-									<li><a href="#">
-									   <div class="user_img"><img src="images/3.png" alt=""></div>
-									   <div class="notification_desc">
-										<p>Lorem ipsum dolor amet </p>
-										<p><span>1 hour ago</span></p>
-										</div>
-									   <div class="clearfix"></div>	
-									</a></li>
+									<?php
+									}
+									?>
 									<li>
 										<div class="notification_bottom">
-											<a href="#">See all messages</a>
+											<a href="list_pm.php">See all messages</a>
 										</div> 
 									</li>
 								</ul>
@@ -212,15 +212,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<!-- /nav-second-level -->
 							</li>
 							
-                                                        <?php }
-							if(isset($_SESSION['email']))
-							{
-							$req=$link->query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.email from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="no" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="no" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
-							$req2=$link->query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.email from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="yes" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="yes" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
-							$req3=$link->query('select count(*) as nb_new_pm from pm where ((user1="'.$_SESSION['userid'].'" and user1read="no") or (user2="'.$_SESSION['userid'].'" and user2read="no")) and id2="1"');
-							$nb_new_pm = mysqli_fetch_array($req3);
-							$nb_new_pm = $nb_new_pm['nb_new_pm'];
-							}
+                            <?php 
+                        	}
+							
 
 							if(isset($_SESSION['email'])){
 
