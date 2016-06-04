@@ -17,7 +17,16 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 		{
 			if(mysqli_query($link,'update categories as c, categories as c2 set c.position=c.position-1, c2.position=c2.position+1 where c.id="'.$id.'" and c2.position=c.position-1'))
 			{
-				?><meta http-equiv="refresh" content="1; URL=forum.php"><?php
+				?>
+				 <body>
+				<div id="page-wrapper">
+					<div class="main-page">
+						<div class="message">La categorie monte d'un cran.<br />
+						<meta http-equiv="refresh" content="1; URL=forum.php">
+						</div>
+					</div>
+				</div>
+				<?php
 			}
 			else
 			{
@@ -35,7 +44,16 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 		{
 			if(mysqli_query($link,'update categories as c, categories as c2 set c.position=c.position+1, c2.position=c2.position-1 where c.id="'.$id.'" and c2.position=c.position+1'))
 			{
-				?><meta http-equiv="refresh" content="1; URL=forum.php"><?php
+				?>
+				 <body>
+				<div id="page-wrapper">
+					<div class="main-page">
+						<div class="message">La categorie descend d'un cran.<br />
+						<meta http-equiv="refresh" content="1; URL=forum.php">
+						</div>
+					</div>
+				</div>
+				<?php
 			}
 			else
 			{

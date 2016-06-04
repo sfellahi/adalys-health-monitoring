@@ -24,8 +24,11 @@ if(isset($_POST['name'], $_POST['description']) and $_POST['name']!='')
 	?>
 	<div id="page-wrapper">
 			<div class="main-page">
-	<div class="message">The category have successfully been created.<br />
-	<a href="forum.php">Go to the forum index</a></div></div></div>
+				<div class="message">The category have successfully been created.<br />
+				<meta http-equiv="refresh" content="1; URL=forum.php">
+				</div>
+			</div>
+	</div>
 	<?php
 	}
 	else

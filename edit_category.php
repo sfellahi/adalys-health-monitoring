@@ -10,13 +10,6 @@ if($dn1['nb1']>0)
 if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="<?php echo $design; ?>/style.css" rel="stylesheet" title="Style" />
-        <title>Edit a category - <?php echo htmlentities($dn1['name'], ENT_QUOTES, 'UTF-8'); ?> - Forum</title>
-    </head>
 <?php
 $nb_new_pm = mysqli_fetch_array(mysqli_query($link,'select count(*) as nb_new_pm from pm where ((user1="'.$_SESSION['userid'].'" and user1read="no") or (user2="'.$_SESSION['userid'].'" and user2read="no")) and id2="1"'));
 $nb_new_pm = $nb_new_pm['nb_new_pm'];
@@ -38,8 +31,8 @@ if(isset($_POST['name'], $_POST['description']) and $_POST['name']!='')
 	?>
 	<div id="page-wrapper">
 			<div class="main-page">
-	<div class="message">The category have successfully been edited..<br />
-	<a href="<?php echo $url_home; ?>">Go to the forum index</a></div></div></div>
+	<div class="message">The category have successfully been edited.<br />
+	<meta http-equiv="refresh" content="1; URL=forum.php"></div></div></div>
 	<?php
 	}
 	else

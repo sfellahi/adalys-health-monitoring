@@ -55,7 +55,7 @@ while($dnn2 = mysqli_fetch_array($dn2))
 if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 {
 ?>
-    	<td><a href="delete_topic.php?id=<?php echo $dnn2['id']; ?>"><span class="glyphicon glyphicon-pencil" alt="Delete" /></a></td>
+    	<td><a href="delete_topic.php?id=<?php echo $dnn2['id']; ?>"><span class="glyphicon glyphicon-trash" alt="Delete" /></a></td>
 <?php
 }
 ?>

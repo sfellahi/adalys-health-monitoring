@@ -31,7 +31,7 @@ if(isset($_POST['message'], $_POST['title']) and $_POST['message']!='' and $_POS
 	<div id="page-wrapper">
 			<div class="main-page">
 	<div class="message">The topic have successfully been created.<br />
-	<a href="list_topics.php?parent=<?php echo $id; ?>">Go to the forum</a></div></div></div></div>
+	<meta http-equiv="refresh" content="1; URL=list_topics.php?parent=<?php echo $id; ?>">
 	<?php
 	}
 	else
