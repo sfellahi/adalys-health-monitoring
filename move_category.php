@@ -9,7 +9,7 @@ $action = $_GET['action'];
 $dn1 = mysqli_fetch_array(mysqli_query($link,'select count(c.id) as nb1, c.position, count(c2.id) as nb2 from categories as c, categories as c2 where c.id="'.$id.'" group by c.id'));
 if($dn1['nb1']>0)
 {
-if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
+if(isset($_SESSION['email']) and $_SESSION['email']=="admin")
 {
 	if($action=='up')
 	{

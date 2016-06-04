@@ -7,7 +7,7 @@ $id = intval($_GET['id']);
 $dn1 = mysqli_fetch_array(mysqli_query($link,'select count(id) as nb1, name, description from categories where id="'.$id.'" group by id'));
 if($dn1['nb1']>0)
 {
-if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
+if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
 ?>
 <?php

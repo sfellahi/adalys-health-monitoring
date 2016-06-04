@@ -60,7 +60,7 @@ while($dnn1 = mysqli_fetch_array($dn1))
     	<td><?php echo $dnn1['topics']; ?></td>
     	<td><?php echo $dnn1['replies']; ?></td>
 <?php
-if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
+if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
 ?>
     	<td><a href="delete_category.php?id=<?php echo $dnn1['id']; ?>"><span class="glyphicon glyphicon-trash" alt="Delete" </span></a>
@@ -76,7 +76,7 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 ?>
 </table>
 <?php
-if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
+if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
 ?>
 	<a href="new_category.php" class="btn btn-primary">Nouvelle Categorie</a></div></div>
