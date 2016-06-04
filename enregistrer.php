@@ -26,7 +26,9 @@ while ($i <= $nb ) {
                 <div class="main-page">
                 An error occured while creating the forms
             </div></div>
+
             <?php
+            include("html/mainfooter.html");
         break;
         }        
     }
@@ -42,7 +44,9 @@ while ($i <= $nb ) {
                 <div class="main-page">
                 An error occured while creating the forms
             </div></div>
-            <?php        break;
+            <?php     
+            include("html/mainfooter.html");
+            break;
         }
     }
     
@@ -57,7 +61,7 @@ while ($i <= $nb ) {
                 <div class="main-page">
                 An error occured while creating the forms
             </div></div>
-            <?php
+            <?php include("html/mainfooter.html");
         break; 
         }
     }
@@ -73,7 +77,7 @@ while ($i <= $nb ) {
                 <div class="main-page">
                 An error occured while creating the forms
             </div></div>
-            <?php
+            <?php include("html/mainfooter.html");
         break;
         }
     }
@@ -90,6 +94,7 @@ while ($i <= $nb ) {
                 An error occured while creating the forms
             </div></div>
             <?php
+            include("html/mainfooter.html");
         break;
         }
     }
@@ -99,4 +104,4 @@ while ($i <= $nb ) {
             <div class="main-page">
 Le formulaire a bien ete cree
 </div></div>
-?>
+<?php include("html/mainfooter.html"); ?>

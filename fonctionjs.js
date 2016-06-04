@@ -157,7 +157,7 @@ for (var j = 0; j < taillereponses; j++) {
     option.text = res[j];
     champ.appendChild(option);
 }
-	  	  if(required=="oui"){
+	  	  if(required==="oui"){
 	  champ.required="required";
 	  }
 bloc.appendChild(nominatifquestion);
@@ -188,7 +188,7 @@ bloc.appendChild(nominatifquestion);
       champ.name = name;
       champ.type = type;
 	  champ.className = "input_text";
-	  if(required=="oui"){ champ.required="required"; }
+	  if(required==="oui"){ champ.required="required"; }
 	
 	  
 // On ajoute les reponses possible dans le paragraphe 

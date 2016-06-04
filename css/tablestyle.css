@@ -1,0 +1,27 @@
+                    
+                    .flat-table {
+  display: block;
+
+  -webkit-font-smoothing: antialiased;
+  font-size: 100%;
+  overflow-y: scroll;
+  width: 1150px;
+  height:600px;
+  margin:0 auto;
+  box-shadow: 2px 2px 5px #2a2f43;
+                    }
+  th {
+    background-color: #2a2f43;
+    color: white;
+    font-weight: normal;
+    padding: 20px 30px;
+    text-align: center;
+      
+  }
+  td {
+    background-color: #EEEEEE;
+    color: #6F6F6F;
+    padding: 20px 30px;
+    text-align: center;
+
+  }

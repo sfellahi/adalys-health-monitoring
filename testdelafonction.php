@@ -4,43 +4,13 @@
  <?php
 //This page displays the list of the forum's categories
 include('html/mainheader.php');
-$id=$_GET['id'];?> 
+$id=0;?> 
 
- 
-<link href="styleflo.css" rel="stylesheet" type="text/css">
-<div id="page-wrapper" >
-            <div class="main-page" >
-<body style="height:3000px;">
-<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-
-<label for="message">Onglet</label><br />
-<input type="text" name="onglet" required="required">
-
-<span class="formuajout questiontype">Type :</span>
-<select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
-<option value="selection">Selection</option>
-<option value="text">texte</option>
-<option value="textarea">textarea</option>
-<option value="number">nombre</option>
-<option value="checkbox">checkbox</option>
-<option value="radio">radio</option>
-</select>
-
-<span class="formuajout questionname">Nominatif (unique et sans espace) :</span>
- <input type="text" class="formuajout reponsename " id="name">
-
-<span class="formuajout questionquestion">Question :</span>
- <input type="text" class="formuajout reponsequestion" id="question">
-
-<span class="formuajout questionreponse">Reponses possibles<br/>(s&eacute;parer les r&eacute;ponses par ;) : </span>
-<input type="text"  class="formuajout reponsereponse" id="reponses">
-
-<span class="formuajout questionobligatoire">Champ obligatoire : </span>
-<input type="radio"  class="formuajout reponseobligatoire1" name="required" id="oui" value="oui">
-<span class="formuajout questionobligatoiretext1">Oui</span>
-<input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
-<span class="formuajout questionobligatoiretext2">Non</span>
-    <?php 
+ ?>
+<html>
+    
+    <form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+      <?php 
 $sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
 $result_question = mysqli_query($link2,$sql_recup_question);
 if ($result_question) {
@@ -74,24 +44,22 @@ while($temp_question = mysqli_fetch_array($result_question))
     //  var question= '<?php echo $question; ';
      //  var reponses= '<?php echo $reponses; ';
        // var required= '<?php echo $qrequired; ';
-?><script>
-    appelFonction('".$typequestion."','".$colonne_assoc."','".$question."','".$reponses."','".$qrequired."');</script><?php
+?>
+  <input type="button" style="margin-top:200px;" id="ajouter" onClick="appelFonction(this,'<?php echo $typequestion;?> ','<?php echo $colonne_assoc; ?>','<?php echo $question;?>','<?php echo $reponses;?>','<?php echo $qrequired;?>');"  value="ajouter un champ"/> 
+      <?php
 }
     }
 ?>
-   <input type="button" id="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
+        
+        
+        <input type="button" id="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
+        <input type="submit" value="Soumettre">
+    </form>
+</html><?php
 
-   <br /><br />
-   <INPUT TYPE="hidden" NAME="value1">
-   <input type="submit" style="" value="soumettre"/>
-</form>
-</body>
-            </div>
-</div>
-     <?php  include("html/mainfooter.html");?>
-<script src="fonctionjs.js"></script>
+?>
  <script>
-function appelFonction(type1,name1,question1,reponse1,required1){
+function appelFonction(element,type1,name1,question1,reponse1,required1){
     alert('ok');
     var formulaire = window.document.formulaireDynamique;
     var type= type1;
@@ -99,7 +67,7 @@ function appelFonction(type1,name1,question1,reponse1,required1){
       var question= question1;
        var reponses= reponse1;
         var required= required1;
-        var element= document.getElementById('ajouter');
+        // var element= document.getElementById('ajouter');
 	  var res = reponses.split(";");
 	  // on recupere le nombre de reponse 
 	  var taillereponses = res.length;
@@ -250,5 +218,19 @@ bloc.appendChild(nominatifquestion);
 	   arrayname.push(type,name,question,reponses,required);
         }
  document.formulaireDynamique.value1.value = arrayname;
+}
+function suppression(element,type,name,question,reponses,required){
+   var formulaire = window.document.formulaireDynamique;
+    arrayname.splice(arrayname.indexOf(type),1);
+    arrayname.splice(arrayname.indexOf(name),1);
+    arrayname.splice(arrayname.indexOf(question),1);
+    arrayname.splice(arrayname.indexOf(reponses),1);
+    arrayname.splice(arrayname.indexOf(required),1);
+   // alert(name);
+   formulaire.removeChild(element.nextSibling);
+   // Supprime le bouton de suppression
+  
+   formulaire.removeChild(element);
+   document.formulaireDynamique.value1.value = arrayname;
 }
 </script>
