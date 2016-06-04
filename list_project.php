@@ -31,12 +31,12 @@ while($dnn1 = mysqli_fetch_array($dn1))
         </a>
             
             <a href="new_formulaire.php?parent=<?php echo $dnn1['id_project'];?>" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</a></td>
-        <td><form action="change_etat.php?parent=<?php echo $dnn1['id_project']; ?>" method="post">
+        <td><form action="change_etat.php?parent=<?php echo $dnn1['id_project']; ?>" name="changeretat" id="changeretat" method="post">
 			<div>
-			<select name="etat" onChange='changer_etat();'>
+			<select name="etat" id="etat" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>')">
 		  		<option value="<?php echo $dnn1['etat_project']; ?>" selected ><?php echo $dnn1['etat_project']; ?></option>
 				<option value="En création">En création</option>
-				<option value="En cours de prodution">En cours</option>
+				<option value="En cours">En cours</option>
 				<option value="Cloturé">Cloturé</option>
 			</select>
 		    </div>
@@ -66,8 +66,29 @@ while($dnn1 = mysqli_fetch_array($dn1))
 }
 include("html/mainfooter.html");?>
 <script>
-function changer_etat(){
+function changerEtat(projet){
+    var formulaire = window.document.changeretat;
+    	  var e= document.getElementById("etat");
+	  var etat = e.options[e.selectedIndex].value;
+       
+          if(etat==='En cours'){
+                   if(confirm('Vous allez mettre en production le projet ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
+  document.getElementById('changeretat').submit();
+              }   
+              
+          }
+          else if(etat==='Cloturé'){
+              if(confirm('Vous allez clore le projet ' + projet +' souhaitez-vous supprimer l\'acces de ce projet ?')){
+       document.getElementById('changeretat').submit();      
+                  
+        
+              }
+              
+          }
+          else{
     
+              
+          }
     
     
 }
