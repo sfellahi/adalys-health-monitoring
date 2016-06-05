@@ -1,66 +1,7 @@
 <script>
     var arrayname= [];  
-</script>
- <?php
-//This page displays the list of the forum's categories
-include('html/mainheader.php');
-$id=0;?> 
-
- ?>
-<html>
-    
-    <form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-      <?php 
-$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
-$result_question = mysqli_query($link2,$sql_recup_question);
-if ($result_question) {
-
-while($temp_question = mysqli_fetch_array($result_question))
-    {
-    $typequestion=$temp_question['type_question'];
-    $colonne_assoc=$temp_question['colonne_assoc']; 
-   $qrequired=$temp_question['qrequired'];
-    if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
-    $sql_recup_question_reponses="SELECT question,reponse_".$typequestion." FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
-    $result_recup_question_reponses = mysqli_query($link2,$sql_recup_question_reponses);
-    while($temp_recup_question_reponses = mysqli_fetch_array($result_recup_question_reponses))
-    {
-     $question=$temp_recup_question_reponses['question']; 
-     $a="reponse_".$typequestion."";
-     $reponses=$temp_recup_question_reponses[$a];     
-    }
-    }
-    else{
-    $sql_recup_question="SELECT question FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
-    $result_recup_question = mysqli_query($link2,$sql_recup_question);
-    while($temp_recup_question = mysqli_fetch_array($result_recup_question))
-    {
-       $question=$temp_recup_question['question']; 
-       $reponses="NULL"; 
-    }
-    }
-   //     var type= '<?php echo $typequestion; ';
-   //  var name= '<?php echo $colonne_assoc; ';
-    //  var question= '<?php echo $question; ';
-     //  var reponses= '<?php echo $reponses; ';
-       // var required= '<?php echo $qrequired; ';
-?>
-  <input type="button" style="margin-top:200px;" id="ajouter" onClick="appelFonction(this,'<?php echo $typequestion;?> ','<?php echo $colonne_assoc; ?>','<?php echo $question;?>','<?php echo $reponses;?>','<?php echo $qrequired;?>');"  value="ajouter un champ"/> 
-      <?php
-}
-    }
-?>
-        
-        
-        <input type="button" id="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
-        <input type="submit" value="Soumettre">
-    </form>
-</html><?php
-
-?>
- <script>
-function appelFonction(element,type1,name1,question1,reponse1,required1){
-    alert('ok');
+function appelFonction(element1,type1,name1,question1,reponse1,required1){
+    var element=document.getElementById("ajouter");
     var formulaire = window.document.formulaireDynamique;
     var type= type1;
      var name= name1;
@@ -234,3 +175,62 @@ function suppression(element,type,name,question,reponses,required){
    document.formulaireDynamique.value1.value = arrayname;
 }
 </script>
+ <?php
+//This page displays the list of the forum's categories
+include('html/mainheader.php');
+$id=0;?> 
+
+ ?>
+<html>
+    
+    <form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+      <?php 
+$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
+$result_question = mysqli_query($link2,$sql_recup_question);
+if ($result_question) {
+
+while($temp_question = mysqli_fetch_array($result_question))
+    {
+    $typequestion=$temp_question['type_question'];
+    $colonne_assoc=$temp_question['colonne_assoc']; 
+   $qrequired=$temp_question['qrequired'];
+    if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
+    $sql_recup_question_reponses="SELECT question,reponse_".$typequestion." FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
+    $result_recup_question_reponses = mysqli_query($link2,$sql_recup_question_reponses);
+    while($temp_recup_question_reponses = mysqli_fetch_array($result_recup_question_reponses))
+    {
+     $question=$temp_recup_question_reponses['question']; 
+     $a="reponse_".$typequestion."";
+     $reponses=$temp_recup_question_reponses[$a];     
+    }
+    }
+    else{
+    $sql_recup_question="SELECT question FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
+    $result_recup_question = mysqli_query($link2,$sql_recup_question);
+    while($temp_recup_question = mysqli_fetch_array($result_recup_question))
+    {
+       $question=$temp_recup_question['question']; 
+       $reponses="NULL"; 
+    }
+    }
+   //     var type= '<?php echo $typequestion; ';
+   //  var name= '<?php echo $colonne_assoc; ';
+    //  var question= '<?php echo $question; ';
+     //  var reponses= '<?php echo $reponses; ';
+       // var required= '<?php echo $qrequired; ';
+?>
+ <!-- <input type="button" style="margin-top:200px;" id="ajouter" name="ajouter" onClick="appelFonction(this,'<?php echo $typequestion;?> ','<?php echo $colonne_assoc; ?>','<?php echo $question;?>','<?php echo $reponses;?>','<?php echo $qrequired;?>');"  value="ajouter un champ"/> 
+  -->
+<script>appelFonction(this,'<?php echo $typequestion;?> ','<?php echo $colonne_assoc; ?>','<?php echo $question;?>','<?php echo $reponses;?>','<?php echo $qrequired;?>');</script>
+    <?php
+}
+    }
+?>
+        
+        
+        <input type="button" id="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
+        <input type="submit" value="Soumettre">
+    </form>
+</html><?php
+
+?>

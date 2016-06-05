@@ -1,105 +1,15 @@
 <script>
-    var arrayname= [];  
-</script>
- <?php
-//This page displays the list of the forum's categories
-include('html/mainheader.php');
-$id=$_GET['id'];?> 
-
- 
-<link href="styleflo.css" rel="stylesheet" type="text/css">
-<div id="page-wrapper" >
-            <div class="main-page" >
-<body style="height:3000px;">
-<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-
-<label for="message">Onglet</label><br />
-<input type="text" name="onglet" required="required">
-
-<span class="formuajout questiontype">Type :</span>
-<select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
-<option value="selection">Selection</option>
-<option value="text">texte</option>
-<option value="textarea">textarea</option>
-<option value="number">nombre</option>
-<option value="checkbox">checkbox</option>
-<option value="radio">radio</option>
-</select>
-
-<span class="formuajout questionname">Nominatif (unique et sans espace) :</span>
- <input type="text" class="formuajout reponsename " id="name">
-
-<span class="formuajout questionquestion">Question :</span>
- <input type="text" class="formuajout reponsequestion" id="question">
-
-<span class="formuajout questionreponse">Reponses possibles<br/>(s&eacute;parer les r&eacute;ponses par ;) : </span>
-<input type="text"  class="formuajout reponsereponse" id="reponses">
-
-<span class="formuajout questionobligatoire">Champ obligatoire : </span>
-<input type="radio"  class="formuajout reponseobligatoire1" name="required" id="oui" value="oui">
-<span class="formuajout questionobligatoiretext1">Oui</span>
-<input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
-<span class="formuajout questionobligatoiretext2">Non</span>
-    <?php 
-$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
-$result_question = mysqli_query($link2,$sql_recup_question);
-if ($result_question) {
-
-while($temp_question = mysqli_fetch_array($result_question))
-    {
-    $typequestion=$temp_question['type_question'];
-    $colonne_assoc=$temp_question['colonne_assoc']; 
-   $qrequired=$temp_question['qrequired'];
-    if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
-    $sql_recup_question_reponses="SELECT question,reponse_".$typequestion." FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
-    $result_recup_question_reponses = mysqli_query($link2,$sql_recup_question_reponses);
-    while($temp_recup_question_reponses = mysqli_fetch_array($result_recup_question_reponses))
-    {
-     $question=$temp_recup_question_reponses['question']; 
-     $a="reponse_".$typequestion."";
-     $reponses=$temp_recup_question_reponses[$a];     
-    }
-    }
-    else{
-    $sql_recup_question="SELECT question FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
-    $result_recup_question = mysqli_query($link2,$sql_recup_question);
-    while($temp_recup_question = mysqli_fetch_array($result_recup_question))
-    {
-       $question=$temp_recup_question['question']; 
-       $reponses="NULL"; 
-    }
-    }
-   //     var type= '<?php echo $typequestion; ';
-   //  var name= '<?php echo $colonne_assoc; ';
-    //  var question= '<?php echo $question; ';
-     //  var reponses= '<?php echo $reponses; ';
-       // var required= '<?php echo $qrequired; ';
-?><script>
-    appelFonction('".$typequestion."','".$colonne_assoc."','".$question."','".$reponses."','".$qrequired."');</script><?php
-}
-    }
-?>
-   <input type="button" id="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
-
-   <br /><br />
-   <INPUT TYPE="hidden" NAME="value1">
-   <input type="submit" style="" value="soumettre"/>
-</form>
-</body>
-            </div>
-</div>
-     <?php  include("html/mainfooter.html");?>
-<script src="fonctionjs.js"></script>
- <script>
-function appelFonction(type1,name1,question1,reponse1,required1){
+    var arrayname= []; 
+    function appelFonction(type1,name1,question1,reponse1,required1){
     alert('ok');
+    var element= document.getElementById("ajouter");
     var formulaire = window.document.formulaireDynamique;
     var type= type1;
-     var name= name1;
-      var question= question1;
-       var reponses= reponse1;
-        var required= required1;
-        var element= document.getElementById('ajouter');
+    var name= name1;
+    var question= question1;
+    var reponses= reponse1;
+    var required= required1;
+    
 	  var res = reponses.split(";");
 	  // on recupere le nombre de reponse 
 	  var taillereponses = res.length;
@@ -115,14 +25,8 @@ function appelFonction(type1,name1,question1,reponse1,required1){
 	  var sautligne = document.createElement('br');
 	  
 	  // On crée une ligne avec la question
-	  var nominatifquestion = document.createTextNode(question);
-
-	  
-	  
-	  // A PARTIR DE LA ON SEPARER LES TPES DE QUESTION
-	  
-	  
-	  
+	  var nominatifquestion = document.createTextNode(question);	  
+	  // A PARTIR DE LA ON SEPARER LES TPES DE QUESTION	  
 	  if(type==='textarea'){
 	  var typechamp='textarea';	  }
 	  // Si jamais c'est un checkbox ou une radio 
@@ -173,13 +77,6 @@ function appelFonction(type1,name1,question1,reponse1,required1){
       // Ajout de l'événement onclick
       sup.onclick = function onclick(event)
          {suppression(this,type,name,question,reponses,required);};
-        
-	// on met en place la question 
-
-      // On crée un nouvel élément de type "p" et on insère le champ l'intérieur.
-
-
-    //  formulaire.insertBefore(ajout, element);
       formulaire.insertBefore(sup, element);
       formulaire.insertBefore(bloc, element);
         arrayname.push(type,name,question,reponses,required);
@@ -251,4 +148,105 @@ bloc.appendChild(nominatifquestion);
         }
  document.formulaireDynamique.value1.value = arrayname;
 }
+</script>
+<style>
+   p{
+        background-color:yellow;
+        border-radius:10px;
+        width:50%; 
+    }
+    
+</style>
+ <?php
+//This page displays the list of the forum's categories
+include('html/mainheader.php');
+$id=$_GET['id'];?> 
+
+ 
+<link href="styleflo.css" rel="stylesheet" type="text/css">
+<div id="page-wrapper" >
+            <div class="main-page" >
+                <div class="row" >
+<body style="overflow:auto;">
+<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+
+<label for="message">Onglet</label><br />
+<input type="text" name="onglet" required="required">
+
+<span class="formuajout questiontype">Type :</span>
+<select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
+<option value="selection">Selection</option>
+<option value="text">texte</option>
+<option value="textarea">textarea</option>
+<option value="number">nombre</option>
+<option value="checkbox">checkbox</option>
+<option value="radio">radio</option>
+</select>
+
+<span class="formuajout questionname">Nominatif (unique et sans espace) :</span>
+ <input type="text" class="formuajout reponsename " id="name">
+
+<span class="formuajout questionquestion">Question :</span>
+ <input type="text" class="formuajout reponsequestion" id="question">
+
+<span class="formuajout questionreponse">Reponses possibles<br/>(s&eacute;parer les r&eacute;ponses par ;) : </span>
+<input type="text"  class="formuajout reponsereponse" id="reponses">
+
+<span class="formuajout questionobligatoire">Champ obligatoire : </span>
+<input type="radio"  class="formuajout reponseobligatoire1" name="required" id="oui" value="oui">
+<span class="formuajout questionobligatoiretext1">Oui</span>
+<input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
+<span class="formuajout questionobligatoiretext2">Non</span>
+    <?php 
+$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
+$result_question = mysqli_query($link2,$sql_recup_question);
+if ($result_question) {
+
+while($temp_question = mysqli_fetch_array($result_question))
+    {
+    $typequestion=$temp_question['type_question'];
+    $colonne_assoc=$temp_question['colonne_assoc']; 
+   $qrequired=$temp_question['qrequired'];
+    if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
+    $sql_recup_question_reponses="SELECT question,reponse_".$typequestion." FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
+    $result_recup_question_reponses = mysqli_query($link2,$sql_recup_question_reponses);
+    while($temp_recup_question_reponses = mysqli_fetch_array($result_recup_question_reponses))
+    {
+     $question=$temp_recup_question_reponses['question']; 
+     $a="reponse_".$typequestion."";
+     $reponses=$temp_recup_question_reponses[$a];     
+    }
+    }
+    else{
+    $sql_recup_question="SELECT question FROM ".$typequestion." WHERE id_".$typequestion."=".$temp_question['id_type']."";
+    $result_recup_question = mysqli_query($link2,$sql_recup_question);
+    while($temp_recup_question = mysqli_fetch_array($result_recup_question))
+    {
+       $question=$temp_recup_question['question']; 
+       $reponses="NULL"; 
+    }
+    }
+   //     var type= '<?php echo $typequestion; ';
+   //  var name= '<?php echo $colonne_assoc; ';
+    //  var question= '<?php echo $question; ';
+     //  var reponses= '<?php echo $reponses; ';
+       // var required= '<?php echo $qrequired; ';
+echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$question."','".$reponses."','".$qrequired."');</script>";
+}
+    }
+?>
+   <input type="button" id="ajouter" name="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
+
+   <br /><br />
+   <INPUT TYPE="hidden" NAME="value1">
+   <input type="submit" style="" value="soumettre"/>
+</form>
+</body>
+            </div>
+</div></div>
+    
+     <?php  include("html/mainfooter.html");?>
+<script src="fonctionjs.js"></script>
+ <script>
+
 </script>
