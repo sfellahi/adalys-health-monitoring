@@ -3,9 +3,7 @@ include('html/mainheader.php');
 ?>
 <div id="page-wrapper">
             <div class="main-page">
-                <style>
-
-                </style>
+                <div class="row">
 <table class="flat-table" border="0" id="tableprojet" cellspacing="0">
     <tr>
         <th>Nom du projet</th>
@@ -58,11 +56,14 @@ while($dnn1 = mysqli_fetch_array($dn1))
  			<td><button type="submit">Lié</button></td>
  		</form>			
     </tr>
+    <?php
+    }?>
+</table>
+                </div>
     </div>
     </div>
 
 <?php
-    }
 }
 include("html/mainfooter.html");?>
 <script>

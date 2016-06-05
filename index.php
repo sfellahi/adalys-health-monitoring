@@ -1,5 +1,8 @@
 <?php 
 include("html/mainheader.php");
+$sql_nombre_projet='SELECT id_project FROM projects';
+        $result_recup_nb_projet = mysqli_query($link,$sql_nombre_projet);
+         $nb_projet = mysqli_num_rows($result_recup_nb_projet);
 ?>
 		<!-- //header-ends -->
 		<!-- main content start-->
@@ -8,6 +11,20 @@ include("html/mainheader.php");
 			
 				<!-- four-grids -->
 				<div class="row four-grids">
+                                    	<div class="col-md-3 ticket-grid">
+						<div class="tickets">
+							<div class="grid-left">
+								<div class="book-icon">
+                                                                    <a href="list_project.php"><i class="fa fa-rocket"></i></a>
+                                                                </div>
+							</div>
+							<div class="grid-right">
+								<h3>Projets<span>Crées</span></h3>
+								<p><?php echo $nb_projet; ?></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
 					<div class="col-md-3 ticket-grid">
 						<div class="tickets">
 							<div class="grid-left">
@@ -22,20 +39,7 @@ include("html/mainheader.php");
 							<div class="clearfix"> </div>
 						</div>
 					</div>
-					<div class="col-md-3 ticket-grid">
-						<div class="tickets">
-							<div class="grid-left">
-								<div class="book-icon">
-									<i class="fa fa-rocket"></i>
-								</div>
-							</div>
-							<div class="grid-right">
-								<h3>Nouveau <span>projets</span></h3>
-								<p>22</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
+				
 					<div class="col-md-3 ticket-grid">
 						<div class="tickets">
 							<div class="grid-left">
