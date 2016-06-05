@@ -17,7 +17,7 @@ $id=$_GET['parent'];
 
 <td>
 <?php
-$dn1 = mysqli_query($link,'select id_user from project_user where id_project = "'.$id.'"');
+$dn1 = mysqli_query($link,'select id_user from project_user where id_project = "'.$id.'" and user_accept="yes"');
 while($dnn1 = mysqli_fetch_array($dn1)){
 	$dn3 = mysqli_query($link,'select nom, prenom from users where id = "'.$dnn1['id_user'].'"');
 	$dnn3 = mysqli_fetch_array($dn3);
@@ -42,3 +42,4 @@ while($dnn1 = mysqli_fetch_array($dn1)){
  		</form>			
     </tr>
 </table>
+<?php include("html/mainfooter.html");?>

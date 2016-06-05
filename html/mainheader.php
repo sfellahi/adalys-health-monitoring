@@ -105,41 +105,42 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									</li>
 								</ul>
 							</li>
+							<?php
+							if(isset($_SESSION['email']))
+											{
+											$req4=$link->query('select count(*) as notif from project_user where id_user ="'.$_SESSION['userid'].'" and user_read ="no"');
+											$nb_notif = mysqli_fetch_array($req4);
+											$nb_new_notif = $nb_notif['notif'];
+											}
+							?>
 							<li class="dropdown head-dpdn">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue"><?php echo $nb_new_notif; ?></span></a>
 								<ul class="dropdown-menu anti-dropdown-menu">
 									<li>
 										<div class="notification_header">
-											<h3>You have 3 new notification</h3>
+											<h3>Vous avez <?php echo $nb_new_notif; ?> notification</h3>
 										</div>
 									</li>
-									<li><a href="#">
+									<?php
+									$req5=$link->query('select id_project, id_project_user from project_user where id_user ="'.$_SESSION['userid'].'" and user_read ="no"');
+									while($dn4 = mysqli_fetch_array($req5))
+									{
+										$req6=$link->query('select nom_project from projects where id_project ="'.$dn4['id_project'].'"');
+										$nom_projet = mysqli_fetch_array($req6);
+										?>
+										<li><a href="accept_notif.php?parent=<?php echo $dn4['id_project_user']; ?>">
 										<div class="user_img"><img src="images/2.png" alt=""></div>
 									   <div class="notification_desc">
-										<p>Lorem ipsum dolor amet</p>
-										<p><span>1 hour ago</span></p>
+										<p>Une demande d'association du projet <?php echo $nom_projet['nom_project']; ?> est en cours</p>
 										</div>
 									  <div class="clearfix"></div>	
 									 </a></li>
-									 <li class="odd"><a href="#">
-										<div class="user_img"><img src="images/1.png" alt=""></div>
-									   <div class="notification_desc">
-										<p>Lorem ipsum dolor amet </p>
-										<p><span>1 hour ago</span></p>
-										</div>
-									   <div class="clearfix"></div>	
-									 </a></li>
-									 <li><a href="#">
-										<div class="user_img"><img src="images/3.png" alt=""></div>
-									   <div class="notification_desc">
-										<p>Lorem ipsum dolor amet </p>
-										<p><span>1 hour ago</span></p>
-										</div>
-									   <div class="clearfix"></div>	
-									 </a></li>
-									 <li>
+										<?php
+									}
+									?>
+									<li>
 										<div class="notification_bottom">
-											<a href="#">See all notifications</a>
+											<a href="list_notifcation.php">See all notifications</a>
 										</div> 
 									</li>
 								</ul>
