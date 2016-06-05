@@ -232,7 +232,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<a href="#"><i class="fa fa-book nav_icon"></i>Administration<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">
 									<li>
-										<a href="administration.php">administration</a>
+										<a href="administration_modification.php">Modifier les profils</a>
+									</li>
+									<li>
+										<a href="administration_suppression.php">Supprimer les profils</a>
 									</li>
 								</ul>
 							</li>

@@ -59,7 +59,7 @@ include('html/mainheader.php');
 </form>
   <?php
   }//fin if 
-  echo'<a href="administration.php" > Modification des profils </a>';
+  echo'<a href="administration_modification.php" > Modification des profils </a>';
   ?>
   </body>
 </html>
