@@ -151,7 +151,10 @@ bloc.appendChild(nominatifquestion);
 }
 </script>
 <style>
-    
+    .radiobutton{
+        
+        display:inline-block
+    }
     .styleradio,.stylecheckbox{
         
         display:inline-block;
@@ -167,7 +170,6 @@ bloc.appendChild(nominatifquestion);
     
     }
     .formuajout{
-// position:fixed;
 float:left;
 margin-left:60%;
 position:relative;
@@ -222,10 +224,13 @@ height:70px;
 //top:440px;
  }
 .reponseobligatoire1{
+//left:5px;
+         
 //left:530px;
 //top:460px;
  }
  .reponseobligatoire2{
+//left:5px;
 //left:600px;
 //top:460px;
  }
@@ -271,10 +276,12 @@ $id=$_GET['id'];?>
 <input type="text"  class="formuajout reponsereponse" id="reponses">
 
 <span class="formuajout questionobligatoire">Champ obligatoire : </span>
-<input type="radio"  class="formuajout reponseobligatoire1" name="required" id="oui" value="oui">
-<span class="formuajout questionobligatoiretext1">Oui</span>
-<input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
-<span class="formuajout questionobligatoiretext2">Non</span>
+
+<label for="oui" class="formuajout questionobligatoiretext1">Oui</label>
+<input type="radio"  class="formuajout reponseobligatoire1 radiobutton" name="required" id="oui" value="oui">
+
+<label for="non" class="formuajout questionobligatoiretext2">Non</label>
+<input type="radio"  class="formuajout reponseobligatoire2 radiobutton" name="required" checked selected id="non" value="non">
     <?php 
 $sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
 $result_question = mysqli_query($link2,$sql_recup_question);
@@ -304,11 +311,6 @@ while($temp_question = mysqli_fetch_array($result_question))
        $reponses="NULL"; 
     }
     }
-   //     var type= '<?php echo $typequestion; ';
-   //  var name= '<?php echo $colonne_assoc; ';
-    //  var question= '<?php echo $question; ';
-     //  var reponses= '<?php echo $reponses; ';
-       // var required= '<?php echo $qrequired; ';
 echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$question."','".$reponses."','".$qrequired."');</script>";
 }
     }

@@ -22,7 +22,7 @@ if(isset($_SESSION['email']))
 ?>
 <div id="page-wrapper">
             <div class="main-page">
-	<a href="new_topic.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Topic</a>
+	<!-- <a href="new_topic.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Topic</a> -->
 <?php
 }
 $dn2 = mysqli_query($link,'select t.id, t.title, t.authorid, u.email as author, count(r.id) as replies from topics as t left join topics as r on r.parent="'.$id.'" and r.id=t.id and r.id2!=1  left join users as u on u.id=t.authorid where t.parent="'.$id.'" and t.id2=1 group by t.id order by t.timestamp2 desc');
