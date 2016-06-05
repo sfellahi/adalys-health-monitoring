@@ -1,3 +1,4 @@
+ <meta http-equiv="refresh" content="2; URL=administration_suppression.php">
   <?php
 include("html/mainheader.html");
 ?>
