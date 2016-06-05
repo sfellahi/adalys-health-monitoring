@@ -38,14 +38,10 @@
   if($requete)
   {
     echo("La modification à été correctement effectuée") ;
-    echo'<br>';
-    echo'<a href="administration_modification.php" > Revenir à modifier les profils </a>';
   }
   else
   {
     echo("La modification à échouée") ;
-    echo'<br>';
-    echo'<a href="administration_modification.php" > Revenir à modifier les profils </a>';
   }
   
 ?>
