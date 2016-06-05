@@ -245,10 +245,7 @@ $id=$_GET['id'];?>
                 <div class="row" >
 <body style="overflow:auto;">
 <form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-<!--
-<label for="message">Onglet</label><br />
-<input type="text" name="onglet" required="required">
--->
+
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>

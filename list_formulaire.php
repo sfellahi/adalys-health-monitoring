@@ -23,7 +23,7 @@ if(isset($_GET['parent']))
     ?>
     <tr>
     	<td>
-            <a href="formulaire.php?id=<?php echo $dnn1['id_formulaire']; ?>"><?php echo $dnn2['nom_formulaire']; ?>
+            <a href="list_onglet.php?parent=<?php echo $dnn1['id_formulaire']; ?>"><?php echo $dnn2['nom_formulaire']; ?>
         </td>
     </tr>
     <?php
