@@ -7,7 +7,7 @@ $id = intval($_GET['parent']);
 if(isset($_POST['medecin']))
 {
 	$medecin = $_POST['medecin'];
-	if(mysqli_query($link,'insert into project_user (id_project, id_user) VALUES ("'.$id.'", "'.$medecin.'")'))
+	if(mysqli_query($link,'insert into project_user (id_project, id_user, user_read) VALUES ("'.$id.'", "'.$medecin.'", "no")'))
 	{
 			?>
 			<div id="page-wrapper">
