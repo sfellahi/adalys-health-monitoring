@@ -97,11 +97,11 @@ function ajout(element){
  if(type==="checkbox"){
 // mise en place d'ID
 	   champ.id="checkbox"+i; 
-	   champ.className = "checkbox";
+	   champ.className = "stylecheckbox";
 	  }
 	  else{
 		  
-		  champ.className = "radio";
+		  champ.className = "styleradio";
 	  // Si le bouton radio est requis
 	  	  	  if(required==="oui"){
 	  champ.required="required";

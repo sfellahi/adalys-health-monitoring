@@ -45,11 +45,11 @@
  if(type==='checkbox'){
 // mise en place d'ID
 	   champ.id="checkbox"+i; 
-	   champ.className = "checkbox";
+	   champ.className = "stylecheckbox";
 	  }
 	  else{
 		  
-		  champ.className = 'radio';
+		  champ.className = 'styleradio';
 	  // Si le bouton radio est requis
 	  	  	  if(required==='oui'){
 	  champ.required="required";
@@ -151,6 +151,11 @@ bloc.appendChild(nominatifquestion);
 }
 </script>
 <style>
+    
+    .styleradio,.stylecheckbox{
+        
+        display:inline-block;
+    }
    #question_formulaire{
         background-color:#EEEEEE;
         border-radius:10px;
