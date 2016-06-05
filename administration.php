@@ -29,7 +29,7 @@ include('html/mainheader.php');
        echo(
            "<div align=\"left\">"
            .$result->nom." - ".$result->prenom." - ".$result->profil." - ".$result->email." 
-       		<a href=\"modification2.php?idPersonne=".$result->id."\">modifier</a></div>\n"
+       		<a href=\"admin_modification2.php?idPersonne=".$result->id."\">modifier</a></div>\n"
        ) ;
     }
   ?>
