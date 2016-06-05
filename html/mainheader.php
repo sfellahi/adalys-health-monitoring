@@ -19,7 +19,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />
- <!-- <link href="css/styleflo.css" rel='stylesheet' type='text/css' /> -->
 <!-- font CSS -->
 <link rel="icon" href="favicon.ico" type="image/x-icon" >
 <!-- font-awesome icons -->
@@ -216,7 +215,33 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							
                             <?php 
                         	}
-						?><?php
+						?>
+						 <?php if($_SESSION['profil']=="super_admin")
+							{ ?>
+							<li>
+								<a href="#"><i class="fa fa-book nav_icon"></i>Patients<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li>
+										<a href="patient.php">Ajouter un patient</a>
+									</li>
+									<li>
+										<a href="typography.html">Liste des patients</a>
+									</li>
+								</ul>
+								<!-- /nav-second-level -->
+								<a href="#"><i class="fa fa-book nav_icon"></i>Administration<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li>
+										<a href="administration.php">administration</a>
+									</li>
+								</ul>
+							</li>
+							
+							
+                            <?php 
+                        	}
+						?>
+						<?php
                                                         if($_SESSION['profil']=="admin")
 							{
 							?>
