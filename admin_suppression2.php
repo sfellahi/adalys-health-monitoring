@@ -1,3 +1,4 @@
+ <meta http-equiv="refresh" content="2; URL=administration_suppression.php">
   <?php
 include("html/mainheader.html");
 ?>
@@ -26,13 +27,9 @@ include("html/mainheader.html");
   if($requete)
   {
     echo("La suppression à été correctement effectuée") ;
-    echo'<br>';
-    echo'<a href="administration_suppression.php" > Revenir à supprimer les profils </a>';
   }
   else
   {
     echo("La suppression à échouée") ;
-    echo'<br>';
-    echo'<a href="administration_suppression.php" > Revenir à supprimer les profils </a>';
   }
 ?>
