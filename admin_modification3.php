@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="2; URL=administration_modification.php.php">
+<meta http-equiv="refresh" content="2; URL=administration_modification.php">
 <?php
   //connection au serveur
   $cnx = mysql_connect( "localhost", "root", "" ) ;
@@ -39,13 +39,13 @@
   {
     echo("La modification à été correctement effectuée") ;
     echo'<br>';
-    echo'<a href="administration_modification.php.php" > Revenir à modifier les profils </a>';
+    echo'<a href="administration_modification.php" > Revenir à modifier les profils </a>';
   }
   else
   {
     echo("La modification à échouée") ;
     echo'<br>';
-    echo'<a href="administration_modification.php.php" > Revenir à modifier les profils </a>';
+    echo'<a href="administration_modification.php" > Revenir à modifier les profils </a>';
   }
   
 ?>
