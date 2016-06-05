@@ -102,8 +102,7 @@ while ($i <= $nb ) {
 }
 ?><div id="page-wrapper">
             <div class="main-page">
-            <?php echo $id;
-echo $dnn2['id_formulaire']; echo $str;?>
-Le formulaire a bien ete cree
+        
+Le formulaire a bien été crée
 </div></div>
 <?php include("html/mainfooter.html"); ?>
