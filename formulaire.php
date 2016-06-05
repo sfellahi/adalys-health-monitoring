@@ -1,7 +1,6 @@
 <script>
     var arrayname= []; 
     function appelFonction(type1,name1,question1,reponse1,required1){
-    alert('ok');
     var element= document.getElementById("ajouter");
     var formulaire = window.document.formulaireDynamique;
     var type= type1;
