@@ -1,16 +1,7 @@
 <?php
 //This page display a personnal message
 include("html/mainheader.php");
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="<?php echo $design; ?>/style.css" rel="stylesheet" title="Style" />
-        <title>Read a PM</title>
-    </head>
-    
-<?php
+
 if(isset($_SESSION['email']))
 {
 if(isset($_GET['id']))
