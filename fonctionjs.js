@@ -49,6 +49,7 @@ function ajout(element){
 	  var taillereponses = res.length;
 	   // On crée le bloc
       var bloc = document.createElement("p");
+      bloc.id = "question_formulaire";
 // On initialise le type 
 	  var typechamp="input";
 	  //  Mise en place des differents pattern 

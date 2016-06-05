@@ -1,6 +1,7 @@
 <script>
     var arrayname= []; 
     function appelFonction(type1,name1,question1,reponse1,required1){
+
     var element= document.getElementById("ajouter");
     var formulaire = window.document.formulaireDynamique;
     var type= type1;
@@ -14,6 +15,7 @@
 	  var taillereponses = res.length;
 	   // On crée le bloc
       var bloc = document.createElement("p");
+      bloc.id = "question_formulaire";
 // On initialise le type 
 	  var typechamp="input";
 	  //  Mise en place des differents pattern 
@@ -149,12 +151,87 @@ bloc.appendChild(nominatifquestion);
 }
 </script>
 <style>
-   p{
-        background-color:yellow;
+   #question_formulaire{
+        background-color:#EEEEEE;
         border-radius:10px;
+        padding-left:5px;
+        padding-top:5px;
+        padding-bottom:5px;
         width:50%; 
-    }
+        display:block;
     
+    }
+    .formuajout{
+// position:fixed;
+float:left;
+margin-left:60%;
+position:relative;
+}
+.questiontype{
+//left:530px;
+//top:150px;
+ //margin-right:150px;
+}
+
+.typeselect{
+//left:530px;
+//top:175px;
+}
+.questionname{
+//left:530px;
+//top:210px;
+}
+.reponsename{
+//left:530px;
+//top:235px;
+}
+.questionquestion{
+//left:530px;
+//top:280px;
+}
+.reponsequestion{
+//left:530px;
+//top:305px;
+}
+.questionreponse{
+//left:530px;
+//top:350px;
+}
+.reponsereponse{
+//left:530px;
+//top:395px;
+}
+/*.bouton_supprimer{
+position:absolute;
+margin-top:15px;
+margin-left:400px;
+background-image: url('moins.png');
+background-repeat:no-repeat;
+background-size:50% 50%;
+width:70px;
+height:70px;
+}
+*/
+.questionobligatoire{
+//left:530px;
+//top:440px;
+ }
+.reponseobligatoire1{
+//left:530px;
+//top:460px;
+ }
+ .reponseobligatoire2{
+//left:600px;
+//top:460px;
+ }
+ .questionobligatoiretext1{
+// left:550px;
+//top:460px;
+ }
+ .questionobligatoiretext2{
+//left:620px;
+//top:460px; 
+ }
 </style>
  <?php
 //This page displays the list of the forum's categories
@@ -168,10 +245,10 @@ $id=$_GET['id'];?>
                 <div class="row" >
 <body style="overflow:auto;">
 <form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-
+<!--
 <label for="message">Onglet</label><br />
 <input type="text" name="onglet" required="required">
-
+-->
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
