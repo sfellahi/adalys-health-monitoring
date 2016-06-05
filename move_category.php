@@ -9,7 +9,7 @@ $action = $_GET['action'];
 $dn1 = mysqli_fetch_array(mysqli_query($link,'select count(c.id) as nb1, c.position, count(c2.id) as nb2 from categories as c, categories as c2 where c.id="'.$id.'" group by c.id'));
 if($dn1['nb1']>0)
 {
-if(isset($_SESSION['email']) and $_SESSION['email']=="admin")
+if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 {
 	if($action=='up')
 	{
@@ -17,16 +17,10 @@ if(isset($_SESSION['email']) and $_SESSION['email']=="admin")
 		{
 			if(mysqli_query($link,'update categories as c, categories as c2 set c.position=c.position-1, c2.position=c2.position+1 where c.id="'.$id.'" and c2.position=c.position-1'))
 			{
-				?>
-				 <body>
-				<div id="page-wrapper">
-					<div class="main-page">
-						<div class="message">La categorie monte d'un cran.<br />
-						<meta http-equiv="refresh" content="1; URL=forum.php">
-						</div>
-					</div>
-				</div>
-				<?php
+				?><div id="page-wrapper">
+            <div class="main-page"><?php
+				echo 'La category monte d un cran.';?></div></div>
+				<meta http-equiv="refresh" content="1; URL=forum.php"><?php
 			}
 			else
 			{
@@ -45,23 +39,17 @@ if(isset($_SESSION['email']) and $_SESSION['email']=="admin")
 			if(mysqli_query($link,'update categories as c, categories as c2 set c.position=c.position+1, c2.position=c2.position-1 where c.id="'.$id.'" and c2.position=c.position+1'))
 			{
 				?>
-				 <body>
 				<div id="page-wrapper">
-					<div class="main-page">
-						<div class="message">La categorie descend d'un cran.<br />
-						<meta http-equiv="refresh" content="1; URL=forum.php">
-						</div>
-					</div>
-				</div>
-				<?php
+            <div class="main-page"><?php
+				echo 'La category descend d un cran.';?></div></div>
+				<meta http-equiv="refresh" content="1; URL=forum.php"><?php
 			}
 			else
 			{
 				?>
 				<div id="page-wrapper">
             <div class="main-page"><?php
-				echo 'An error occured while moving the category.';?></div></div>
-                                         <?php include("html/mainfooter.html");
+				echo 'An error occured while moving the category.';?></div></div><?php
 			}
 		}
 		else
@@ -69,7 +57,7 @@ if(isset($_SESSION['email']) and $_SESSION['email']=="admin")
 			?>
 			<div id="page-wrapper">
             <div class="main-page"><?php
-				echo '<h2>The action you want to do is impossible.</h2>';?></div></div>     <?php include("html/mainfooter.html");
+				echo '<h2>The action you want to do is impossible.</h2>';?></div></div><?php
 			
 		}
 	}
@@ -88,4 +76,4 @@ else
 {
 	echo '<h2>The ID of the category you want to move is not defined.</h2>';
 }
-include("html/mainfooter.html");?>
+?>
