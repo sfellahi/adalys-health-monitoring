@@ -28,7 +28,8 @@ while($dnn1 = mysqli_fetch_array($dn1))
         </a>
             
             <a href="new_formulaire.php?parent=<?php echo $dnn1['id_project'];?>" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</a></td>
-        <td><form action="change_etat.php?parent=<?php echo $dnn1['id_project']; ?>" name="changeretat" id="changeretat" method="post">
+        <td><form action="change_etat.php" name="changeretat" id="changeretat" method="post">
+                <input type="hidden" name="parentprojet" value="<?php echo $dnn1['id_project']; ?>">
 			<div>
 			<select name="etat" id="etat" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>')">
 		  		<option value="<?php echo $dnn1['etat_project']; ?>" selected ><?php echo $dnn1['etat_project']; ?></option>

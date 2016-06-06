@@ -254,7 +254,7 @@ $id=$_GET['id'];?>
 <div id="page-wrapper" >
             <div class="main-page" >
                 <div class="row"  style="">
-<body>
+<body style="height:3000px;">
 <form name="formulaireDynamique" style="float:left;overflow:auto;" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
 
 <span class="formuajout questiontype">Type :</span>
@@ -331,9 +331,6 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 </body>
             </div>
 </div></div>
-    
+  <?php include('html/mainfooter.html');?>  
 
 <script src="fonctionjs.js"></script>
- <script>
-
-</script>

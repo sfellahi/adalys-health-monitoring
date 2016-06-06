@@ -9,14 +9,17 @@ if(isset($_POST['formulaire']))
 	$nom = $_POST['formulaire'];
 	if(mysqli_query($link2,'insert into formulaire (nom_formulaire) VALUES ("'.$nom.'")'))
 	{
-		$dn2 = mysqli_query($link2,'select id_formulaire from formulaire where nom_formulaire = "'.$nom.'"');
+		$dn2 = mysqli_query($link,'select id_formulaire from formulaire where nom_formulaire = "'.$nom.'"');
 		$dnn2 = mysqli_fetch_array($dn2);
 		if(mysqli_query($link,'insert into project_formulaire (id_project, id_formulaire) VALUES ("'.$id.'", "'.$dnn2['id_formulaire'].'")'))
+              
 		{
+                   echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL)";
+                   mysqli_query($link,$sql_create_table_formulaire);
 			?>
 			<div id="page-wrapper">
 			<div class="main-page">
-				<div class="message">Le formulaire a ete cree.<br />
+				<div class="message">Le formulaire a ete cree. <br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>
 				<meta http-equiv="refresh" content="2; URL=list_formulaire.php?parent=<?php echo $id; ?>">

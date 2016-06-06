@@ -5,9 +5,9 @@ include('html/mainheader.php');
  <div id="page-wrapper"> 
        <div class="main-page">
     <?php
-if(isset($_GET['parent']))
+if(isset($_POST['parent']))
 {
-	$id=$_GET['parent'];
+	$id=$_POST['parent'];
 	$dn1 = mysqli_query($link2,'select nom_onglet, id_onglet from onglet where id_formulaire = "'.$id.'"');
 	?>
 	
@@ -32,6 +32,11 @@ if(isset($_GET['parent']))
             
     
 <?php
+}
+else{
+    ?>
+Aucun formulaire n\'a été séléctionner    
+   <?php 
 }
 ?>  
        </div>

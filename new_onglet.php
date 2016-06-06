@@ -1,9 +1,9 @@
 <?php
 //This page let display the list of topics of a category
 include('html/mainheader.php');
-if(isset($_GET['parent']))
+if(isset($_POST['parent']))
 {
-$id = intval($_GET['parent']);
+$id = intval($_POST['parent']);
 if(isset($_POST['onglet']))
 {
 	$onglet = $_POST['onglet'];
