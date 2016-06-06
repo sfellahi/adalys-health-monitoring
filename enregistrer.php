@@ -4,12 +4,34 @@ include('html/mainheader.php');
 
 $id=$_GET['id'];
 
-$dn2 = mysqli_query($link2,'select id_formulaire from onglet where id_onglet= "'.$id.'"');
+
+$dn2 = mysqli_query($link,'select id_formulaire from onglet where id_onglet= "'.$id.'"');
 $dnn2 = mysqli_fetch_array($dn2);
 
 
 $str = $_POST['value1'];
+if(empty($str)){
+    ?>
+             <div id="page-wrapper">
+                <div class="main-page">
+                Aucune modification n'a été réalisé
+            </div></div>
+<?php
+}
+else{
+    
 
+$recup_question_onglet="SELECT * FROM ordre_question where id_onglet=".$id."";
+$result_question_onglet = mysqli_query($link,$recup_question_onglet);
+while($temp_question_onglet = mysqli_fetch_array($result_question_onglet))
+    {
+ $sql_delete_ancienne_question="DELETE FROM ".$temp_question_onglet['type_question']." WHERE id_".$temp_question_onglet['type_question']."=".$temp_question_onglet['id_type']."";
+ $result_delete_ancienne_question=mysqli_query($link,$sql_delete_ancienne_question);   
+}    
+$sql_delete_ancienne_question2="DELETE FROM ordre_question WHERE id_onglet=".$id."";
+ mysqli_query($link,$sql_delete_ancienne_question2);     
+    
+    
 $pieces = explode(",", $str);
 $nb = count($pieces)-5;
 $i = 0;
@@ -105,4 +127,4 @@ while ($i <= $nb ) {
         
 Le formulaire a bien été crée
 </div></div>
-<?php include("html/mainfooter.html"); ?>
+<?php } include("html/mainfooter.html"); ?>

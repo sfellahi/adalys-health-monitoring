@@ -147,7 +147,7 @@ bloc.appendChild(nominatifquestion);
       formulaire.insertBefore(bloc, element);
 	   arrayname.push(type,name,question,reponses,required);
         }
- document.formulaireDynamique.value1.value = arrayname;
+ 
 }
 </script>
 <style>
@@ -327,6 +327,3 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
     
 
 <script src="fonctionjs.js"></script>
- <script>
-
-</script>
