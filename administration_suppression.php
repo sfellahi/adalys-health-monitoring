@@ -22,7 +22,7 @@ include('html/mainheader.php');
 <body>
 <?php
     //connection au serveur:
-    $cnx = mysql_connect( "localhost", "root", "" ) ;
+    $cnx = mysql_connect( "localhost", "root", "root" ) ;
  
     //sélection de la base de données:
     $db = mysql_select_db( "adalys" ) ;

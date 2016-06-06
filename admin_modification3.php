@@ -1,7 +1,7 @@
 <meta http-equiv="refresh" content="2; URL=administration_modification.php">
 <?php
   //connection au serveur
-  $cnx = mysql_connect( "localhost", "root", "" ) ;
+  $cnx = mysql_connect( "localhost", "root", "root" ) ;
   
  
   //sélection de la base de données:
