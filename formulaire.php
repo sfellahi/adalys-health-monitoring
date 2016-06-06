@@ -178,38 +178,29 @@ margin-left:60%;
 position:relative;
 }
 .questiontype{
-//left:530px;
-//top:150px;
- //margin-right:150px;
+
 }
 
 .typeselect{
-//left:530px;
-//top:175px;
+
 }
 .questionname{
-//left:530px;
-//top:210px;
+
 }
 .reponsename{
-//left:530px;
-//top:235px;
+
 }
 .questionquestion{
-//left:530px;
-//top:280px;
+
 }
 .reponsequestion{
-//left:530px;
-//top:305px;
+
 }
 .questionreponse{
-//left:530px;
-//top:350px;
+
 }
 .reponsereponse{
-//left:530px;
-//top:395px;
+
 }
 .bouton_supprimer{
 position:absolute;
@@ -218,29 +209,28 @@ margin-left:250px;
 
 
 }
+.questionobligatoire1{
 
-.questionobligatoire{
-//left:530px;
-//top:440px;
+top:5px;
+ }
+.questionobligatoire2{
+
+left:75px;
+bottom:15px;
  }
 .reponseobligatoire1{
-//left:5px;
-         
-//left:530px;
-//top:460px;
+
+top:5px;
  }
  .reponseobligatoire2{
-//left:5px;
-//left:600px;
-//top:460px;
+left:75px;
+bottom:15px;
  }
  .questionobligatoiretext1{
-// left:550px;
-//top:460px;
+
  }
  .questionobligatoiretext2{
-//left:620px;
-//top:460px; 
+
  }
 
 </style>
@@ -254,8 +244,11 @@ $id=$_GET['id'];?>
 <div id="page-wrapper" >
             <div class="main-page" >
                 <div class="row"  style="">
-<body style="height:3000px;">
-<form name="formulaireDynamique" style="float:left;overflow:auto;" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+<body >
+
+    <div>
+     
+<form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
 
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
@@ -278,11 +271,11 @@ $id=$_GET['id'];?>
 
 <span class="formuajout questionobligatoire">Champ obligatoire : </span>
 
-<label for="oui" class="formuajout questionobligatoiretext1">Oui</label>
-<input type="radio"  class="formuajout reponseobligatoire1 radiobutton" name="required" id="oui" value="oui">
+<label for="oui" class="formuajout questionobligatoire1">Oui&nbsp;&nbsp;</label>
+<input type="radio"  class="formuajout reponseobligatoire1 " name="required" id="oui" value="oui">
 
-<label for="non" class="formuajout questionobligatoiretext2">Non</label>
-<input type="radio"  class="formuajout reponseobligatoire2 radiobutton" name="required" checked selected id="non" value="non">
+<label for="non" class="formuajout questionobligatoire2">Non&nbsp;&nbsp;</label>
+<input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
     <?php 
 $sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_onglet=".$id."";
 $result_question = mysqli_query($link2,$sql_recup_question);
@@ -322,12 +315,15 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 }
     }
 ?>
-   <input type="button" id="ajouter" name="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
+   <input type="button" class="formuajout" id="ajouter" name="ajouter" onClick="ajout(this);" style="margin-top:-120px;" value="ajouter un champ"/>
 
    <br /><br />
    <INPUT TYPE="hidden" NAME="value1">
    <input type="submit" style="" value="soumettre"/>
-</form>
+</form>       
+
+    </div>
+
 </body>
             </div>
 </div></div>

@@ -1,15 +1,21 @@
-                    
-                    .flat-table {
-  display: block;
-
-  -webkit-font-smoothing: antialiased;
-  font-size: 100%;
-  overflow: auto;
-  width: 100%;
-  height:600px;
-  margin:0 auto;
-  box-shadow: 2px 2px 5px #2a2f43;
-                    }
+.flat-table {
+    display: block;
+    -webkit-font-smoothing: antialiased;
+    font-size: 100%;
+    overflow: auto;
+    height:600px;
+    margin:0 auto;
+    box-shadow: 2px 2px 5px #2a2f43;
+    }
+#tableprojet{
+    width: 100%;
+   }   
+#tableprojet{
+    width: 100%;
+   }
+   #tableformulaire{
+       width:80%;
+   }
   th {
     background-color: #2a2f43;
     color: white;

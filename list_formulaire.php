@@ -1,27 +1,23 @@
 <?php
 //This page let display the list of topics of a category
 include('html/mainheader.php');
-?>
- <div id="page-wrapper"> 
-       <div class="main-page">
-           <div class="row">
-    <?php
 if(isset($_GET['parent']))
 {
 	$id=$_GET['parent'];
 	$dn1 = mysqli_query($link,'select id_formulaire from project_formulaire where id_project = "'.$id.'"');
      
 	?>
-	
-          <a href="new_formulaire.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Formulaire</a>
-                    <table class="topics_table">
+	<div id="page-wrapper"> 
+            <div class="main-page">
+                 <div class="row">
+<table class="flat-table" border="0" id="tableformulaire" cellspacing="0">
     <tr>
-            <th class="forum_tops">Formulaire</th>
-            <th class="forum_tops">Nb d'onglet</th>
-            <th class="forum_tops">Onglets</th>
-            <th class="forum_tops">Nb question</th>
-            <th class="forum_tops">Etat</th>
-            <th class="forum_tops">&nbsp;</th>
+            <th>Formulaire</th>
+            <th>Nb d'onglet</th>
+            <th>Onglets</th>
+            <th>Nb question</th>
+            <th>Etat</th>
+            <th>&nbsp;</th>
     </tr>
     	<?php
     while($dnn1 = mysqli_fetch_array($dn1)){
@@ -90,15 +86,15 @@ if(isset($_GET['parent']))
     }
     ?>
                     </table>
-	
-            
+	 <a href="new_formulaire.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Formulaire</a>
+            </div>
+       </div>
+       </div> 
     
 <?php
 }
 ?>  
-           </div>
-       </div>
-       </div>
+         
      <?php include("html/mainfooter.html");?>
 <script>
 function changerEtat(projet){
