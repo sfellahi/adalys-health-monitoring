@@ -1,9 +1,9 @@
 <?php
 //This page let display the list of topics of a category
 include('html/mainheader.php');
-if(isset($_GET['parent']))
+if(isset($_POST['parent']))
 {
-$id = intval($_GET['parent']);
+$id = intval($_POST['parent']);
 if(isset($_POST['formulaire']))
 {
 	$nom = $_POST['formulaire'];
@@ -22,7 +22,7 @@ if(isset($_POST['formulaire']))
 				<div class="message">Le formulaire a ete cree. <br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="2; URL=list_formulaire.php?parent=<?php echo $id; ?>">
+				<meta http-equiv="refresh" content="2; URL=list_project.php">
 	<?php
 		}
 	}
@@ -31,8 +31,8 @@ if(isset($_POST['formulaire']))
 ?>
 <div id="page-wrapper">
 			<div class="main-page">
-<form action="new_formulaire.php?parent=<?php echo $id; ?>" method="post">
-
+<form action="new_formulaire.php" method="post">
+<input type="hidden" value="<?php echo $id; ?>" name="parent">
 	<div>
         <label for="formulaire">Nom du formulaire:</label>
         <input type="text" name="formulaire" />

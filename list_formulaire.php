@@ -1,10 +1,10 @@
 <?php
 //This page let display the list of topics of a category
 
-if(isset($_GET['parent']))
+if(isset($_POST['parent']))
 {
     include('html/mainheader.php');
-	$id=$_GET['parent'];
+	$id=$_POST['parent'];
 	$dn1 = mysqli_query($link,'select id_formulaire from project_formulaire where id_project = "'.$id.'"');
      
 	?>
@@ -34,7 +34,7 @@ if(isset($_GET['parent']))
     ?>
     <tr>
     	<td>
-            <a href="list_onglet.php?parent=<?php echo $dnn1['id_formulaire']; ?>"><?php echo $dnn2['nom_formulaire']; ?>
+<?php echo $dnn2['nom_formulaire']; ?>
         </td>
         <td>
         <?php echo $rowcountonglet;?> 

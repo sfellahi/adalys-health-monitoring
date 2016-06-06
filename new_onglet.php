@@ -16,7 +16,7 @@ if(isset($_POST['onglet']))
 				<div class="message">L'onglet a été crée.<br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="2; URL=list_onglet.php?parent=<?php echo $id; ?>">
+				<meta http-equiv="refresh" content="2; URL=list_onglet.php?parent">
 	<?php
 		
 	}
@@ -25,8 +25,8 @@ if(isset($_POST['onglet']))
 ?>
 <div id="page-wrapper">
 			<div class="main-page">
-<form action="new_onglet.php?parent=<?php echo $id; ?>" method="post">
-
+<form action="new_onglet.php" method="post">
+<input type="hidden" value="<?php echo $id; ?>" name="parent">
 	<div>
         <label for="formulaire">Nom de l'onglet</label>
         <input type="text" name="onglet" />
