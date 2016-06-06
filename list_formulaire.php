@@ -1,8 +1,9 @@
 <?php
 //This page let display the list of topics of a category
-include('html/mainheader.php');
+
 if(isset($_GET['parent']))
 {
+    include('html/mainheader.php');
 	$id=$_GET['parent'];
 	$dn1 = mysqli_query($link,'select id_formulaire from project_formulaire where id_project = "'.$id.'"');
      
@@ -13,9 +14,9 @@ if(isset($_GET['parent']))
 <table class="flat-table" border="0" id="tableformulaire" cellspacing="0">
     <tr>
             <th>Formulaire</th>
-            <th>Nb d'onglet</th>
+            <th style="width:10%">Nb d'onglet</th>
             <th>Onglets</th>
-            <th>Nb question</th>
+            <th style="width:10%">Nb question</th>
             <th>Etat</th>
             <th>&nbsp;</th>
     </tr>
@@ -86,17 +87,18 @@ if(isset($_GET['parent']))
     }
     ?>
                     </table>
-	 <a href="new_formulaire.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Formulaire</a>
-            </div>
+	    </div>
+                <div style="margin-left:45%;margin-top:5%">
+              <a href="new_formulaire.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Formulaire</a>
+              
+                </div>
        </div>
        </div> 
     
 <?php
 }
 ?>  
-         
-     <?php include("html/mainfooter.html");?>
-<script>
+ <script>
 function changerEtat(projet){
     var formulaire = window.document.changeretat;
     	  var e= document.getElementById("etat");
@@ -124,4 +126,5 @@ function changerEtat(projet){
     
 }
 
-</script>
+</script>        
+     <?php include("html/mainfooter.html");?>

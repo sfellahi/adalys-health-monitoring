@@ -3,18 +3,18 @@
     -webkit-font-smoothing: antialiased;
     font-size: 100%;
     overflow: auto;
-    height:600px;
+    
     margin:0 auto;
     box-shadow: 2px 2px 5px #2a2f43;
     }
 #tableprojet{
     width: 100%;
+    height:600px;
    }   
-#tableprojet{
-    width: 100%;
-   }
+
    #tableformulaire{
        width:80%;
+        height:520px;
    }
   th {
     background-color: #2a2f43;
