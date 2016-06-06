@@ -229,6 +229,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 										<a href="typography.html">Liste des patients</a>
 									</li>
 								</ul>
+                                                        </li>
+                                                        <li>
 								<!-- /nav-second-level -->
 								<a href="#"><i class="fa fa-book nav_icon"></i>Administration<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">

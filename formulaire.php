@@ -252,9 +252,9 @@ $id=$_GET['id'];?>
 <link href="styleflo.css" rel="stylesheet" type="text/css">
 <div id="page-wrapper" >
             <div class="main-page" >
-                <div class="row" >
-<body style="overflow:auto;">
-<form name="formulaireDynamique"  id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+                <div class="row"  style="">
+<body>
+<form name="formulaireDynamique" style="float:left;overflow:auto;" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
 
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
@@ -283,7 +283,7 @@ $id=$_GET['id'];?>
 <label for="non" class="formuajout questionobligatoiretext2">Non</label>
 <input type="radio"  class="formuajout reponseobligatoire2 radiobutton" name="required" checked selected id="non" value="non">
     <?php 
-$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_formulaire=".$id."";
+$sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_onglet=".$id."";
 $result_question = mysqli_query($link2,$sql_recup_question);
 if ($result_question) {
 
@@ -325,7 +325,7 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
             </div>
 </div></div>
     
-     <?php  include("html/mainfooter.html");?>
+
 <script src="fonctionjs.js"></script>
  <script>
 

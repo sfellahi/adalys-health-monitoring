@@ -7,7 +7,7 @@
   }
 
 // Connexion à la base de données
-		$link2 = mysqli_connect("localhost", "root", "root","maladie2");
+		$link2 = mysqli_connect("localhost", "root", "root","adalys");
 		if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
