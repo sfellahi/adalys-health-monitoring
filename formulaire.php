@@ -68,6 +68,7 @@
 		}
 		// Pour chaque itération on met la reponse et le champ associé 
 		bloc.appendChild(champ);
+               
 	  bloc.appendChild(nominatifreponses);
       
         }      var sup = document.createElement("input");
@@ -153,11 +154,13 @@ bloc.appendChild(nominatifquestion);
 <style>
     .radiobutton{
         
-        display:inline-block
+        display:inline-block;
+
     }
     .styleradio,.stylecheckbox{
         
         display:inline-block;
+           
     }
    #question_formulaire{
         background-color:#EEEEEE;
@@ -208,17 +211,14 @@ position:relative;
 //left:530px;
 //top:395px;
 }
-/*.bouton_supprimer{
+.bouton_supprimer{
 position:absolute;
-margin-top:15px;
-margin-left:400px;
-background-image: url('moins.png');
-background-repeat:no-repeat;
-background-size:50% 50%;
-width:70px;
-height:70px;
+margin-top:25px;
+margin-left:250px;
+
+
 }
-*/
+
 .questionobligatoire{
 //left:530px;
 //top:440px;
@@ -242,6 +242,7 @@ height:70px;
 //left:620px;
 //top:460px; 
  }
+
 </style>
  <?php
 //This page displays the list of the forum's categories
@@ -290,6 +291,9 @@ if ($result_question) {
 while($temp_question = mysqli_fetch_array($result_question))
     {
     $typequestion=$temp_question['type_question'];
+    if($temp_question['type_question']=="number"){
+     $typequestion="text" ;
+    }
     $colonne_assoc=$temp_question['colonne_assoc']; 
    $qrequired=$temp_question['qrequired'];
     if($typequestion=="checkbox" || $typequestion=="radio" || $typequestion=="select"){
@@ -308,6 +312,9 @@ while($temp_question = mysqli_fetch_array($result_question))
     while($temp_recup_question = mysqli_fetch_array($result_recup_question))
     {
        $question=$temp_recup_question['question']; 
+           if($temp_question['type_question']=="number"){
+     $reponses="number" ;
+    }
        $reponses="NULL"; 
     }
     }
@@ -327,3 +334,6 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
     
 
 <script src="fonctionjs.js"></script>
+ <script>
+
+</script>
