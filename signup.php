@@ -40,6 +40,17 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 						//On recupere le nombre dutilisateurs pour donner un identifiant a lutilisateur actuel
 							$dn2 = mysqli_num_rows(mysqli_query($link,'select id from users'));
 							$id = $dn2+1;
+
+							//envoie de la photo dans la base de donnée
+							$nom_image="$id.jpg";
+							$chemin="upload/users/$nom_image";
+							
+							$file = "upload/users/default.jpg";
+							$newfile = $chemin;
+
+							if (!copy($file, $newfile)) {
+								echo "La copie $file du fichier a échoué...\n";
+							}
 							
 								//On enregistre les informations dans la base de donnee
 								if(mysqli_query($link,'insert into users(nom,prenom,email, password,date_naissance,profil) values ("'.$nom.'","'.$prenom.'","'.$email.'","'.md5($password).'","'.$date.'", "'.$profil.'")'))

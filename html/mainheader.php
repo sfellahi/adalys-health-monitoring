@@ -169,11 +169,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						<li class="dropdown profile_details_drop">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 								<div class="profile_img">	
-									<span class="prfil-img"><img src="images/a.png" alt=""> </span> 
+									<span class="prfil-img"><img src="upload/users/<?php echo $_SESSION['userid'];?>.jpg" alt=""> </span> 
 									<div class="clearfix"></div>	
 								</div>	
 							</a>
-							
+						
 							<ul class="dropdown-menu drp-mnu">
 								<li> <a href="edit_profile.php"><i class="fa fa-cog"></i> Settings</a> </li> 
 								<li> <a href="profile.php?id=<?php echo $_SESSION['userid']; ?>"><i class="fa fa-user"></i> Profile</a> </li> 
