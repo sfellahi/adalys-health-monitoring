@@ -152,16 +152,6 @@ bloc.appendChild(nominatifquestion);
 }
 </script>
 <style>
-    .radiobutton{
-        
-        display:inline-block;
-
-    }
-    .styleradio,.stylecheckbox{
-        
-        display:inline-block;
-           
-    }
    #question_formulaire{
         background-color:#EEEEEE;
         border-radius:10px;
@@ -174,34 +164,45 @@ bloc.appendChild(nominatifquestion);
     }
     .formuajout{
 float:left;
-margin-left:45%;
+margin-left:50%;
+	min-width: 150px;
 position:fixed;
-width:30%;
+width:20%;
+
 }
 .questiontype{
-
+color:white;
 }
 
 .typeselect{
+margin-top:30px;
 
 }
 .questionname{
-
+margin-top:60px;
+color:white;
 }
 .reponsename{
-
+margin-top:90px;
 }
 .questionquestion{
-
+margin-top:120px;
+color:white;
 }
 .reponsequestion{
-
+margin-top:150px;
 }
 .questionreponse{
-
+margin-top:180px;
+color:white;
 }
 .reponsereponse{
+margin-top:210px;
+}
 
+.bouton_ajouter{
+    
+    top:450px;
 }
 .bouton_supprimer{
 position:absolute;
@@ -210,29 +211,140 @@ margin-left:250px;
 
 
 }
-.questionobligatoire1{
+.questionobligatoire{
+margin-top:240px;
 
-//top:5px;
  }
-.questionobligatoire2{
 
-//left:75px;
-//bottom:15px;
- }
 .reponseobligatoire1{
-
-//top:5px;
+top:375px;
+padding-left:50%;
  }
  .reponseobligatoire2{
-//left:75px;
-//bottom:15px;
+top:375px;
+
  }
  .questionobligatoiretext1{
-
+margin-top:270px;
+	font-family: 'Roboto Condensed', sans-serif;
+    font-size: 100%;
  }
  .questionobligatoiretext2{
-
+margin-top:270px;
+	font-family: 'Roboto Condensed', sans-serif;
+    font-size: 100%;
+  padding-left:75px;
  }
+
+ #blockdequestion{
+
+margin-left:50%;
+	min-width: 170px;
+position:fixed;
+width:25%;
+height:440px;
+border:8px solid #2a2f43;
+margin-left:48%;
+margin-top:-20px;
+background-color:#65709D;
+}
+
+ *[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+.buka {
+  text-align:center;
+  font-weight: bold;
+  letter-spacing:1px;
+  color:#fff;
+  opacity:0;
+  -webkit-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition:.5s ;
+}
+.buka a {
+  color:#6fcbed;
+  text-decoration:none;
+}
+#oui:checked ~ .buka{
+  opacity:1;
+  letter-spacing:2px;
+}
+input[type="checkbox"] {
+  display:none;
+}
+#loadcheck {
+  position:absolute;
+  left:0;
+  right:0;
+  margin:30px auto;
+}
+
+.loadcheck {
+  width:165px;
+  height:40px;
+  font-size:35px;
+}
+.loadcheck span {float:left;}
+.load {
+  display:block;
+  width:7px;
+  height:7px;
+  margin:20px 5px;
+  border-radius:10px;
+  transition:.5s;
+  cursor:pointer;
+}
+.load:nth-child(2){
+  background:#db1536;
+}
+.load:nth-child(3){
+  background:rgba(219, 21, 54,.7);
+}
+.load:nth-child(4){
+  background:rgba(219, 21, 54,.5);
+}
+.load:nth-child(5){
+  background:rgba(219, 21, 54,.3);
+}
+.load:nth-child(6){
+  background:rgba(219, 21, 54,.1);
+}
+span[class*="entypo"]{cursor:pointer;}
+span[class*="cancel"]{
+  font-size:40px;
+  color:#db1536;
+  transition:.5s;
+  transition-delay:.1s;
+}
+span[class*="oui"]{
+  color:rgba(0,0,0,.1);
+  transition:.5s;
+  transition-delay:.1s;
+}
+#oui:checked + .loadcheck .entypo-check{
+  color:#58d37b;
+}
+#oui:checked + .loadcheck .entypo-cancel{
+  color:rgba(0,0,0,.1);
+}
+#oui:checked + .loadcheck .load:nth-child(2){
+  background:rgba(88, 211, 123,.1);
+}
+#oui:checked + .loadcheck .load:nth-child(3){
+  background:rgba(88, 211, 123,.3);
+}
+#oui:checked + .loadcheck .load:nth-child(4){
+  background:rgba(88, 211, 123,.5);
+}
+#oui:checked + .loadcheck .load:nth-child(5){
+  background:rgba(88, 211, 123,.7);
+}
+#oui:checked + .loadcheck .load:nth-child(6){
+  background:#58d37b;
+}
 
 </style>
  <?php
@@ -244,15 +356,14 @@ $id=$_GET['id'];?>
 <link href="styleflo.css" rel="stylesheet" type="text/css">
 <div id="page-wrapper" >
             <div class="main-page" >
-                <div class="row"  style="">
+                <div class="row">
 <body >
 
     <div>
-     
+        <div id="blockdequestion"></div>     
 <form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-<input type="button" class="formuajout" id="ajouter" name="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
 <span class="formuajout questiontype">Type :</span>
-<select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
+<select id="typequestion" class="formuajout typeselect" style="color:black;" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
 <option value="text">texte</option>
 <option value="textarea">textarea</option>
@@ -267,17 +378,28 @@ $id=$_GET['id'];?>
 <span class="formuajout questionquestion">Question :</span>
  <input type="text" class="formuajout reponsequestion" id="question">
 
-<span class="formuajout questionreponse">Reponses possibles (s&eacute;parer les r&eacute;ponses par ;) : </span>
+<span class="formuajout questionreponse">Reponses s&eacute;parer par ";" : </span>
 <input type="text"  class="formuajout reponsereponse" id="reponses">
 
 <span class="formuajout questionobligatoire">Champ obligatoire : </span>
 
-<label for="oui" class="formuajout questionobligatoire1">Oui&nbsp;&nbsp;</label>
+<input type="checkbox" class=""  name="required" id="oui" value="oui">
+<label for="oui" class="loadcheck miseenplace" style="margin-top:270px;margin-left:56%;" id="loadcheck">
+  <span class="entypo-cancel">&#10008;</span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="entypo-check">&#10004;</span>
+</label>
+<!--
 <input type="radio"  class="formuajout reponseobligatoire1 " name="required" id="oui" value="oui">
+<label for="oui" class="formuajout questionobligatoiretext1">Oui&nbsp;&nbsp;</label>
 
-<label for="non" class="formuajout questionobligatoire2">Non&nbsp;&nbsp;</label>
 <input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
-   
+  <label for="non" class="formuajout questionobligatoiretext2">Non&nbsp;&nbsp;</label> -->
+<input type="button" class="formuajout bouton_ajouter btn btn-success" id="ajouter" name="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
 
    <br /><br />
     <?php 
