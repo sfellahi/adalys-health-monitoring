@@ -174,8 +174,9 @@ bloc.appendChild(nominatifquestion);
     }
     .formuajout{
 float:left;
-margin-left:60%;
-position:relative;
+margin-left:45%;
+position:fixed;
+width:30%;
 }
 .questiontype{
 
@@ -211,20 +212,20 @@ margin-left:250px;
 }
 .questionobligatoire1{
 
-top:5px;
+//top:5px;
  }
 .questionobligatoire2{
 
-left:75px;
-bottom:15px;
+//left:75px;
+//bottom:15px;
  }
 .reponseobligatoire1{
 
-top:5px;
+//top:5px;
  }
  .reponseobligatoire2{
-left:75px;
-bottom:15px;
+//left:75px;
+//bottom:15px;
  }
  .questionobligatoiretext1{
 
@@ -249,7 +250,7 @@ $id=$_GET['id'];?>
     <div>
      
 <form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
-
+<input type="button" class="formuajout" id="ajouter" name="ajouter" onClick="ajout(this);" style="" value="ajouter un champ"/>
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
@@ -266,7 +267,7 @@ $id=$_GET['id'];?>
 <span class="formuajout questionquestion">Question :</span>
  <input type="text" class="formuajout reponsequestion" id="question">
 
-<span class="formuajout questionreponse">Reponses possibles<br/>(s&eacute;parer les r&eacute;ponses par ;) : </span>
+<span class="formuajout questionreponse">Reponses possibles (s&eacute;parer les r&eacute;ponses par ;) : </span>
 <input type="text"  class="formuajout reponsereponse" id="reponses">
 
 <span class="formuajout questionobligatoire">Champ obligatoire : </span>
@@ -276,6 +277,9 @@ $id=$_GET['id'];?>
 
 <label for="non" class="formuajout questionobligatoire2">Non&nbsp;&nbsp;</label>
 <input type="radio"  class="formuajout reponseobligatoire2" name="required" checked selected id="non" value="non">
+   
+
+   <br /><br />
     <?php 
 $sql_recup_question="SELECT id_question, type_question, id_type, colonne_assoc, qrequired FROM ordre_question WHERE id_onglet=".$id."";
 $result_question = mysqli_query($link2,$sql_recup_question);
@@ -315,9 +319,7 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 }
     }
 ?>
-   <input type="button" class="formuajout" id="ajouter" name="ajouter" onClick="ajout(this);" style="margin-top:-120px;" value="ajouter un champ"/>
 
-   <br /><br />
    <INPUT TYPE="hidden" NAME="value1">
    <input type="submit" style="" value="soumettre"/>
 </form>       
