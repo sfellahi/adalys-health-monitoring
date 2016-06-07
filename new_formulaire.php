@@ -7,7 +7,9 @@ if(isset($_GET['parent']))
 	if(isset($_POST['formulaire']))
 	{
 		$nom = $_POST['formulaire'];
-		if(mysqli_query($link2,'insert into formulaire (nom_formulaire) VALUES ("'.$nom.'")'))
+                
+               $insert_formulaire="insert into formulaire (nom_formulaire,etat_formulaire) VALUES ('".$nom."','En création')";
+		if(mysqli_query($link2,$insert_formulaire))
 		{
 			$dn2 = mysqli_query($link,'select id_formulaire from formulaire where nom_formulaire = "'.$nom.'"');
 			$dnn2 = mysqli_fetch_array($dn2);
@@ -38,7 +40,7 @@ if(isset($_GET['parent']))
 				<meta http-equiv="refresh" content="4; URL=list_project.php">
 				<?php
 			}
-		}
+                }
 	}
 
 	?>

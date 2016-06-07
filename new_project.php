@@ -8,10 +8,11 @@
  	$date = date("Y-m-d");
  	if(get_magic_quotes_gpc())
  	{
- 		$projet = stripslashes($projet);
+ 		 $projet = stripslashes($projet);
  	}
  	$projet = mysqli_real_escape_string($link,$projet);
- 	if(mysqli_query($link,'insert into projects (nom_project, date_debut) VALUES ("'.$projet.'", "'.$date.'")'))
+        echo $insert_new_project="INSERT INTO projects (nom_project, date_debut,date_fin,nombre_patient,etat_project) VALUES ('".$projet."', '".$date."',NULL,'0','En création')";
+ 	if(mysqli_query($link,$insert_new_project))
  	{
  		?>
  		<div id="page-wrapper">
@@ -35,6 +36,10 @@
  		<meta http-equiv="refresh" content="2; URL=list_project.php">
  		<?php
  	}
+        else{
+            
+            ?>un pb rencontrer<?php
+        }
  }
  else {
 
@@ -43,27 +48,25 @@
  	<div id="page-wrapper">
  		<div class="main-page">
  			<div class="row">
- 				<div class="flat-table" style="margin:0 auto;margin-top:15%;width:15%;height:160px">
+ 				<div class="flat-table" style="margin:0 auto;margin-top:15%;width:15%;height:150px">
 
  					<form action="new_project.php" method="post">
 
  						<div style="text-align:center">
  							<br />
  							<label for="projet" style="font-weight:600;font-size:16px" >Nom du projet:</label>
- 							<input type="text" name="projet" />
+ 							<input type="text" required name="projet" />
  						</div>
 
 
  						<div style="text-align:center">
  							<br />
- 							<button class="button" type="submit">Créer le projet</button> 
+ 							<input  class="button" value="Créer le projet" type="submit"> 
  						</div>
 
  					</form>
- 				</div>
- 				<?php
- 				}?>
- 			</div>
+ 				</div> 
+                        </div>
  		</div>
  	</div>
- <?php include("html/mainfooter.html");?>
+ 				<?php	} include("html/mainfooter.html");?>
