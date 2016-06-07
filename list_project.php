@@ -23,21 +23,22 @@ while($dnn1 = mysqli_fetch_array($dn1))
         <td><?php echo $dnn1['date_debut']; ?></td>
         <td ><span style=""><?php echo $dnn1['nombre_patient']; ?></span></td>
         <td>
-                    <form action="list_formulaire.php" style="display:inline;" method="POST" name="listeformulaire">
-                <input type="hidden" name="parent" value="<?php echo $dnn1['id_project']; ?>"/> 
+                 <!--   <form action="list_formulaire.php" style="display:inline;" method="POST" name="listeformulaire">
+                <input type="hidden" name="parent" value="<?php //echo $dnn1['id_project']; ?>"/> 
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-tasks"></span> Liste</button>   
              </form>
               <form action="new_formulaire.php" method="POST" style="display:inline;" name="newformulaire">
-                <input type="hidden" name="parent" value="<?php echo $dnn1['id_project']; ?>"/> 
+                <input type="hidden" name="parent" value="<?php //echo $dnn1['id_project']; ?>"/> 
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</button>   
-             </form>
-                <!-- <a href="list_formulaire.php?parent=<?php // echo $dnn1['id_project']; ?>" class="btn btn-info">
+             </form> -->
+                 <a href="list_formulaire.php?parent=<?php  echo $dnn1['id_project']; ?>" class="btn btn-info">
           <span class="glyphicon glyphicon-tasks"></span> Liste 
         </a>
             
-            <a href="new_formulaire.php?parent=<?php // echo $dnn1['id_project'];?>" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</a>
-                -->
+            <a href="new_formulaire.php?parent=<?php  echo $dnn1['id_project'];?>" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</a>
+               
                 </td>
+                
         <td><form action="change_etat.php" name="changeretat" id="changeretat" method="post">
                 <input type="hidden" name="parentprojet" value="<?php echo $dnn1['id_project']; ?>">
 			<div>

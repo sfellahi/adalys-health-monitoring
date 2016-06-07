@@ -5,9 +5,9 @@ include('html/mainheader.php');
  <div id="page-wrapper"> 
        <div class="main-page">
     <?php
-if(isset($_POST['parent']))
+if(isset($_GET['parent']))
 {
-	$id=$_POST['parent'];
+	$id=$_GET['parent'];
 	$dn1 = mysqli_query($link2,'select nom_onglet, id_onglet from onglet where id_formulaire = "'.$id.'"');
 	?>
 	

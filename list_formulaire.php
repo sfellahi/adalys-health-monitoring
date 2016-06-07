@@ -1,10 +1,10 @@
 <?php
 //This page let display the list of topics of a category
 
-if(isset($_POST['parent']))
+if(isset($_GET['parent']))
 {
     include('html/mainheader.php');
-	$id=$_POST['parent'];
+	$id=$_GET['parent'];
 	$dn1 = mysqli_query($link,'select id_formulaire from project_formulaire where id_project = "'.$id.'"');
      
 	?>
@@ -40,22 +40,22 @@ if(isset($_POST['parent']))
         <?php echo $rowcountonglet;?> 
         </td>
          <td>
-           <!--                <a href="list_onglet.php?parent=<?php// echo $dnn1['id_formulaire']; ?>" class="btn btn-info">
+                         <a href="list_onglet.php?parent=<?php echo $dnn1['id_formulaire']; ?>" class="btn btn-info">
           <span class="glyphicon glyphicon-tasks"></span> Liste 
         </a>
             
-            <a href="new_onglet.php?parent=<?php //echo $dnn1['id_formulaire'];?>" class="btn btn-primary">
-                <span class="glyphicon glyphicon-wrench"></span> Nouveau</a></td> -->  
-           
+            <a href="new_onglet.php?parent=<?php echo $dnn1['id_formulaire'];?>" class="btn btn-primary">
+                <span class="glyphicon glyphicon-wrench"></span> Nouveau</a></td>
+           <!--
              <form action="list_onglet.php" style="display:inline;" method="POST" name="listeonglet">
-                <input type="hidden" name="parent" value="<?php echo $dnn1['id_formulaire']; ?>"/> 
+                <input type="hidden" name="parent" value="<?php// echo $dnn1['id_formulaire']; ?>"/> 
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-tasks"></span> Liste</button>   
              </form>
           <form action="new_onglet.php" method="POST" style="display:inline;" name="newonglet">
-                <input type="hidden" name="parent" value="<?php echo $dnn1['id_formulaire']; ?>"/> 
+                <input type="hidden" name="parent" value="<?php //echo $dnn1['id_formulaire']; ?>"/> 
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</button>   
              </form>
-             
+             -->
                 
             <td>
            <?php echo $rowcountquestion;?> 
