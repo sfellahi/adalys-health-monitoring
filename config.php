@@ -1,13 +1,13 @@
 <?php
 // Connexion à la base de données
-		$link = mysqli_connect("localhost", "root", "","adalys");
+		$link = mysqli_connect("localhost", "root", "root","adalys");
 		if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
 // Connexion à la base de données
-		$link2 = mysqli_connect("localhost", "root", "","adalys");
+		$link2 = mysqli_connect("localhost", "root", "root","adalys");
 		if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
