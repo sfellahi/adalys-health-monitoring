@@ -1,6 +1,5 @@
-<?php
+ <?php
 //This page let display the list of topics of a category
-
 if(isset($_GET['parent']))
 {
     include('html/mainheader.php');
@@ -99,7 +98,7 @@ LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formula
                <input type="hidden" id="parentformulaire" value="<?php echo $dnn1['id_formulaire']; ?>" name="parentformulaire"/>
                <input type="hidden" id="parent" name="parent" value="<?php echo $id; ?>"/>
 			<div>
-                        <select name="etat"  id="etat" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>','<?php echo $dnn1['id_formulaire']; ?>')">
+                        <select name="etat"  id="<?php echo $dnn1['id_formulaire'];?>" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>','<?php echo $dnn1['id_formulaire']; ?>')">
 		  		<option value="<?php echo $dnn2['etat_formulaire']; ?>" selected ><?php echo $dnn2['etat_formulaire']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
@@ -133,7 +132,7 @@ LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formula
                       ?> 
                   href="#" Onclick="alert('Le projet est cloturer il est impossible d\'ajouter des onglets');"
               <?php } else{ ?> href="new_formulaire.php?parent=<?php echo $id; ?>"<?php } ?> class="btn btn-primary" >Nouveau Formulaire</a>
-              
+       
                 </div>
        </div>
        </div> 
@@ -141,13 +140,17 @@ LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formula
 <?php
 }
 ?>  
- <script>
+ 
+     <?php include("html/mainfooter.html");?>
+
+              <script>
 function changerEtat(projet,num){
     var formulaire = window.document.changeretat;
       document.getElementById("parentformulaire").value=num;
-    	  var e= document.getElementById("etat");
+     
+    	  var e= document.getElementById(num);
 	  var etat = e.options[e.selectedIndex].value;
-        
+     
           if(etat==='En cours'){
                    if(confirm('Vous allez mettre en production le formulaire ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
 
@@ -173,5 +176,4 @@ function changerEtat(projet,num){
     
 }
 
-</script>        
-     <?php include("html/mainfooter.html");?>
+</script>

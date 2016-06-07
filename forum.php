@@ -33,12 +33,15 @@ if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 }
 ?>
 <div id="page-wrapper">
-            <div class="main-page"><table class="categories_table">
+            <div class="main-page">
+                <div class="row">
+                <table class="categories_table"  style="width:50%;margin:0 auto;">
 	<tr>
     	<th class="forum_cat">Categorie</th>
         <th class="forum_cat">Description</th>
     	<th class="forum_ntop">Topics</th>
     	<th class="forum_nrep">Reponses</th>
+        <th>&nbsp;</th>
 <?php
 if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
 {
@@ -79,7 +82,7 @@ if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
 ?>
-	<a href="new_category.php" class="btn btn-primary">Nouvelle Categorie</a></div></div>
+                    <a href="new_category.php" class="btn btn-primary">Nouvelle Categorie</a></div></div></div>
 <?php
 }
 include("html/mainfooter.html");?>

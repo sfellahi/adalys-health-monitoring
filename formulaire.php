@@ -372,7 +372,7 @@ $id=$_GET['id'];?>
 <option value="radio">radio</option>
 </select>
 
-<span class="formuajout questionname">Nominatif (unique et sans espace) :</span>
+<span class="formuajout questionname">Identifiant (unique et sans espace) :</span>
  <input type="text" class="formuajout reponsename " id="name">
 
 <span class="formuajout questionquestion">Question :</span>

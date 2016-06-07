@@ -46,7 +46,7 @@ while($dnn1 = mysqli_fetch_array($dn1))
         <td><form action="change_etat.php" name="changeretat" id="changeretat" method="post">
                 <input type="hidden" name="parentprojet" id="parentprojet" value="<?php echo $dnn1['id_project']; ?>">
 			<div>
-			<select name="etat" id="etat" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>','<?php echo $dnn1['id_project']; ?>')">
+			<select name="etat" id="<?php echo $dnn1['id_project'];?>" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>','<?php echo $dnn1['id_project']; ?>')">
 		  		<option value="<?php echo $dnn1['etat_project']; ?>" selected ><?php echo $dnn1['etat_project']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
@@ -55,26 +55,14 @@ while($dnn1 = mysqli_fetch_array($dn1))
 		    </div>
 		 	</form>
  		</td>
- 		
-
- 		
-    <?php
-    }
-    ?>
-</table>
-                </div>
-    </div>
-    </div>
-
-<?php
-}
-?>
-<script>
+ 	<script>
 function changerEtat(projet,num){
     var formulaire = window.document.changeretat;
-    	  var e= document.getElementById("etat");
+    document.getElementById("parentprojet").value=num;
+     
+   	  var e= document.getElementById(num);
 	  var etat = e.options[e.selectedIndex].value;
-         document.getElementById("parentprojet").value=num;
+        
           if(etat==='En cours'){
                    if(confirm('Vous allez mettre en production le projet ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
                     
@@ -99,5 +87,18 @@ function changerEtat(projet,num){
     
 }
 
-</script>
-<?php include("html/mainfooter.html");?>
+</script>	
+
+ 		
+    <?php
+    }
+    ?>
+</table>
+                </div>
+    </div>
+    </div>
+
+<?php
+}
+ include("html/mainfooter.html");?>
+

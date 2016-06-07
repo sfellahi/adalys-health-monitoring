@@ -16,7 +16,7 @@ if(isset($_POST['onglet']))
 				<div class="message">L'onglet a été crée.<br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="2; URL=list_onglet.php?parent">
+				<meta http-equiv="refresh" content="2; URL=list_onglet.php?parent=<?php echo $id;?>">
 	<?php
 		
 	}
