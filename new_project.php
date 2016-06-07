@@ -17,7 +17,7 @@
  		<div id="page-wrapper">
  			<div class="main-page">
  				<div class="row">
- 					<div class="flat-table" style="margin:0 auto;margin-top:15%;width:18%;height:170px">
+ 					<div class="flat-table" style="margin:0 auto;margin-top:15%;width:18%;height:200px">
  						<div class="message" style="text-align:center ; font-weight:600;font-size:16px">Le projet est en cours de création.<br /><br />
  							<div class="showbox">
  								<div class="loader">
@@ -43,7 +43,7 @@
  	<div id="page-wrapper">
  		<div class="main-page">
  			<div class="row">
- 				<div class="flat-table" style="margin:0 auto;margin-top:15%;width:15%;height:150px">
+ 				<div class="flat-table" style="margin:0 auto;margin-top:15%;width:15%;height:160px">
 
  					<form action="new_project.php" method="post">
 
