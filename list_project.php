@@ -43,15 +43,18 @@ while($dnn1 = mysqli_fetch_array($dn1))
                
                 </td>
                 
-        <td><form action="change_etat.php" name="changeretat" id="changeretat" method="post">
-                <input type="hidden" name="parentprojet" id="parentprojet" value="<?php echo $dnn1['id_project']; ?>">
-			<div>
-			<select name="etat" id="<?php echo $dnn1['id_project'];?>" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>','<?php echo $dnn1['id_project']; ?>')">
+        <td><form action="change_etat.php" name="changeretat" id="changeretat" method="POST">
+               	<div>
+                   
+                     <input type="hidden" name="parentprojet" id="parentprojet" value="<?php echo $dnn1['id_project']; ?>" value="a">
+			<select name="etat2" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>','<?php echo $dnn1['id_project']; ?>')" id="<?php echo $dnn1['id_project'];?>">
 		  		<option value="<?php echo $dnn1['etat_project']; ?>" selected ><?php echo $dnn1['etat_project']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
 				<option value="Cloturé">Cloturé</option>
 			</select>
+                     
+		
 		    </div>
 		 	</form>
  		</td>
@@ -62,7 +65,21 @@ function changerEtat(projet,num){
      
    	  var e= document.getElementById(num);
 	  var etat = e.options[e.selectedIndex].value;
+         
         
+
+var input = document.createElement("input");
+
+input.setAttribute("type", "hidden");
+
+input.setAttribute("name", "etat");
+
+input.setAttribute("value", etat);
+
+//append to form element that you want .
+document.getElementById("changeretat").appendChild(input);
+
+
           if(etat==='En cours'){
                    if(confirm('Vous allez mettre en production le projet ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
                     

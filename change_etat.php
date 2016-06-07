@@ -5,14 +5,16 @@ include('html/mainheader.php');
 ?>
 <div id="page-wrapper">
 			<div class="main-page">
-                            <?php
+                            <?php  
 if(isset($_POST['parentprojet']))
 {
 $id = intval($_POST['parentprojet']);
+
+
 if(isset($_POST['etat']))
 {
-	echo $etat = $_POST['etat'];
-        echo "UPDATE projects set etat_project = '".$etat."' WHERE id_project =".$id."";
+  $etat=$_POST['etat'];
+   
 	if(mysqli_query($link,"UPDATE projects set etat_project = '".$etat."' WHERE id_project =".$id.""))
 	{
 ?>
@@ -35,7 +37,7 @@ if(isset($_POST['etat']))
 			
 				<div class="message">L'etat a ete modifié.<br />
 				</div>
-				<!-- <meta http-equiv="refresh" content="1; URL=list_formulaire.php?parent=<?php //echo $_POST['parent'];?>"> -->
+				 <meta http-equiv="refresh" content="1; URL=list_formulaire.php?parent=<?php echo $_POST['parent'];?>"> 
 	<?php
 		}
 	}   
