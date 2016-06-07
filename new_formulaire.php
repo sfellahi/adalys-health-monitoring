@@ -31,7 +31,7 @@ if(isset($_POST['formulaire']))
 ?>
 <div id="page-wrapper">
 			<div class="main-page">
-<form action="new_formulaire.php" method="post">
+<form action="new_formulaire.php?parent=<?php echo $id; ?>" method="post">
 <input type="hidden" value="<?php echo $id; ?>" name="parent">
 	<div>
         <label for="formulaire">Nom du formulaire:</label>

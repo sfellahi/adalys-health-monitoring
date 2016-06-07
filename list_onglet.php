@@ -28,6 +28,9 @@ if(isset($_GET['parent']))
     }
     ?>
     </table>
+           <?php $sql_formulaire_clos="SELECT etat_formulaire FROM formulaire WHERE id_formulaire=".$id."";
+           
+           ?>
 	<a href="new_onglet.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Onglet</a>
             
     

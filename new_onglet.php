@@ -25,7 +25,7 @@ if(isset($_POST['onglet']))
 ?>
 <div id="page-wrapper">
 			<div class="main-page">
-<form action="new_onglet.php" method="post">
+<form action="new_onglet.php?parent=<?php echo $id; ?>" method="post">
 <input type="hidden" value="<?php echo $id; ?>" name="parent">
 	<div>
         <label for="formulaire">Nom de l'onglet</label>

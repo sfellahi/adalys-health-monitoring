@@ -5,8 +5,11 @@ if(isset($_GET['parent']))
 {
     include('html/mainheader.php');
 	$id=$_GET['parent'];
+        
+
 	$dn1 = mysqli_query($link,'select id_formulaire from project_formulaire where id_project = "'.$id.'"');
-     
+
+     $dn1 = mysqli_query($link,'select id_formulaire from project_formulaire where id_project = "'.$id.'"');
 	?>
 	<div id="page-wrapper"> 
             <div class="main-page">
@@ -14,15 +17,21 @@ if(isset($_GET['parent']))
 <table class="flat-table" border="0" id="tableformulaire" cellspacing="0">
     <tr>
             <th>Formulaire</th>
-            <th style="width:10%">Nb d'onglet</th>
-            <th>Onglets</th>
-            <th style="width:10%">Nb question</th>
+            <th>Etat du projet</th>
+            <th>Etat du formulaire</th>
+            <th>Nb d'onglet</th>
+            <th style="width:21%">Onglets</th>
+            <th >Nb question</th>
             <th>Etat</th>
-            <th>&nbsp;</th>
+            <th style="width:11%">Action</th>
     </tr>
     	<?php
     while($dnn1 = mysqli_fetch_array($dn1)){
-    $dn2 = mysqli_query($link,'select nom_formulaire,etat_formulaire from formulaire where id_formulaire = "'.$dnn1['id_formulaire'].'"');	
+             $sql_liste_formulaire_plus_info_projet="SELECT etat_project, etat_formulaire,nom_formulaire
+FROM project_formulaire
+LEFT JOIN projects ON projects.id_project = project_formulaire.id_project
+LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formulaire WHERE formulaire.id_formulaire=".$dnn1['id_formulaire']."";
+    $dn2 = mysqli_query($link,$sql_liste_formulaire_plus_info_projet);	
     $dnn2 = mysqli_fetch_array($dn2);
        
         $sql_count_onglet="SELECT id_onglet from onglet where id_formulaire=".$dnn1['id_formulaire']."";
@@ -37,6 +46,12 @@ if(isset($_GET['parent']))
 <?php echo $dnn2['nom_formulaire']; ?>
         </td>
         <td>
+            <?php echo $dnn2['etat_project']; ?>
+        </td>
+        <td>
+            <?php echo $dnn2['etat_formulaire']; ?>
+        </td>
+        <td>
         <?php echo $rowcountonglet;?> 
         </td>
          <td>
@@ -44,7 +59,25 @@ if(isset($_GET['parent']))
           <span class="glyphicon glyphicon-tasks"></span> Liste 
         </a>
             
-            <a href="new_onglet.php?parent=<?php echo $dnn1['id_formulaire'];?>" class="btn btn-primary">
+            <a 
+                <?php
+                if($dnn2['etat_project']=='Cloturé'){
+                ?>
+                href="#" Onclick="alert('Le projet est cloturer il est impossible d\'ajouter des onglets');"
+                <?php 
+           
+                } else 
+                {
+                  if($dnn2['etat_formulaire']=='En cours'){
+                    ?>
+                href="#" Onclick="alert('Le formulaire est en cours il est impossible d\'ajouter des onglets');"
+                <?php }
+                else if(($dnn2['etat_formulaire']=='Cloturé')){?>
+                 href="#" Onclick="alert('Le formulaire est clos il est impossible d\'ajouter des onglets');"
+               <?php }
+                
+                else{  ?>
+                href="new_onglet.php?parent=<?php echo $dnn1['id_formulaire'];?>"<?php }}?> class="btn btn-primary">
                 <span class="glyphicon glyphicon-wrench"></span> Nouveau</a></td>
            <!--
              <form action="list_onglet.php" style="display:inline;" method="POST" name="listeonglet">
@@ -62,10 +95,10 @@ if(isset($_GET['parent']))
                
         </td>
         <td>
-           <form action="change_etat.php" name="changeretat" id="changeretat" method="post">
+           <form action="change_etat.php" name="changeretat" id="changeretat"  method="post">
                <input type="hidden" value="<?php echo $dnn1['id_formulaire']; ?>" name="parentformulaire">
 			<div>
-			<select name="etat" id="etat" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>')">
+                        <select name="etat"  id="etat" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>')" >
 		  		<option value="<?php echo $dnn2['etat_formulaire']; ?>" selected ><?php echo $dnn2['etat_formulaire']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
@@ -84,12 +117,21 @@ if(isset($_GET['parent']))
                 <span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>-->
     </tr>
     <?php
+
     }
     ?>
                     </table>
-	    </div>
+                 </div>
+                      <?php  $sql_recup_etat_projet="SELECT etat_project FROM projects WHERE id_project=".$id."";
+        $result_etat_projet = mysqli_query($link,$sql_recup_etat_projet);	
+    $temp_projet = mysqli_fetch_array($result_etat_projet);?>
                 <div style="margin-left:45%;margin-top:5%">
-              <a href="new_formulaire.php?parent=<?php echo $id; ?>" class="btn btn-primary">Nouveau Formulaire</a>
+                    
+              <a 
+                  <?php if($temp_projet['etat_project']=='Cloturé'){
+                      ?> 
+                  href="#" Onclick="alert('Le projet est cloturer il est impossible d\'ajouter des onglets');"
+              <?php } else{ ?> href="new_formulaire.php?parent=<?php echo $id; ?>"<?php } ?> class="btn btn-primary" >Nouveau Formulaire</a>
               
                 </div>
        </div>
