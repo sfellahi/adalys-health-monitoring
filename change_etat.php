@@ -12,9 +12,9 @@ $id = intval($_POST['parentprojet']);
 if(isset($_POST['etat']))
 {
 	$etat = $_POST['etat'];
-	if(mysqli_query($link,'UPDATE projects set etat_project = "'.$etat.'" WHERE id_project ="'.$id.'"'))
+	if(mysqli_query($link,"UPDATE projects set etat_project = '".$etat."' WHERE id_project =".$id.""))
 	{
-			?>
+?>
 			
 				<div class="message">L'etat a ete modifié.<br />
 				</div>
@@ -28,13 +28,13 @@ else if(isset($_POST['parentformulaire'])){
 if(isset($_POST['etat']))
 {
 	$etat = $_POST['etat'];
-	if(mysqli_query($link,'UPDATE formulaire set etat_formulaire = "'.$etat.'" WHERE id_formulaire ="'.$id.'"'))
+	if(mysqli_query($link,"UPDATE formulaire set etat_formulaire = '".$etat."' WHERE id_formulaire =".$id.""))
 	{
 			?>
 			
 				<div class="message">L'etat a ete modifié.<br />
 				</div>
-				<meta http-equiv="refresh" content="1; URL=list_formulaire.php?parent=<?php echo $id;?>">
+				<!-- <meta http-equiv="refresh" content="1; URL=list_formulaire.php?parent=<?php //echo $_POST['parent'];?>"> -->
 	<?php
 		}
 	}   

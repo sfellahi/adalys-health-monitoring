@@ -96,9 +96,10 @@ LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formula
         </td>
         <td>
            <form action="change_etat.php" name="changeretat" id="changeretat"  method="post">
-               <input type="hidden" value="<?php echo $dnn1['id_formulaire']; ?>" name="parentformulaire">
+               <input type="hidden" id="parentformulaire" value="<?php echo $dnn1['id_formulaire']; ?>" name="parentformulaire"/>
+               <input type="hidden" id="parent" name="parent" value="<?php echo $id; ?>"/>
 			<div>
-                        <select name="etat"  id="etat" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>')" >
+                        <select name="etat"  id="etat" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>','<?php echo $dnn1['id_formulaire']; ?>')">
 		  		<option value="<?php echo $dnn2['etat_formulaire']; ?>" selected ><?php echo $dnn2['etat_formulaire']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
@@ -141,26 +142,30 @@ LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formula
 }
 ?>  
  <script>
-function changerEtat(projet){
+function changerEtat(projet,num){
     var formulaire = window.document.changeretat;
+      document.getElementById("parentformulaire").value=num;
     	  var e= document.getElementById("etat");
 	  var etat = e.options[e.selectedIndex].value;
-       
+        
           if(etat==='En cours'){
                    if(confirm('Vous allez mettre en production le formulaire ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
-  document.getElementById('changeretat').submit();
+
+                document.getElementById('changeretat').submit();
               }   
               
           }
           else if(etat==='Cloturé'){
               if(confirm('Vous allez clore le formulaire ' + projet +', le formulaire sera clos. Souhaitez vous r\351ellement clore le formulaire? ?')){
-       document.getElementById('changeretat').submit();      
+     
+                document.getElementById('changeretat').submit();      
                   
         
               }
               
           }
           else{
+      
      document.getElementById('changeretat').submit();
               
           }

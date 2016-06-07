@@ -35,14 +35,18 @@ while($dnn1 = mysqli_fetch_array($dn1))
           <span class="glyphicon glyphicon-tasks"></span> Liste 
         </a>
             
-            <a href="new_formulaire.php?parent=<?php  echo $dnn1['id_project'];?>" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</a>
+            <a <?php if($dnn1['etat_project']=='Cloturé'){?>
+                href="#" Onclick="alert('Le projet est cloturer il est impossible d\'ajouter des formulaires');"
+                <?php } else { ?>
+                    href="new_formulaire.php?parent=<?php  echo $dnn1['id_project'];?>"
+                    <?php } ?> class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Nouveau</a>
                
                 </td>
                 
         <td><form action="change_etat.php" name="changeretat" id="changeretat" method="post">
-                <input type="hidden" name="parentprojet" value="<?php echo $dnn1['id_project']; ?>">
+                <input type="hidden" name="parentprojet" id="parentprojet" value="<?php echo $dnn1['id_project']; ?>">
 			<div>
-			<select name="etat" id="etat" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>')">
+			<select name="etat" id="etat" onChange="changerEtat('<?php echo $dnn1['nom_project']; ?>','<?php echo $dnn1['id_project']; ?>')">
 		  		<option value="<?php echo $dnn1['etat_project']; ?>" selected ><?php echo $dnn1['etat_project']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
@@ -64,29 +68,31 @@ while($dnn1 = mysqli_fetch_array($dn1))
 
 <?php
 }
-include("html/mainfooter.html");?>
+?>
 <script>
-function changerEtat(projet){
+function changerEtat(projet,num){
     var formulaire = window.document.changeretat;
     	  var e= document.getElementById("etat");
 	  var etat = e.options[e.selectedIndex].value;
-       
+         document.getElementById("parentprojet").value=num;
           if(etat==='En cours'){
                    if(confirm('Vous allez mettre en production le projet ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
-  document.getElementById('changeretat').submit();
+                    
+                     document.getElementById('changeretat').submit();
               }   
               
           }
           else if(etat==='Cloturé'){
               if(confirm('Vous allez clore le projet ' + projet +' souhaitez-vous supprimer l\'acces de ce projet ?')){
-       document.getElementById('changeretat').submit();      
+          
+                     document.getElementById('changeretat').submit();      
                   
         
               }
               
           }
           else{
-    
+         document.getElementById('changeretat').submit();
               
           }
     
@@ -94,3 +100,4 @@ function changerEtat(projet){
 }
 
 </script>
+<?php include("html/mainfooter.html");?>
