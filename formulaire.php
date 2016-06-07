@@ -348,7 +348,6 @@ span[class*="oui"]{
 
 </style>
  <?php
-//This page displays the list of the forum's categories
 include('html/mainheader.php');
 $id=$_GET['id'];?> 
 
@@ -451,6 +450,7 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 </body>
             </div>
 </div></div>
-  <?php include('html/mainfooter.html');?>  
 
 <script src="fonctionjs.js"></script>
+  <?php include('html/mainfooter.html');?>  
+

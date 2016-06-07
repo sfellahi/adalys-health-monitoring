@@ -11,7 +11,8 @@ if(isset($_POST['parentprojet']))
 $id = intval($_POST['parentprojet']);
 if(isset($_POST['etat']))
 {
-	$etat = $_POST['etat'];
+	echo $etat = $_POST['etat'];
+        echo "UPDATE projects set etat_project = '".$etat."' WHERE id_project =".$id."";
 	if(mysqli_query($link,"UPDATE projects set etat_project = '".$etat."' WHERE id_project =".$id.""))
 	{
 ?>
