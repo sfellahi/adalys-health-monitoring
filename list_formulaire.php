@@ -98,7 +98,7 @@ LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formula
                <input type="hidden" id="parentformulaire" value="<?php echo $dnn1['id_formulaire']; ?>" name="parentformulaire"/>
                <input type="hidden" id="parent" name="parent" value="<?php echo $id; ?>"/>
 			<div>
-                        <select name="etat"  id="<?php echo $dnn1['id_formulaire'];?>" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>','<?php echo $dnn1['id_formulaire']; ?>')">
+                        <select name="etat2"  id="<?php echo $dnn1['id_formulaire'];?>" onChange="changerEtat('<?php echo $dnn2['nom_formulaire']; ?>','<?php echo $dnn1['id_formulaire']; ?>')">
 		  		<option value="<?php echo $dnn2['etat_formulaire']; ?>" selected ><?php echo $dnn2['etat_formulaire']; ?></option>
 				<option value="En création">En création</option>
 				<option value="En cours">En cours</option>
@@ -150,7 +150,19 @@ function changerEtat(projet,num){
      
     	  var e= document.getElementById(num);
 	  var etat = e.options[e.selectedIndex].value;
-     
+              
+        
+
+var input = document.createElement("input");
+
+input.setAttribute("type", "hidden");
+
+input.setAttribute("name", "etat");
+
+input.setAttribute("value", etat);
+
+//append to form element that you want .
+document.getElementById("changeretat").appendChild(input);
           if(etat==='En cours'){
                    if(confirm('Vous allez mettre en production le formulaire ' + projet +' souhaitez-vous donnez accès aux utilisateurs ?')){
 
