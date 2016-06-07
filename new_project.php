@@ -47,14 +47,16 @@
 
  					<form action="new_project.php" method="post">
 
- 						<div>
+ 						<div style="text-align:center">
+ 							<br />
  							<label for="projet" style="font-weight:600;font-size:16px" >Nom du projet:</label>
  							<input type="text" name="projet" />
  						</div>
 
 
  						<div style="text-align:center">
- 							<button class="button" type="submit">Créer le projet</button>
+ 							<br />
+ 							<button class="button" type="submit">Créer le projet</button> 
  						</div>
 
  					</form>
