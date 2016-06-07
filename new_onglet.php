@@ -14,7 +14,7 @@ if(isset($_GET['parent']))
 			<div id="page-wrapper">
 				<div class="main-page">
 					<div class="row">
-						<div class="flat-table" style="margin:0 auto;margin-top:15%;width:18%;height:170px">
+						<div class="flat-table" style="margin:0 auto;margin-top:15%;width:18%;height:200px">
 							<div class="message"style="text-align:center ; font-weight:600;font-size:16px">L'onglet est en cours de création.<br /><br />
 								<div class="showbox">
 									<div class="loader">
