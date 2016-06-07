@@ -361,7 +361,7 @@ span[class*="oui"]{
 
     <div>
         <div id="blockdequestion"></div>     
-<form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" action="enregistrer.php?id=<?php echo $id; ?>">
+<form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" action="enregistrer.php">
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" style="color:black;" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
@@ -371,7 +371,7 @@ span[class*="oui"]{
 <option value="checkbox">checkbox</option>
 <option value="radio">radio</option>
 </select>
-
+<input type="hidden" value="<?php echo $id; ?>" name="id">
 <span class="formuajout questionname">Identifiant (unique et sans espace) :</span>
  <input type="text" class="formuajout reponsename " id="name">
 

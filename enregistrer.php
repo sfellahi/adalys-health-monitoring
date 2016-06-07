@@ -2,7 +2,7 @@
 //This page displays the list of the forum's categories
 include('html/mainheader.php');
 
-$id=$_GET['id'];
+$id=$_POST['id'];
 
 
 $dn2 = mysqli_query($link,'select onglet.id_formulaire,id_project from onglet LEFT JOIN project_formulaire ON project_formulaire.id_formulaire=onglet.id_formulaire  where id_onglet= "'.$id.'"');
@@ -35,7 +35,7 @@ $sql_delete_ancienne_question2="DELETE FROM ordre_question WHERE id_onglet=".$id
 $pieces = explode(",", $str);
 $nb = count($pieces)-5;
 $i = 0;
-
+$name=array();
 while ($i <= $nb ) {
     if($pieces[$i] == "text"){
     	mysqli_query($link2,'insert into text (question, reponse_text) VALUES ("'.$pieces[$i+2].'","'.$pieces[$i].'")');
@@ -136,11 +136,30 @@ while ($i <= $nb ) {
         break;
         }
     }
+    $name[]=$pieces[$i+1];
     $i = $i+5;
+    if($i>$nb){
+        $j=0;
+        $nombre_ligne=count($name);
+        $nom_table="donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire'];
+     echo   $sql_supprimer="DROP TABLE IF EXISTS `".$nom_table."`;";
+       mysqli_query($link, $sql_supprimer);
+        $create_table="CREATE TABLE donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL,";
+        while($j<$nombre_ligne){
+            
+         $create_table.="".$name[$j]." VARCHAR (255),";   
+            $j++;
+        }
+        $create_table.="time_modification TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP";
+        $create_table.=")";
+        echo $create_table;
+        mysqli_query($link, $create_table);
+        
+    }
 }
 ?><div id="page-wrapper">
             <div class="main-page">
         
-Le formulaire a bien été crée <?php echo "projet";echo $dnn2['id_project'];echo "formulaire";echo $dnn2['id_formulaire']; ?>
+Le formulaire a bien été crée
 </div></div>
 <?php } include("html/mainfooter.html"); ?>
