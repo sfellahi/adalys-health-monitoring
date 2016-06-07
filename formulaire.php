@@ -1,3 +1,7 @@
+<?php
+include('html/mainheader.php');
+$id=$_GET['id'];?> 
+
 <script>
     var arrayname= []; 
     function appelFonction(type1,name1,question1,reponse1,required1){
@@ -347,9 +351,6 @@ span[class*="oui"]{
 }
 
 </style>
- <?php
-include('html/mainheader.php');
-$id=$_GET['id'];?> 
 
  
 <link href="styleflo.css" rel="stylesheet" type="text/css">
