@@ -46,6 +46,7 @@ if(isset($_GET['parent']))
 		<div class="main-page">
 			<div class="row">
 				<div class="flat-table" style="margin:0 auto;margin-top:15%;width:15%;height:150px">
+					
 					<form action="new_formulaire.php?parent=<?php echo $id; ?>" method="post">
 						<input type="hidden" value="<?php echo $id; ?>" name="parent">
 						<div style="text-align:center">
