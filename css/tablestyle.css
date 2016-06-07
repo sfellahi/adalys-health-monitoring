@@ -8,12 +8,14 @@
     }
 #tableprojet{
     width: 100%;
-    height:600px;
+  min-height:300px;
+    max-height:600px;
    }   
 
 #tableformulaire{
       width:95%;
-      height:520px;
+    min-height:300px;
+    max-height:520px;
    }
   th {
     background-color: #2a2f43;
