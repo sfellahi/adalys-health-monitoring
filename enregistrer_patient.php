@@ -1,9 +1,11 @@
 <?php
 include("html/mainheader.php");
+if(isset($_POST['formulaire'])){ $formulaire=$_POST['formulaire'];}
+if(isset($_POST['projet'])){ $projet=$_POST['projet'];}
 
 $array_test=array();
 
-echo $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question ORDER BY id_question ASC";
+echo $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE id_fomulaire=".$formulaire." ORDER BY id_question ASC";
 
 $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
  while($temp_recup_question = mysqli_fetch_assoc($resultat_recup_question)){
@@ -26,7 +28,7 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 $aaa=count($array_test);
 
 
-$ajout_sql="INSERT INTO donneeprojet1formulaire1 (".$array_test[0]."";
+$ajout_sql="INSERT INTO donneeprojet".$projet."formulaire".$formulaire." (".$array_test[0]."";
 $test=1;
 while($test<$aaa){
 $ajout_sql.=",".$array_test[$test]."";

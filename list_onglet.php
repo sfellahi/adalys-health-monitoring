@@ -8,7 +8,7 @@ include('html/mainheader.php');
 if(isset($_GET['parent']))
 {
 	$id=$_GET['parent'];
-	$dn1 = mysqli_query($link2,'select nom_onglet, id_onglet from onglet where id_formulaire = "'.$id.'"');
+	$dn1 = mysqli_query($link2,'select nom_onglet, id_onglet from onglet where id_formulaire = "'.$id.'" ORDER BY id_onglet ASC');
 	
         
         $sql_liste_formulaire_plus_info_projet="SELECT etat_project, etat_formulaire FROM project_formulaire
