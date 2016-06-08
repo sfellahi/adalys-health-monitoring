@@ -284,10 +284,29 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
 								<!-- //nav-second-level -->
 								<ul class="nav nav-second-level collapse">
 									<li>
-										<a href="new_project.php">Créer un projet</a>
+                                                                            <a href="new_project.php"><i class="fa fa-file-text-o nav_icon"></i>Ajouters des patients<span class="fa arrow"></span></a>
+                                                                                <ul class="nav nav-third-level collapse">
+                                                                                    
+                                                                                    <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
+                                                                                            $sql_formulaire.="FROM project_formulaire LEFT JOIN formulaire ";
+                                                                                            $sql_formulaire.="ON project_formulaire.id_formulaire=formulaire.id_formulaire ";
+                                                                                            $sql_formulaire.="WHERE etat_formulaire!='En création' "; 
+                                                                                            $result_liste_formulaire=mysqli_query($link, $sql_formulaire);
+                                                                                            while($temp_formulaire_en_cours=  mysqli_fetch_array($result_liste_formulaire)){
+                                                                                                
+                                                                                           
+                                                                                    
+                                                                                    
+                                                                                    ?>
+                                                                                <li style="margin-left:40px;">
+										<a href="list_project.php">Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?></a>
+									</li>
+                                                                    
+                                                                                            <?php } ?>
+                                                                                </ul>
 									</li>
 									<li>
-										<a href="list_project.php">Liste des projets</a>
+										<a href="list_project.php">Liste des patients</a>
 									</li>
 								</ul>
 								<!-- //nav-second-level -->
