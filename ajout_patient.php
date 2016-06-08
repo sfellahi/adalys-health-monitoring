@@ -23,7 +23,7 @@ $temp_num_projet = mysqli_fetch_assoc($req_num_projet);
  $recup_onglet=  mysqli_query($link, $select_onglet);
   while($temp_onglet = mysqli_fetch_assoc($recup_onglet)){
  echo $temp_onglet['nom_onglet'];echo "<br/>";
- $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE ordre_question.id_onglet=".$temp_onglet[id_onglet]." ORDER BY id_question ASC";
+ $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE ordre_question.id_onglet=".$temp_onglet['id_onglet']." ORDER BY id_question ASC";
 $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
  while($temp_recup_question = mysqli_fetch_assoc($resultat_recup_question)){
 

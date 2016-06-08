@@ -5,7 +5,7 @@ if(isset($_POST['projet'])){ $projet=$_POST['projet'];}
 
 $array_test=array();
 
-echo $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE id_fomulaire=".$formulaire." ORDER BY id_question ASC";
+echo $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE id_formulaire=".$formulaire." ORDER BY id_question ASC";
 
 $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
  while($temp_recup_question = mysqli_fetch_assoc($resultat_recup_question)){

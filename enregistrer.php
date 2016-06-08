@@ -143,12 +143,12 @@ while ($i <= $nb ) {
 
     if($i>$nb){
  
-       
+    	$nom_table="donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire'];
      echo   $sql_supprimer="DROP TABLE IF EXISTS `".$nom_table."`;";
        mysqli_query($link, $sql_supprimer);
   
        
-               $nom_table="donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire'];
+               
        $sql_name_table_formulaire="SELECT colonne_assoc FROM ordre_question WHERE id_formulaire=".$dnn2['id_formulaire']."";
        $result_table_formulaire=  mysqli_query($link, $sql_name_table_formulaire);
        
