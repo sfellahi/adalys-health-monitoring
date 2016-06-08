@@ -1,6 +1,7 @@
 <?php
 //Cette page permet d'initialiser le site en verifiant par exemple si le membre est connecté
 session_start();
+     mysqli_set_charset($link, "utf8");
 header('Content-type: text/html;charset=UTF-8');
 if(!isset($_SESSION['email']) and isset($_COOKIE['email'], $_COOKIE['password']))
 {

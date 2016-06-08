@@ -269,11 +269,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							
                                                                     if($_SESSION['profil']=="medecin")
 							{
-                                                                        $sql_select_projet_associé="";
+                                                                        $sql_select_projet_associé="SELECT project_user.user_accept,
+projects.id_project,projects.nom_project,projects.nombre_patient,
+users.id,users.email,users.profil
+FROM project_user LEFT JOIN projects ON project_user.id_project=projects.id_project 
+LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept='yes' AND users.email='".$_SESSION['email']."'";
+                                                                        $result_projet_en_cours=mysqli_query($link, $sql_select_projet_associé);
+                                                                        while($temp_projet_medecin=mysqli_fetch_array($result_projet_en_cours)){
+                                                                        
 							?>
                                                         
 							<li>
-								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets<span class="fa arrow"></span></a>								
+								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets <?php echo $temp_projet_medecin['nom_project'];?><span class="fa arrow"></span></a>								
 								<!-- //nav-second-level -->
 								<ul class="nav nav-second-level collapse">
 									<li>
@@ -285,7 +292,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</ul>
 								<!-- //nav-second-level -->
 							</li>
-                                                        <?php }	
+                                                                        <?php }
+                                                                        
+                                                                        }	
 							?>
 							<li>
 								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
