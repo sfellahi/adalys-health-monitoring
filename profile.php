@@ -30,9 +30,9 @@ if($_SESSION['userid']==$id)
 			<div class="main-page">
 <table style="width:500px;">
 	<tr>
-    	<td><?php
-	echo 'Cet utilisateur n a pas d avatar.';
-?></td>
+    	<td>
+	<img src="upload/users/<?php echo $_SESSION['userid'];?>.jpg" alt="">
+</td>
     	<td class="left"><h1><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></h1>
         Cet utilisateur a rejoint le site le <?php echo $dnn['date_inscription']; ?></td>
     </tr>

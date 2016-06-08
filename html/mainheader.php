@@ -89,9 +89,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									{
 									?>
 									<li><a href="read_pm.php?id=<?php echo $dn1['id']; ?>">
-									   <div class="user_img"><img src="images/1.png" alt=""></div>
+									   <div class="user_img"><img src="upload/users/<?php echo $dn1['userid'];?>.jpg" alt=""></div>
 									   <div class="notification_desc">
-										<p><?php echo htmlentities($dn1['title'], ENT_QUOTES, 'UTF-8'); ?></p>
+										<p><?php echo htmlentities($dn1['title'], ENT_QUOTES, 'UTF-8'); echo $dn1['userid'];?></p>
 										</div>
 									   <div class="clearfix"></div>	
 									</a></li>
