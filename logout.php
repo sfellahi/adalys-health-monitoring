@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //Cette page permet aux utilisateurs de se connecter ou de se deconnecter
 include('html/mainheader.php');
 
