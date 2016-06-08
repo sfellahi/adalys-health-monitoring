@@ -14,17 +14,29 @@ if(isset($_SESSION['email'])){
 <?php
 if(isset($_POST['confirm']))
 {
-	if(mysqli_query($link,'update project_user set user_accept = "yes", user_read = "yes" where id_project_user="'.$id.'"')) 
-	{
-	?>
-	<div class="message">Vous etes maintenant associé au projet.<br />
-	</div>
-	<meta http-equiv="refresh" content="1; URL=index.php">
-	<?php
+	if($_POST['confirm']=="yes"){
+		if(mysqli_query($link,'update project_user set user_accept = "yes", user_read = "yes" where id_project_user="'.$id.'"')) 
+		{
+		?>
+		<div class="message">Vous etes maintenant associé au projet.<br />
+		</div>
+		<meta http-equiv="refresh" content="1; URL=index.php">
+		<?php
+		}
+		else
+		{
+			echo 'An error occured while deleting the category and it topics.';
+		}
 	}
-	else
-	{
-		echo 'An error occured while deleting the category and it topics.';
+	else {
+		if(mysqli_query($link,'update project_user set user_accept = "no", user_read = "yes" where id_project_user="'.$id.'"')) 
+		{
+		?>
+		<div class="message">Vous avez refusé le projet.<br />
+		</div>
+		<meta http-equiv="refresh" content="1; URL=index.php">
+		<?php
+		}
 	}
 }
 else
@@ -32,8 +44,8 @@ else
 ?>
 <form action="accept_notif.php?parent=<?php echo $id; ?>" method="post">
 	Voulez vous etres associe au projet?
-    <input type="hidden" name="confirm" value="yes" />
-    <input type="submit" value="Yes" /> <input type="button" value="No" onclick="javascript:history.go(-1);"/>
+    <input type="submit" name="confirm" value="yes" />
+    <input type="submit" name="confirm" value="no" />
 </form>
 <?php
 }

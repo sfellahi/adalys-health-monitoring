@@ -87,11 +87,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<?php
 									while($dn1 = mysqli_fetch_array($req))
 									{
+										$newtext = wordwrap($dn1['title'], 20, "<br />\n");
 									?>
 									<li><a href="read_pm.php?id=<?php echo $dn1['id']; ?>">
 									   <div class="user_img"><img src="upload/users/<?php echo $dn1['userid'];?>.jpg" alt=""></div>
-									   <div class="notification_desc">
-										<p><?php echo htmlentities($dn1['title'], ENT_QUOTES, 'UTF-8'); echo $dn1['userid'];?></p>
+									   <div class="notification_desc">			   
+										<p><?php echo $newtext; ?></p>
 										</div>
 									   <div class="clearfix"></div>	
 									</a></li>
@@ -127,11 +128,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									{
 										$req6=$link->query('select nom_project from projects where id_project ="'.$dn4['id_project'].'"');
 										$nom_projet = mysqli_fetch_array($req6);
+										$message1= "Une demande d'association du projet '".$nom_projet['nom_project']."' est en cours";
+										$newtext1 = wordwrap($message1, 26, "<br />\n");
 										?>
 										<li><a href="accept_notif.php?parent=<?php echo $dn4['id_project_user']; ?>">
 										<div class="user_img"><img src="images/2.png" alt=""></div>
 									   <div class="notification_desc">
-										<p>Une demande d'association du projet <?php echo $nom_projet['nom_project']; ?> est en cours</p>
+										<p><?php echo $newtext1; ?></p>
 										</div>
 									  <div class="clearfix"></div>	
 									 </a></li>
