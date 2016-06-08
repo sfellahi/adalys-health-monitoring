@@ -1,16 +1,5 @@
 <?php
 include("html/mainheader.php");
-// Connexion au serveur MySQL
-
-// mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
-
-
-		$link = mysqli_connect("localhost", "root", "root","maladie2");
-		if (mysqli_connect_errno())
-  {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-     
 
 $array_test=array();
 
@@ -37,7 +26,7 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 $aaa=count($array_test);
 
 
-$ajout_sql="INSERT INTO donnee (".$array_test[0]."";
+$ajout_sql="INSERT INTO donneeprojet1formulaire1 (".$array_test[0]."";
 $test=1;
 while($test<$aaa){
 $ajout_sql.=",".$array_test[$test]."";

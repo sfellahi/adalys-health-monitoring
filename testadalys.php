@@ -1,18 +1,11 @@
 <?php
 include("html/mainheader.php");
 
-// mysql_connect(DB_SERVER, SERVER_USER, SERVER_PASSWORD);
-
-		$link = mysqli_connect("localhost", "root", "root","maladie2");
-		if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
 ?>
 <div id="page-wrapper">
 			<div class="main-page">
 				<?php
-$recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question ORDER BY id_question ASC";
+$recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE id_formulaire=1 ORDER BY id_question ASC";
 
 $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
 ?> 
