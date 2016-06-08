@@ -267,53 +267,56 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							</li>
                                                         <?php }	
 							
-                                                                    if($_SESSION['profil']=="medecin")
-							{
-                                                                        $sql_select_projet_associé="SELECT project_user.user_accept,
+                                                        if($_SESSION['profil']=="medecin")
+                                                        {
+                                                        	$sql_select_projet_associé="SELECT project_user.user_accept,
 projects.id_project,projects.nom_project,projects.nombre_patient,
 users.id,users.email,users.profil
-FROM project_user LEFT JOIN projects ON project_user.id_project=projects.id_project 
+FROM project_user LEFT JOIN projects ON project_user.id_project=projects.id_project
 LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept='yes' AND users.email='".$_SESSION['email']."'";
-                                                                        $result_projet_en_cours=mysqli_query($link, $sql_select_projet_associé);
-                                                                        while($temp_projet_medecin=mysqli_fetch_array($result_projet_en_cours)){
-                                                                        
-							?>
+                                                        	$result_projet_en_cours=mysqli_query($link, $sql_select_projet_associé);
+                                                        	while($temp_projet_medecin=mysqli_fetch_array($result_projet_en_cours)){
                                                         
-							<li>
-								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets <?php echo $temp_projet_medecin['nom_project'];?><span class="fa arrow"></span></a>								
-								<!-- //nav-second-level -->
-								<ul class="nav nav-second-level collapse">
-									<li>
-                                                                            <a href="new_project.php"><i class="fa fa-file-text-o nav_icon"></i>Ajouters des patients<span class="fa arrow"></span></a>
-                                                                                <ul class="nav nav-third-level collapse">
-                                                                                    
-                                                                                    <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
-                                                                                            $sql_formulaire.="FROM project_formulaire LEFT JOIN formulaire ";
-                                                                                            $sql_formulaire.="ON project_formulaire.id_formulaire=formulaire.id_formulaire ";
-                                                                                            $sql_formulaire.="WHERE etat_formulaire!='En création' "; 
-                                                                                            $result_liste_formulaire=mysqli_query($link, $sql_formulaire);
-                                                                                            while($temp_formulaire_en_cours=  mysqli_fetch_array($result_liste_formulaire)){
-                                                                                                
-                                                                                           
-                                                                                    
-                                                                                    
-                                                                                    ?>
-                                                                                <li style="margin-left:40px;">
-										<a href="list_project.php">Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?></a>
-									</li>
-                                                                    
-                                                                                            <?php } ?>
-                                                                                </ul>
-									</li>
-									<li>
-										<a href="list_project.php">Liste des patients</a>
-									</li>
-								</ul>
-								<!-- //nav-second-level -->
-							</li>
-                                                                        <?php }
-                                                                        
-                                                                        }	
+                                                        		?>
+                                                                                                                
+                                                               <li>
+                                                                <a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets <?php echo $temp_projet_medecin['nom_project'];?><span class="fa arrow"></span></a>        
+                                                                <!-- //nav-second-level -->
+                                                                <ul class="nav nav-second-level collapse">
+                                                                 <li>
+                                                                                                                                    <a href="#"><i class="fa fa-file-text-o nav_icon"></i>Ajouters des patients<span class="fa arrow"></span></a>
+                                                                                                                                        <ul class="nav nav-third-level collapse">
+                                                                                                                                            
+                                                                                                                                            <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
+                                                                                                                                                    $sql_formulaire.="FROM project_formulaire LEFT JOIN formulaire ";
+                                                                                                                                                    $sql_formulaire.="ON project_formulaire.id_formulaire=formulaire.id_formulaire ";
+                                                                                                                                                    $sql_formulaire.="WHERE etat_formulaire!='En création' "; 
+                                                                                                                                                    $result_liste_formulaire=mysqli_query($link, $sql_formulaire);
+                                                                                                                                                    while($temp_formulaire_en_cours=  mysqli_fetch_array($result_liste_formulaire)){
+                                                                                                                                                        
+                                                                                                                                                   
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            ?>
+                                                                                                                                        <li style="margin-left:40px;">
+                                                                                                                                            <form action="ajout_patient.php" method="POST">
+                                                                                                                                                <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">
+                                                                  <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:40px;" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
+                                                                                                                                            </form>
+                                                                 </li>
+                                                                                                                            
+                                                                                                                                                    <?php } ?>
+                                                                                                                                        </ul>
+                                                                 </li>
+                                                                 <li>
+                                                                  <a href="#">Liste des patients</a>
+                                                                 </li>
+                                                                </ul>
+                                                                <!-- //nav-second-level -->
+                                                               </li>
+                                                                                                                                <?php }
+                                                                                                                                
+                                                                                                                                }
 							?>
 							<li>
 								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
