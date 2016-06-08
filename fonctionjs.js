@@ -112,7 +112,7 @@ function ajout(element){
 	
       champ.value = res[i];
 	    var nominatifreponses = document.createTextNode(res[i]);
-		if(i==='0'){ 
+		if(i=='0'){ 
 		// On initialise une question et un saut de ligne
 		bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
@@ -121,11 +121,11 @@ function ajout(element){
 		// Pour chaque itération on met la reponse et le champ associé 
 		bloc.appendChild(champ);
 	  bloc.appendChild(nominatifreponses);
-      
-        }      var sup = document.createElement("input");
-      sup.value = "-";
+     
+        }      var sup = document.createElement("button");
+      sup.value = "";
       sup.className = "bouton_supprimer";
-      sup.type = "image";
+      //sup.type = "image";
 	  sup.id = name;
       // Ajout de l'événement onclick
       sup.onclick = function onclick(event)
@@ -164,8 +164,8 @@ for (var j = 0; j < taillereponses; j++) {
 bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
       bloc.appendChild(champ);
-	        var sup = document.createElement("input");
-      sup.value = "-";
+	        var sup = document.createElement("button");
+      sup.value = "";
       sup.className = "bouton_supprimer";
       sup.type = "image";
 	  sup.id = name;
@@ -196,11 +196,11 @@ bloc.appendChild(nominatifquestion);
 		bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
       bloc.appendChild(champ);
-              var sup = document.createElement("input");
-      sup.value = "-";
+              var sup = document.createElement("button");
+      sup.value = "";
       sup.id = name;
       sup.className = "bouton_supprimer";
-      sup.type = "image";
+      // sup.type = "image";
       // Ajout de l'événement onclick
       sup.onclick = function onclick(event)
 	  
