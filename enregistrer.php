@@ -136,20 +136,27 @@ while ($i <= $nb ) {
         break;
         }
     }
-    $name[]=$pieces[$i+1];
+   
     $i = $i+5;
+
+
+
     if($i>$nb){
-        $j=0;
-        $nombre_ligne=count($name);
-        $nom_table="donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire'];
+ 
+       
      echo   $sql_supprimer="DROP TABLE IF EXISTS `".$nom_table."`;";
        mysqli_query($link, $sql_supprimer);
   
+       
+               $nom_table="donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire'];
+       $sql_name_table_formulaire="SELECT colonne_assoc FROM ordre_question WHERE id_formulaire=".$dnn2['id_formulaire']."";
+       $result_table_formulaire=  mysqli_query($link, $sql_name_table_formulaire);
+       
         $create_table="CREATE TABLE donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,";
-        while($j<$nombre_ligne){
+        while($temp_name=  mysqli_fetch_array($result_table_formulaire)){
             
-         $create_table.="`".$name[$j]."` VARCHAR (255),";   
-            $j++;
+         $create_table.="`".$temp_name['colonne_assoc']."` VARCHAR (255),";   
+            
         }
         $create_table.="time_modification TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP";
         $create_table.=")";
@@ -157,7 +164,7 @@ while ($i <= $nb ) {
         mysqli_query($link, $create_table);
         
     }
-}
+    }
 ?><div id="page-wrapper">
             <div class="main-page">
         
