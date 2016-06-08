@@ -1,7 +1,7 @@
 <?php
 include('html/mainheader.php');
 $id=$_GET['id'];?> 
-
+<link href="css/formulaire.css" rel="stylesheet"> 
 <script>
     var arrayname= []; 
     function appelFonction(type1,name1,question1,reponse1,required1){
@@ -28,6 +28,7 @@ $id=$_GET['id'];?>
 	// var  patternchiffre="[0-9]";
 // initialisation d'un saut de ligne 
 	  var sautligne = document.createElement('br');
+          var espace = document.createTextNode('aaa');
 	  
 	  // On crée une ligne avec la question
 	  var nominatifquestion = document.createTextNode(question);	  
@@ -64,21 +65,24 @@ $id=$_GET['id'];?>
 	
       champ.value = res[i];
 	    var nominatifreponses = document.createTextNode(res[i]);
-		if(i==='0'){ 
+		if(i=='0'){ 
 		// On initialise une question et un saut de ligne
 		bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
 		
 		}
 		// Pour chaque itération on met la reponse et le champ associé 
-		bloc.appendChild(champ);
-               
+		 
+                
+                bloc.appendChild(champ);
+           
 	  bloc.appendChild(nominatifreponses);
+               
       
-        }      var sup = document.createElement("input");
-      sup.value = "-";
+        }      var sup = document.createElement("button");
+      sup.value = "";
       sup.className = "bouton_supprimer";
-      sup.type = "image";
+      // sup.type = "image";
 	  sup.id = name;
       // Ajout de l'événement onclick
       sup.onclick = function onclick(event)
@@ -106,10 +110,10 @@ for (var j = 0; j < taillereponses; j++) {
 bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
       bloc.appendChild(champ);
-	        var sup = document.createElement("input");
-      sup.value = "-";
+	        var sup = document.createElement("button");
+      sup.value = "";
       sup.className = "bouton_supprimer";
-      sup.type = "image";
+      //sup.type = "image";
 	  sup.id = name;
       // Ajout de l'événement onclick
       sup.onclick = function onclick(event)
@@ -138,11 +142,11 @@ bloc.appendChild(nominatifquestion);
 		bloc.appendChild(nominatifquestion);
 		bloc.appendChild(sautligne);
       bloc.appendChild(champ);
-              var sup = document.createElement("input");
-      sup.value = "-";
+              var sup = document.createElement("button");
+      sup.value = "";
       sup.id = name;
       sup.className = "bouton_supprimer";
-      sup.type = "image";
+    //  sup.type = "image";
       // Ajout de l'événement onclick
       sup.onclick = function onclick(event)
 	  // ici on recupere le name de l'input pour pouvoir supprimer la ligne dans la bdd
@@ -156,199 +160,6 @@ bloc.appendChild(nominatifquestion);
 }
 </script>
 <style>
-   #question_formulaire{
-        background-color:#EEEEEE;
-        border-radius:10px;
-        padding-left:5px;
-        padding-top:5px;
-        padding-bottom:5px;
-        width:50%; 
-        display:block;
-    
-    }
-    .formuajout{
-float:left;
-margin-left:50%;
-	min-width: 150px;
-position:fixed;
-width:20%;
-
-}
-.questiontype{
-color:white;
-}
-
-.typeselect{
-margin-top:30px;
-
-}
-.questionname{
-margin-top:60px;
-color:white;
-}
-.reponsename{
-margin-top:90px;
-}
-.questionquestion{
-margin-top:120px;
-color:white;
-}
-.reponsequestion{
-margin-top:150px;
-}
-.questionreponse{
-margin-top:180px;
-color:white;
-}
-.reponsereponse{
-margin-top:210px;
-}
-
-.bouton_ajouter{
-    
-    top:450px;
-}
-.bouton_supprimer{
-position:absolute;
-margin-top:25px;
-margin-left:250px;
-
-
-}
-.questionobligatoire{
-margin-top:240px;
-
- }
-
-.reponseobligatoire1{
-top:375px;
-padding-left:50%;
- }
- .reponseobligatoire2{
-top:375px;
-
- }
- .questionobligatoiretext1{
-margin-top:270px;
-	font-family: 'Roboto Condensed', sans-serif;
-    font-size: 100%;
- }
- .questionobligatoiretext2{
-margin-top:270px;
-	font-family: 'Roboto Condensed', sans-serif;
-    font-size: 100%;
-  padding-left:75px;
- }
-
- #blockdequestion{
-
-margin-left:50%;
-	min-width: 170px;
-position:fixed;
-width:25%;
-height:440px;
-border:8px solid #2a2f43;
-margin-left:48%;
-margin-top:-20px;
-background-color:#65709D;
-}
-
- *[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-}
-
-.buka {
-  text-align:center;
-  font-weight: bold;
-  letter-spacing:1px;
-  color:#fff;
-  opacity:0;
-  -webkit-transition: .5s;
-  -ms-transition: .5s;
-  -o-transition: .5s;
-  transition:.5s ;
-}
-.buka a {
-  color:#6fcbed;
-  text-decoration:none;
-}
-#oui:checked ~ .buka{
-  opacity:1;
-  letter-spacing:2px;
-}
-input[type="checkbox"] {
-  display:none;
-}
-#loadcheck {
-  position:absolute;
-  left:0;
-  right:0;
-  margin:30px auto;
-}
-
-.loadcheck {
-  width:165px;
-  height:40px;
-  font-size:35px;
-}
-.loadcheck span {float:left;}
-.load {
-  display:block;
-  width:7px;
-  height:7px;
-  margin:20px 5px;
-  border-radius:10px;
-  transition:.5s;
-  cursor:pointer;
-}
-.load:nth-child(2){
-  background:#db1536;
-}
-.load:nth-child(3){
-  background:rgba(219, 21, 54,.7);
-}
-.load:nth-child(4){
-  background:rgba(219, 21, 54,.5);
-}
-.load:nth-child(5){
-  background:rgba(219, 21, 54,.3);
-}
-.load:nth-child(6){
-  background:rgba(219, 21, 54,.1);
-}
-span[class*="entypo"]{cursor:pointer;}
-span[class*="cancel"]{
-  font-size:40px;
-  color:#db1536;
-  transition:.5s;
-  transition-delay:.1s;
-}
-span[class*="oui"]{
-  color:rgba(0,0,0,.1);
-  transition:.5s;
-  transition-delay:.1s;
-}
-#oui:checked + .loadcheck .entypo-check{
-  color:#58d37b;
-}
-#oui:checked + .loadcheck .entypo-cancel{
-  color:rgba(0,0,0,.1);
-}
-#oui:checked + .loadcheck .load:nth-child(2){
-  background:rgba(88, 211, 123,.1);
-}
-#oui:checked + .loadcheck .load:nth-child(3){
-  background:rgba(88, 211, 123,.3);
-}
-#oui:checked + .loadcheck .load:nth-child(4){
-  background:rgba(88, 211, 123,.5);
-}
-#oui:checked + .loadcheck .load:nth-child(5){
-  background:rgba(88, 211, 123,.7);
-}
-#oui:checked + .loadcheck .load:nth-child(6){
-  background:#58d37b;
-}
 
 </style>
 
@@ -361,7 +172,7 @@ span[class*="oui"]{
 
     <div>
         <div id="blockdequestion"></div>     
-<form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" action="enregistrer.php">
+<form name="formulaireDynamique" style="" id="formulaireDynamique" method="POST" onkeypress="refuserToucheEntree(event);" action="enregistrer.php">
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" style="color:black;" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
@@ -383,7 +194,7 @@ span[class*="oui"]{
 
 <span class="formuajout questionobligatoire">Champ obligatoire : </span>
 
-<input type="checkbox" class=""  name="required" id="oui" value="oui">
+<input type="checkbox" class="boutoncheckbox"  name="required" id="oui" value="oui">
 <label for="oui" class="loadcheck miseenplace" style="margin-top:270px;margin-left:56%;" id="loadcheck">
   <span class="entypo-cancel">&#10008;</span>
   <span class="load"></span>
@@ -443,7 +254,7 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 ?>
 
    <INPUT TYPE="hidden" NAME="value1">
-   <input type="submit" style="" value="soumettre"/>
+   <input type="submit" class="btn btn-info" style="margin-left:25%" value="soumettre"/>
 </form>       
 
     </div>
@@ -455,3 +266,24 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 <script src="fonctionjs.js"></script>
   <?php include('html/mainfooter.html');?>  
 
+<script>
+    
+    function refuserToucheEntree(event)
+{
+    // Compatibilité IE / Firefox
+    if(!event && window.event) {
+        event = window.event;
+    }
+    // IE
+    if(event.keyCode == 13) {
+        event.returnValue = false;
+        event.cancelBubble = true;
+    }
+    // DOM
+    if(event.which == 13) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+}
+
+    </script>
