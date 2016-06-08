@@ -144,10 +144,11 @@ while ($i <= $nb ) {
         $nom_table="donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire'];
      echo   $sql_supprimer="DROP TABLE IF EXISTS `".$nom_table."`;";
        mysqli_query($link, $sql_supprimer);
-        $create_table="CREATE TABLE donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL,";
+       mysqli_set_charset($link, "utf8");
+        $create_table="CREATE TABLE donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,";
         while($j<$nombre_ligne){
             
-         $create_table.="".$name[$j]." VARCHAR (255),";   
+         $create_table.="`".$name[$j]."` VARCHAR (255),";   
             $j++;
         }
         $create_table.="time_modification TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP";
