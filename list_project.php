@@ -11,6 +11,8 @@ include('html/mainheader.php');
         <th style="width:10%">Nb de patient</th>
         <th>Formulaires</th>
         <th>Etat du projet</th>
+        <th>Lié un médecin</th>
+        <th>Action</th>
     </tr>   
 <?php
 $dn1 = mysqli_query($link,'select id_project, nom_project, date_debut, nombre_patient, etat_project from projects');
@@ -58,6 +60,22 @@ while($dnn1 = mysqli_fetch_array($dn1))
 		    </div>
 		 	</form>
  		</td>
+ 		
+ 		<form action="user_project.php?parent=<?php echo $dnn1['id_project']; ?>" method="post">
+ 			<td><select name="medecin">
+ 			<?php
+ 		$dn2 = mysqli_query($link,'select id, nom, prenom from users where profil = "medecin"'); 
+ 		while($dnn2 = mysqli_fetch_array($dn2)){
+ 			?>
+		  	<option value="<?php echo $dnn2['id']; ?>"><?php echo $dnn2['nom'] ." ". $dnn2['prenom'] ; ?></option>
+		  	<?php 
+    		}
+			?>
+			</select>
+			</td>
+		
+ 			<td><button type="submit">Lié</button></td>
+ 			
  	<script>
 function changerEtat(projet,num){
     var formulaire = window.document.changeretat;

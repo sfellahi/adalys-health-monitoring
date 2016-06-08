@@ -15,7 +15,7 @@ if(isset($_POST['medecin']))
 				<div class="message">Le medecin est lié au projet.<br />
 				</div></div></div>
      <?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="2; URL=list_project.php?parent=<?php echo $id; ?>">
+				<meta http-equiv="refresh" content="2; URL=list_project.php">
 	<?php
 		}
 	}
