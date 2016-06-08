@@ -38,8 +38,8 @@ if(isset( $_POST['email'],$_POST['password'],$_POST['passverif'],$_POST['date'])
 						if($dn==0)
 						{
 						//On recupere le nombre dutilisateurs pour donner un identifiant a lutilisateur actuel
-							$dn2 = mysqli_num_rows(mysqli_query($link,'select id from users'));
-							$id = $dn2+1;
+							$dn2 = mysqli_fetch_array(mysqli_query($link,'select max(id) as id from users'));
+							$id = $dn2['id']+1;
 
 							//envoie de la photo dans la base de donnée
 							$nom_image="$id.jpg";
