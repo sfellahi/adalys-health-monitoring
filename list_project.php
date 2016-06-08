@@ -62,7 +62,7 @@ while($dnn1 = mysqli_fetch_array($dn1))
  		</td>
  		
  		<form action="user_project.php?parent=<?php echo $dnn1['id_project']; ?>" method="post">
- 			<td><select name="medecin">
+ 			<td><select name="id_medecin">
  			<?php
  		$dn2 = mysqli_query($link,'select id, nom, prenom from users where profil = "medecin"'); 
  		while($dnn2 = mysqli_fetch_array($dn2)){
