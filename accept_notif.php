@@ -43,7 +43,7 @@ else
 {
 ?>
 <form action="accept_notif.php?parent=<?php echo $id; ?>" method="post">
-	Voulez vous etres associe au projet?
+	Voulez vous être associé au projet?
     <input type="submit" name="confirm" value="yes" />
     <input type="submit" name="confirm" value="no" />
 </form>

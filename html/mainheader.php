@@ -85,8 +85,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 										</div>
 									</li>
 									<?php
+							if ($nb_new_pm != 0){
 									while($dn1 = mysqli_fetch_array($req))
-									{
+										{
 										$newtext = wordwrap($dn1['title'], 20, "<br />\n");
 									?>
 									<li><a href="read_pm.php?id=<?php echo $dn1['id']; ?>">
@@ -97,6 +98,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									   <div class="clearfix"></div>	
 									</a></li>
 									<?php
+										}
+									}
+									else
+									{
+									?>	<li><div class="notification_desc">
+											<p>Vous n'avez aucun nouveau message</p>
+											</div>
+											<div class="clearfix"></div>	
+										</li><?php
 									}
 									?>
 									<li>
@@ -123,28 +133,38 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 										</div>
 									</li>
 									<?php
+									if ($nb_new_notif !=0 ){
+										
 									$req5=$link->query('select id_project, id_project_user from project_user where id_user ="'.$_SESSION['userid'].'" and user_read ="no"');
 									while($dn4 = mysqli_fetch_array($req5))
-									{
+										{
 										$req6=$link->query('select nom_project from projects where id_project ="'.$dn4['id_project'].'"');
 										$nom_projet = mysqli_fetch_array($req6);
-										$message1= "Une demande d'association du projet '".$nom_projet['nom_project']."' est en cours";
+										$message1= "Une demande d'association du projet '".$nom_projet['nom_project']."' vous a été associé";
 										$newtext1 = wordwrap($message1, 26, "<br />\n");
 										?>
 										<li><a href="accept_notif.php?parent=<?php echo $dn4['id_project_user']; ?>">
-										<div class="user_img"><img src="images/2.png" alt=""></div>
 									   <div class="notification_desc">
 										<p><?php echo $newtext1; ?></p>
 										</div>
 									  <div class="clearfix"></div>	
 									 </a></li>
 										<?php
+										}
+									}
+									else {
+										?>
+										<li>
+												<div class="notification_desc">
+												<p>Vous n'avez aucune notification en cours</p>
+												</div>
+												<div class="clearfix"></div>	
+												</li>
+																			 <?php
 									}
 									?>
-									<li>
-										<div class="notification_bottom">
-											<a href="list_notifcation.php">See all notifications</a>
-										</div> 
+									<div class="notification_bottom"></div>
+									<li> 
 									</li>
 								</ul>
 							</li>	
