@@ -266,6 +266,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<!-- //nav-second-level -->
 							</li>
                                                         <?php }	
+							
+                                                                    if($_SESSION['profil']=="medecin")
+							{
+                                                                        $sql_select_projet_associé="";
+							?>
+                                                        
+							<li>
+								<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets<span class="fa arrow"></span></a>								
+								<!-- //nav-second-level -->
+								<ul class="nav nav-second-level collapse">
+									<li>
+										<a href="new_project.php">Créer un projet</a>
+									</li>
+									<li>
+										<a href="list_project.php">Liste des projets</a>
+									</li>
+								</ul>
+								<!-- //nav-second-level -->
+							</li>
+                                                        <?php }	
 							?>
 							<li>
 								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								

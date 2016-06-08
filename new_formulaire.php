@@ -7,7 +7,7 @@ if(isset($_GET['parent']))
 	if(isset($_POST['formulaire']))
 	{
 		$nom = $_POST['formulaire'];
-                
+                  mysqli_set_charset($link, "utf8");
                $insert_formulaire="insert into formulaire (nom_formulaire,etat_formulaire) VALUES ('".$nom."','En création')";
 		if(mysqli_query($link2,$insert_formulaire))
 		{

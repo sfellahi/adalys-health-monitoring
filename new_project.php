@@ -11,6 +11,7 @@
  		 $projet = stripslashes($projet);
  	}
  	$projet = mysqli_real_escape_string($link,$projet);
+          mysqli_set_charset($link, "utf8");
         echo $insert_new_project="INSERT INTO projects (nom_project, date_debut,date_fin,nombre_patient,etat_project) VALUES ('".$projet."', '".$date."',NULL,'0','En création')";
  	if(mysqli_query($link,$insert_new_project))
  	{

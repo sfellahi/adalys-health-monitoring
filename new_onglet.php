@@ -7,6 +7,7 @@ if(isset($_GET['parent']))
 	if(isset($_POST['onglet']))
 	{
 		$onglet = $_POST['onglet'];
+                  mysqli_set_charset($link, "utf8");
 		if(mysqli_query($link2,'insert into onglet (nom_onglet, id_formulaire) VALUES ("'.$onglet.'", "'.$id.'")'))
 		{
 
