@@ -6,6 +6,8 @@ if(isset($_POST['formulaire'])){
 }
 
 ?>
+<style media="print" type="text/css">
+    .noImpr {   display:none;   } </style>
 <style>
     .formulaire{
        margin:0 auto;
@@ -52,7 +54,7 @@ if(isset($_POST['formulaire'])){
     }
     </style>
 <div id="page-wrapper">
-			<div class="main-page">
+			<div class="main-page" onload="window.print()">
                             <div class="row">
                                 
                                 <div class="formulaire">
@@ -158,14 +160,23 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
   <div class="videform" ></div>
   
   <?php      } ?>
-<input type="submit" class="submit" value="Enregistrer">
+<input type="submit" class="submit noImpr" value="Enregistrer">
 <div class="videform" ></div>
  </form>
-                                    
+ <a href="edition.php" onclick="edition();return false;" class="button noImpr">Imprimer ce formulaire</a>                                   
                              </div>
                                 </div>
 </div>
 </div>
+<script type="text/javascript">
+function edition()
+{
+	options = "Width=700,Height=700" ;
+	window.print() ;
+}
+
+</script>
+
  <?php
  include("html/mainfooter.html");
  ?>

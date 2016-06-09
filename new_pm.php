@@ -102,17 +102,6 @@ else
 {
 ?>
 <div class="message">You must be logged to access this page.</div>
-<div class="box_login">
-	<form action="login.php" method="post">
-		<label for="email">Username</label><input type="text" name="email" id="email" /><br />
-		<label for="password">Password</label><input type="password" name="password" id="password" /><br />
-        <label for="memorize">Remember</label><input type="checkbox" name="memorize" id="memorize" value="yes" />
-        <div class="center">
-	        <input type="submit" value="Login" /> <input type="button" onclick="javascript:document.location='signup.php';" value="Sign Up" />
-        </div>
-    </form>
-</div>
-</div>
 <?php
 }
 include("html/mainfooter.html");?>

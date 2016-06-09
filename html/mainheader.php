@@ -6,9 +6,13 @@ if(empty($_SESSION['email'])){
 
 }
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
+<style media="print" type="text/css">
+    .noImpr {   display:none;   } 
+</style>
 <title>Adalys</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -54,7 +58,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			<div class="header-left">
 				<!--logo -->
 				<div class="logo">
-					<a href="index.php">
+					<a href="index.php" class="noImpr">
 						<ul>	
 							<li><img src="images/logo1.png" alt="" /></li>
 							<li><h1>Adalys</h1></li>
@@ -73,7 +77,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 											}
 										?>
 				<!--//logo-->
-				<div class="header-right header-right-grid">
+				<div class="header-right header-right-grid noImpr">
 					<div class="profile_details_left"><!--notifications of menu start -->
 						<ul class="nofitications-dropdown">
 							<li class="dropdown head-dpdn">
@@ -178,13 +182,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<!--search-box-->
-				<div class="search-box">
+				<div class="search-box noImpr" >
 					<form class="input">
 						<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
 					</form>
 				</div>
 				<!--//end-search-box-->
-			<div class="header-right">
+			<div class="header-right noImpr">
 				
 				<!--notification menu end -->
 				<div class="profile_details">		
@@ -214,7 +218,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 		<!--left-fixed -navigation-->
-		<div class="sidebar" role="navigation">
+		<div class="sidebar noImpr" role="navigation">
             <div class="navbar-collapse">
 				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right dev-page-sidebar mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar" id="cbp-spmenu-s1">
 					<div class="scrollbar scrollbar1">
