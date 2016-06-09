@@ -4,10 +4,13 @@ include('html/mainheader.php');
 ?>
  <div id="page-wrapper"> 
        <div class="main-page">
+           <div class="row">
     <?php
 if(isset($_GET['parent']))
 {
 	$id=$_GET['parent'];
+        
+
 	$dn1 = mysqli_query($link2,'select nom_onglet, id_onglet from onglet where id_formulaire = "'.$id.'" ORDER BY id_onglet ASC');
 	
         
@@ -21,13 +24,18 @@ WHERE formulaire.id_formulaire=".$id."";
         ?>
 	
           
-    <table class="topics_table">
+    <table class="flat-table" id="tableonglet">
     <tr>
-            <th class="forum_tops">Onglet</th>
+            <th>Onglet</th>
+            <th>Formulaire</th>
+            <th style="width:15%;">Nb question</th>
+            <th>&nbsp;</th>
     </tr>
     	<?php
     while($dnn1 = mysqli_fetch_array($dn1)){
-      
+                      $sql_count_question="SELECT id_question from ordre_question where id_onglet=".$dnn1['id_onglet']."";
+        $result_count_question=mysqli_query($link,$sql_count_question);
+         $rowcountquestion=mysqli_num_rows($result_count_question);
         ?>
     <tr>
     	<td>
@@ -51,6 +59,14 @@ WHERE formulaire.id_formulaire=".$id."";
        ?>     
             
          </td>
+         <td></td>
+          <td><?php echo $rowcountquestion; ?></td>
+           <td>
+             <form action="supp_formulaire.php"  method="POST" name="suppformulaire">
+                <input type="hidden" name="parent" value="<?php echo $dnn1['id_onglet']; ?>"/> 
+                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Supprimer</button>   
+             </form>
+           </td>
     </tr>
     <?php
     }
@@ -87,6 +103,7 @@ Aucun formulaire n\'a été séléctionner
    <?php 
 }
 ?>  
+           </div>
        </div>
        </div>
      <?php include("html/mainfooter.html");?>

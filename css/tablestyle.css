@@ -11,6 +11,11 @@
   min-height:0px;
     max-height:600px;
    }   
+   #tableonglet{
+       width:50%;
+      min-height:0px;
+    max-height:600px;
+   }
 
 #tableformulaire{
       width:95%;
