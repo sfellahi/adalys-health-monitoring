@@ -1,6 +1,44 @@
 <?php
 include('html/mainheader.php');
-$id=$_GET['id'];?> 
+$id=$_GET['id'];
+$select_id_form="SELECT id_formulaire FROM ordre_question WHERE id_onglet=".$id."";
+$result_id_form=  mysqli_query($link, $select_id_form);
+$temp_id=mysqli_fetch_array($result_id_form);
+$select_name="SELECT colonne_assoc FROM ordre_question WHERE id_onglet!=".$id." AND id_formulaire=".$temp_id['id_formulaire']."";
+$request_name=  mysqli_query($link, $select_name);
+$othername=array();
+while($temp_name=  mysqli_fetch_array($request_name)){
+    
+    $othername[]=$temp_name['colonne_assoc'];
+}
+
+function php2js ($var) {
+    if (is_array($var)) {
+        $res = "[";
+        $array = array();
+        foreach ($var as $a_var) {
+            $array[] = php2js($a_var);
+        }
+        return "[" . join(",", $array) . "]";
+    }
+    elseif (is_bool($var)) {
+        return $var ? "true" : "false";
+    }
+    elseif (is_int($var) || is_integer($var) || is_double($var) || is_float($var)) {
+        return $var;
+    }
+    elseif (is_string($var)) {
+        return "\"" . addslashes(stripslashes($var)) . "\"";
+    }
+    // autres cas: objets, on ne les gère pas
+    return FALSE;
+}
+  $js = php2js($othername); // [1,2,[3,4],5,'salut',true]
+?>
+<script>
+  var tableau_anc_name =<?php echo $js; ?>;
+ 
+</script>
 <link href="css/formulaire.css" rel="stylesheet"> 
 <script>
     var arrayname= []; 
@@ -262,6 +300,7 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 </body>
             </div>
 </div></div>
+
 
 <script src="fonctionjs.js"></script>
   <?php include('html/mainfooter.html');?>  

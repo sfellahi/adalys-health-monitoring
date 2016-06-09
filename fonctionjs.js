@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- 
  function in_array(string, array){
     var result = false;
     for(i=0; i<array.length; i++){
@@ -38,9 +32,14 @@ function ajout(element){
 	  var name = document.getElementById("name").value;
 	  // test si le nominatif est présent et unique 
 	  // test si la question est non null 
-	  if(in_array(name, arrayname) || name=="" || question==""){
-	  alert('Une question et une nominatif unique sont n\351c\351ssaire');
-	  }
+	  if(in_array(name, arrayname) || name=="" || question=="" || in_array(name,tableau_anc_name)){
+              if(question=""){
+                  
+                  alert("Une question est obligatoire.");
+              }
+              else{
+	  alert('Un identifiant unique est n\351c\351ssaire');
+	  }}
 	  else{
 	  var reponses = document.getElementById("reponses").value;
 	  // On separes les réponses pour pouvoir créer les radio ou checkbox
