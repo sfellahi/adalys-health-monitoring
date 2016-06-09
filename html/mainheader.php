@@ -307,10 +307,11 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                 <!-- //nav-second-level -->
                                                                 <ul class="nav nav-second-level collapse">
                                                                  <li>
-                                                                                                                                    <a href="#"><i class="fa fa-file-text-o nav_icon"></i>Ajouters des patients<span class="fa arrow"></span></a>
-                                                                                                                                        <ul class="nav nav-third-level collapse">
+                                                                
+                                                                <a href="#"><i class="fa fa-user-md nav_icon"></i>Ajouters des patients<span class="fa arrow"></span></a>
+                                                                   <ul class="nav nav-third-level collapse">
                                                                                                                                             
-                                                                                                                                            <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
+                                                                  <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
                                                                                                                                                     $sql_formulaire.="FROM project_formulaire LEFT JOIN formulaire ";
                                                                                                                                                     $sql_formulaire.="ON project_formulaire.id_formulaire=formulaire.id_formulaire ";
                                                                                                                                                     $sql_formulaire.="WHERE etat_formulaire!='En création' "; 
@@ -323,16 +324,17 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                                                                                             ?>
                                                                                                                                         <li style="margin-left:40px;">
                                                                                                                                             <form action="ajout_patient.php" method="POST">
-                                                                                                                                                <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">
+                                                                                                                                                <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">                                                                                                                                               
                                                                   <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:45px;font-size:90%" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
                                                                                                                                             </form>
                                                                  </li>
                                                                                                                             
                                                                                                                                                     <?php } ?>
                                                                                                                                         </ul>
+                                                                                                                        
                                                                  </li>
                                                                  <li>
-                                                                  <a href="#">Liste des patients</a>
+                                                                  <a href="#"><i class="fa fa-hospital-o nav_icon"></i>Liste des patients</a>
                                                                  </li>
                                                                 </ul>
                                                                 <!-- //nav-second-level -->
@@ -340,7 +342,30 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                                                                                 <?php }
                                                                                                                                 
                                                                                                                                 }
-							?>
+							
+                                                                                                                                ?>
+							<li>
+								<a href="#"><i class="fa fa-archive nav_icon"></i>Exporter un formulaire<span class="fa arrow"></span></a>								
+								<ul class="nav nav-second-level collapse">
+								<?php $sql_formulaire2="SELECT project_formulaire.id_formulaire,project_formulaire.id_project,formulaire.nom_formulaire,etat_formulaire ";
+                                      $sql_formulaire2.="FROM project_formulaire LEFT JOIN formulaire ";
+                                      $sql_formulaire2.="ON project_formulaire.id_formulaire=formulaire.id_formulaire ";                                                                                                                                           
+                                      $result_liste_formulaire2=mysqli_query($link, $sql_formulaire2);
+                                      while($temp_formulaire_en_cours2=  mysqli_fetch_array($result_liste_formulaire2)){
+								?>
+									<li style="margin-left:40px;">
+                                    <form action="export_csv.php" method="POST">
+                                    <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours2['id_formulaire']; ?>">
+                                    <input type="hidden" id="project" name="project" value="<?php echo $temp_formulaire_en_cours2['id_project']; ?>">                                                                                                                                               
+                                    <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:45px;font-size:90%" value="Formulaire <?php echo $temp_formulaire_en_cours2['nom_formulaire']; ?>">
+                                    </form>
+                                    </li>
+									<?php 
+                                      }
+                                      ?>
+								</ul>
+							</li>
+						
 							<li>
 								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
 								<!-- //nav-second-level -->

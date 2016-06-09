@@ -45,5 +45,11 @@ $test2++;
 $ajout_sql.=")";
 echo $ajout_sql;
 mysqli_query($link,$ajout_sql) or die(mysqli_error($link));
+?>
+<div id="page-wrapper">
+<div class="main-page">
+Les données ont bien été enregistré
+</div></div>
 
+<?php
 include("html/mainfooter.html");
