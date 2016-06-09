@@ -324,7 +324,7 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                                                                                         <li style="margin-left:40px;">
                                                                                                                                             <form action="ajout_patient.php" method="POST">
                                                                                                                                                 <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">
-                                                                  <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:40px;" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
+                                                                  <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:45px;font-size:90%" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
                                                                                                                                             </form>
                                                                  </li>
                                                                                                                             
