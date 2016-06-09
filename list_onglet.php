@@ -14,7 +14,7 @@ if(isset($_GET['parent']))
 	$dn1 = mysqli_query($link2,'select nom_onglet, id_onglet from onglet where id_formulaire = "'.$id.'" ORDER BY id_onglet ASC');
 	
         
-        $sql_liste_formulaire_plus_info_projet="SELECT etat_project, etat_formulaire FROM project_formulaire
+        $sql_liste_formulaire_plus_info_projet="SELECT etat_project,etat_formulaire,nom_formulaire FROM project_formulaire
 LEFT JOIN projects ON projects.id_project = project_formulaire.id_project
 LEFT JOIN formulaire ON formulaire.id_formulaire = project_formulaire.id_formulaire 
 WHERE formulaire.id_formulaire=".$id."";
@@ -28,6 +28,7 @@ WHERE formulaire.id_formulaire=".$id."";
     <tr>
             <th>Onglet</th>
             <th>Formulaire</th>
+            <th>Question</th>
             <th style="width:15%;">Nb question</th>
             <th>&nbsp;</th>
     </tr>
@@ -59,10 +60,31 @@ WHERE formulaire.id_formulaire=".$id."";
        ?>     
             
          </td>
-         <td></td>
+         <td><?php echo $temp_etat['nom_formulaire']; ?></td>
+         <td>
+                    <?php 
+       if($temp_etat['etat_project']=="Cloturé"){
+        ?>
+            <a href="" Onclick="alert('Le projet est clotur\351 aucune question ne peux etre ajouter')"  class="btn btn-info">Ajouter</a>
+      
+          <?php 
+       }
+       else{
+           if($temp_etat['etat_formulaire']=="Cloturé" || $temp_etat['etat_formulaire']=='En cours'){
+             ?>  <a href="" Onclick="alert('Le formulaire est en production ou bien clotur\351 aucune question ne peux etre ajouter')" class="btn btn-info">Ajouter</a>
+       
+           <?php    
+           }else{
+       ?>    
+                 <a href="formulaire.php?id=<?php echo $dnn1['id_onglet']; ?>" class="btn btn-info">Ajouter</a>
+       <?php    
+           } }
+       ?>     
+            
+         </td>
           <td><?php echo $rowcountquestion; ?></td>
            <td>
-             <form action="supp_formulaire.php"  method="POST" name="suppformulaire">
+             <form action="supp_onglet.php"  method="POST" name="suppformulaire">
                 <input type="hidden" name="parent" value="<?php echo $dnn1['id_onglet']; ?>"/> 
                 <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Supprimer</button>   
              </form>
