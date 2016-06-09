@@ -23,4 +23,4 @@ $table = "donneeprojet".$id_projet."formulaire".$id_form;
     <?php
     //close the db connection
     mysqli_close($link);
-?>
+include("html/mainfooter.html");?>

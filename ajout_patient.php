@@ -69,7 +69,7 @@ $temp_num_projet = mysqli_fetch_assoc($req_num_projet);
     <input type="hidden" name="formulaire" id="formulaire" value="<?php echo $formulaire;?>" >
    <input type="hidden" name="projet" id="projet" value="<?php echo $temp_num_projet['id_project'];?>" >
  <?php
- $select_onglet="SELECT nom_onglet,id_onglet FROM onglet WHERE id_formulaire=".$formulaire." ORDRE BY id_onglet ASC";
+ $select_onglet="SELECT nom_onglet,id_onglet FROM onglet WHERE id_formulaire=".$formulaire." ORDER BY id_onglet ASC";
  $recup_onglet=  mysqli_query($link, $select_onglet);
   while($temp_onglet = mysqli_fetch_assoc($recup_onglet)){
       ?>
