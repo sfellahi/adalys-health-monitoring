@@ -37,6 +37,10 @@ function ajout(element){
                   
                   alert("Une question est obligatoire.");
               }
+              if(in_array(name,tableau_anc_name)!==1){
+                  
+                 alert('Cet identifiant est d\351j\340 utilis\351 dans un autre onglet'); 
+              }
               else{
 	  alert('Un identifiant unique est n\351c\351ssaire');
 	  }}
