@@ -6,9 +6,59 @@ if(isset($_POST['formulaire'])){
 }
 
 ?>
+<style>
+    .formulaire{
+       margin:0 auto;
+       width:70%;
+       border:0px solid #2a2f43;
+       border-radius: 10px;
+       max-height:620px;
+       overflow:auto;
+    }
+    .onglet{
+        color:white;
+   width:100%;
+    height:50px;
+    border-radius: 10px;
+    text-align: center;
+    border:3px solid #2a2f43;
+    background-color:#65709D; 
+    padding-top:7px;
+    font-size:120%;
+    text-decoration: underline;
+    }   
+    .videform{
+    height:30px;
+        
+    }
+    .videform2{
+        
+        height:20px;
+    }
+    .submit{
+        border:none;
+        border-radius:15px;
+        margin-left:41%;
+        width:15%;
+        height:40px;
+        min-width: 150px;
+        background-color:#2a2f43;
+        color:white;
+        font-weight: 600;
+        font-size:110%;
+    }
+    .submit:hover{
+        background-color:#65709D;
+    }
+    </style>
 <div id="page-wrapper">
 			<div class="main-page">
                             <div class="row">
+                                
+                                <div class="formulaire">
+                                    
+                                    
+                              
 				<?php
 
 $sql_num_projet="SELECT id_project FROM project_formulaire WHERE id_formulaire=".$formulaire."";
@@ -22,7 +72,10 @@ $temp_num_projet = mysqli_fetch_assoc($req_num_projet);
  $select_onglet="SELECT nom_onglet,id_onglet FROM onglet WHERE id_formulaire=".$formulaire."";
  $recup_onglet=  mysqli_query($link, $select_onglet);
   while($temp_onglet = mysqli_fetch_assoc($recup_onglet)){
- echo "<b>";echo $temp_onglet['nom_onglet'];echo "</b>";echo "<br/>";echo "<br/>";
+      ?>
+   <div class="onglet"><?php echo $temp_onglet['nom_onglet']; ?></div>
+   <div class="videform2" ></div>
+ <?php
  $recup_question="SELECT id_question,type_question,id_type,colonne_assoc FROM ordre_question WHERE ordre_question.id_onglet=".$temp_onglet['id_onglet']." ORDER BY id_question ASC";
 $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error($link)); 
  while($temp_recup_question = mysqli_fetch_assoc($resultat_recup_question)){
@@ -100,10 +153,17 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		
 		}
      
-  }} ?>
-<input type="submit" value="enregistrer">
+  }  ?>
+  
+  <div class="videform" ></div>
+  
+  <?php      } ?>
+<input type="submit" class="submit" value="Enregistrer">
+<div class="videform" ></div>
  </form>
-                            </div>
+                                    
+                             </div>
+                                </div>
 </div>
 </div>
  <?php
