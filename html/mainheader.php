@@ -370,10 +370,6 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
 								</ul>
 							</li>
 						
-							<li>
-								<a ><i class="fa fa-building-o nav_icon"></i>Générer un formulaire </span></a>								
-								<!-- //nav-second-level -->
-							</li>
 						<?php 	
 
 							if(isset($_SESSION['email'])){
