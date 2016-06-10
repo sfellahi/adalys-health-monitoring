@@ -30,7 +30,7 @@ if(isset($_POST['message'], $_POST['title']) and $_POST['message']!='' and $_POS
 	?>
 	<div id="page-wrapper">
 			<div class="main-page">
-	<div class="message">The topic have successfully been created.<br />
+	<div class="message">Le topic a bien été créé.<br />
 	<meta http-equiv="refresh" content="1; URL=list_topics.php?parent=<?php echo $id; ?>">
 	<?php
 	}
@@ -42,25 +42,31 @@ if(isset($_POST['message'], $_POST['title']) and $_POST['message']!='' and $_POS
 else
 {
 ?>
+
+			<div class="container">
+<form action="new_topic.php?parent=<?php echo $id; ?>" method="post">
 <div id="page-wrapper">
 			<div class="main-page">
-<form action="new_topic.php?parent=<?php echo $id; ?>" method="post">
-	<label for="title">Title</label><input type="text" name="title" id="title"  /><br />
-    <label for="message">Message</label><br />
+			<div class="form-group">
+	Titre du topic</br>
+	<input class="form-control" type="text" name="title" id="title"  /><br />
+    Votre message<br />
     <div class="message_buttons">
-        <input type="button" value="Bold" onclick="javascript:insert('[b]', '[/b]', 'message');" /><!--
-        --><input type="button" value="Italic" onclick="javascript:insert('[i]', '[/i]', 'message');" /><!--
-        --><input type="button" value="Underlined" onclick="javascript:insert('[u]', '[/u]', 'message');" /><!--
-        --><input type="button" value="Image" onclick="javascript:insert('[img]', '[/img]', 'message');" /><!--
-        --><input type="button" value="Link" onclick="javascript:insert('[url]', '[/url]', 'message');" /><!--
-        --><input type="button" value="Left" onclick="javascript:insert('[left]', '[/left]', 'message');" /><!--
-        --><input type="button" value="Center" onclick="javascript:insert('[center]', '[/center]', 'message');" /><!--
-        --><input type="button" value="Right" onclick="javascript:insert('[right]', '[/right]', 'message');" />
+        <input type="button" value="Bold" onclick="javascript:insert('[b]', '[/b]', 'message');" />
+        <input type="button" value="Italic" onclick="javascript:insert('[i]', '[/i]', 'message');" />
+        <input type="button" value="Underlined" onclick="javascript:insert('[u]', '[/u]', 'message');" />
+        <input type="button" value="Image" onclick="javascript:insert('[img]', '[/img]', 'message');" />
+        <input type="button" value="Link" onclick="javascript:insert('[url]', '[/url]', 'message');" />
+        <input type="button" value="Left" onclick="javascript:insert('[left]', '[/left]', 'message');" />
+        <input type="button" value="Center" onclick="javascript:insert('[center]', '[/center]', 'message');" />
+        <input type="button" value="Right" onclick="javascript:insert('[right]', '[/right]', 'message');" />
     </div>
-    <textarea name="message" id="message" cols="70" rows="6"></textarea><br />
-    <input type="submit" value="Send" />
-</div></div>
+    <textarea name="message" id="message" cols="70" rows="6"></textarea>
+    </div><br />
+    <input class="btn btn-default btn-file" type="submit" value="Envoyer" />
 </form>
+</div>
+</div></div>
 <?php
 }
 ?>

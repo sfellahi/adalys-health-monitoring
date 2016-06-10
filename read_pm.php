@@ -88,7 +88,7 @@ while($dn2 = mysqli_fetch_array($req2))
     <form action="read_pm.php?id=<?php echo $id; ?>" method="post">
     	<label for="message" class="center">Message</label><br />
         <textarea cols="40" rows="5" name="message" id="message"></textarea><br />
-        <input type="submit" value="Envoyer" />
+        <input class="btn btn-default btn-file" type="submit" value="Envoyer" />
     </form>
 </div>
 </div>

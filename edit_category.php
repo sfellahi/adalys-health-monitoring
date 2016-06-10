@@ -43,20 +43,26 @@ if(isset($_POST['name'], $_POST['description']) and $_POST['name']!='')
 else
 {
 ?>
-<div id="page-wrapper">
+
+<div class="container">
+			<form action="edit_category.php?id=<?php echo $id; ?>" method="post">
+		<div id="page-wrapper">
 			<div class="main-page">
-<form action="edit_category.php?id=<?php echo $id; ?>" method="post">
-	<label for="name">Name</label><input type="text" name="name" id="name" value="<?php echo htmlentities($dn1['name'], ENT_QUOTES, 'UTF-8'); ?>" /><br />
-	<label for="description">Description</label>(html enabled)<br />
-    <textarea name="description" id="description" cols="70" rows="6"><?php echo htmlentities($dn1['description'], ENT_QUOTES, 'UTF-8'); ?></textarea><br />
-    <input type="submit" value="Edit" />
-</form>
+			<div class="form-group">
+            Nom de la catégorie
+	<input class="form-control" type="text" name="name" id="name" value="<?php echo htmlentities($dn1['name'], ENT_QUOTES, 'UTF-8'); ?>" /><br>
+            Changer sa description
+    <textarea class="form-control" name="description" id="description" cols="70" rows="6"><?php echo htmlentities($dn1['description'], ENT_QUOTES, 'UTF-8'); ?></textarea><br />
+            </div>
+            <input type="submit" value="Modifier les informations de la catégorie" class="btn btn-default"/>
+    </form>
+    </div>
+ 
+</div>
+        </div>
 <?php
 }
-?>
-		</div></div></div>
-		
-<?php
+
 }
 else
 {
@@ -72,4 +78,4 @@ else
 {
 	echo '<h2>The ID of the category you want to edit is not defined.</h2>';
 }
-include("html/mainfooter.html");?>
+include("html/mainfooter.html");

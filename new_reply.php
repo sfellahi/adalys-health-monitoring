@@ -27,7 +27,7 @@ if(isset($_POST['message']) and $_POST['message']!='')
 	?>
 	<div id="page-wrapper">
 			<div class="main-page">
-	<div class="message">The message have successfully been sent.<br />
+	<div class="message">Le message a été envoyé.<br />
 	<a href="read_topic.php?id=<?php echo $id; ?>">Go to the topic</a></div></div></div>
 	<?php
 	}
@@ -39,10 +39,12 @@ if(isset($_POST['message']) and $_POST['message']!='')
 else
 {
 ?>
+	<div class="container">
+<form action="new_reply.php?id=<?php echo $id; ?>" method="post">
 <div id="page-wrapper">
 			<div class="main-page">
-<form action="new_reply.php?id=<?php echo $id; ?>" method="post">
-    <label for="message">Message</label><br />
+			<div class="form-group">
+    <label for="message">Votre réponse</label><br />
     <div class="message_buttons">
         <input type="button" value="Bold" onclick="javascript:insert('[b]', '[/b]', 'message');" /><!--
         --><input type="button" value="Italic" onclick="javascript:insert('[i]', '[/i]', 'message');" /><!--
@@ -54,7 +56,8 @@ else
         --><input type="button" value="Right" onclick="javascript:insert('[right]', '[/right]', 'message');" />
     </div>
     <textarea name="message" id="message" cols="70" rows="6"></textarea><br />
-    <input type="submit" value="Send" />
+    </div>
+    <input type="submit" class="btn btn-default btn-file" value="Envoyer" />
 </form>
 </div></div></div>
 <?php

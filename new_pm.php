@@ -77,8 +77,7 @@ if(isset($error))
 ?>
 <!-- //header-ends -->
 		<!-- main content start-->
-		<div id="page-wrapper">
-			<div class="main-page">
+		
 
 <?php
 $req3 = $link -> query('select count(*) as nb_new_pm from pm where ((user1="'.$_SESSION['userid'].'" and user1read="no") or (user2="'.$_SESSION['userid'].'" and user2read="no")) and id2="1"');
@@ -86,13 +85,18 @@ $nb_new_pm = mysqli_fetch_array($req3);
 $nb_new_pm = $nb_new_pm['nb_new_pm'];
 ?>
 
-	<h1>Nouveau message</h1>
+<div class="container">
     <form action="new_pm.php" method="post">
+    <div id="page-wrapper">
+			<div class="main-page">
+			<h1>Nouveau message</h1><br>
+			<div class="form-group">
 		Merci de completer le message:<br />
-        <label for="title">Titre</label><input type="text" value="<?php echo htmlentities($otitle, ENT_QUOTES, 'UTF-8'); ?>" id="title" name="title" /><br />
-        <label for="recip">Destinataire<span class="small">(Email)</span></label><input type="text" value="<?php echo htmlentities($orecip, ENT_QUOTES, 'UTF-8'); ?>" id="recip" name="recip" /><br />
-        <label for="message">Message</label><textarea cols="40" rows="5" id="message" name="message"><?php echo htmlentities($omessage, ENT_QUOTES, 'UTF-8'); ?></textarea><br />
-        <input type="submit" value="Envoyer" />
+        Titre<input class="form-control" type="text" value="<?php echo htmlentities($otitle, ENT_QUOTES, 'UTF-8'); ?>" id="title" name="title" /><br />
+        Destinataire<span class="small">(Email)</span><input class="form-control" type="text" value="<?php echo htmlentities($orecip, ENT_QUOTES, 'UTF-8'); ?>" id="recip" name="recip" /><br />
+        Message<textarea class="form-control" cols="40" rows="5" id="message" name="message"><?php echo htmlentities($omessage, ENT_QUOTES, 'UTF-8'); ?></textarea><br />
+        <input class="btn btn-default btn-file" type="submit" value="Envoyer" />
+        </div>
     </form>
 </div>
 <?php

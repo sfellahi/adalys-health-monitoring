@@ -82,7 +82,8 @@ if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
 ?>
-                    <a href="new_category.php" class="btn btn-primary">Nouvelle Categorie</a></div></div></div>
+                    <a href="new_category.php" class="btn btn-primary" align="center">Nouvelle Categorie</a>
+                    </div></div></div>
 <?php
 }
 include("html/mainfooter.html");?>
