@@ -1,17 +1,19 @@
 <?php
 include('html/mainheader.php');
+mysqli_set_charset($link, "utf8");
 $id=$_GET['id'];
 $select_id_form="SELECT id_formulaire FROM ordre_question WHERE id_onglet=".$id."";
 $result_id_form=  mysqli_query($link, $select_id_form);
 $temp_id=mysqli_fetch_array($result_id_form);
 $select_name="SELECT colonne_assoc FROM ordre_question WHERE id_onglet!=".$id." AND id_formulaire=".$temp_id['id_formulaire']."";
-$request_name=  mysqli_query($link, $select_name);
 $othername=array();
+if($request_name=  mysqli_query($link, $select_name)){
+
 while($temp_name=  mysqli_fetch_array($request_name)){
     
     $othername[]=$temp_name['colonne_assoc'];
 }
-
+}
 function php2js ($var) {
     if (is_array($var)) {
         $res = "[";
@@ -35,12 +37,31 @@ function php2js ($var) {
 }
   $js = php2js($othername); // [1,2,[3,4],5,'salut',true]
 ?>
-<script>
-  var tableau_anc_name =<?php echo $js; ?>;
- 
-</script>
 <link href="css/formulaire.css" rel="stylesheet"> 
 <script>
+  var tableau_anc_name =<?php echo $js; ?>;
+ function no_accent(my_string)
+{
+// tableau accents
+		var pattern_accent = new Array(/À/g, /Á/g, /Â/g, /Ã/g, /Ä/g, /Å/g, /Æ/g, /Ç/g, /È/g, /É/g, /Ê/g, /Ë/g,
+		/Ì/g, /Í/g, /Î/g, /Ï/g, /Ð/g, /Ñ/g, /Ò/g, /Ó/g, /Ô/g, /Õ/g, /Ö/g, /Ø/g, /Ù/g, /Ú/g, /Û/g, /Ü/g, /Ý/g,
+		/Þ/g, /ß/g, /à/g, /á/g, /â/g, /ã/g, /ä/g, /å/g, /æ/g, /ç/g, /è/g, /é/g, /ê/g, /ë/g, /ì/g, /í/g, /î/g,
+		/ï/g, /ð/g, /ñ/g, /ò/g, /ó/g, /ô/g, /õ/g, /ö/g, /ø/g, /ù/g, /ú/g, /û/g, /ü/g, /ý/g, /ý/g, /þ/g, /ÿ/g);
+ 
+		// tableau sans accents
+		var pattern_replace_accent = new Array("A","A","A","A","A","A","A","C","E","E","E","E",
+		"I","I","I","I","D","N","O","O","O","O","O","O","U","U","U","U","Y",
+		"b","s","a","a","a","a","a","a","a","c","e","e","e","e","i","i","i",
+		"i","d","n","o","o","o","o","o","o","u","u","u","u","y","y","b","y");
+ 
+		//pour chaque caractere si accentué le remplacer par un non accentué
+		for(var i=0;i<pattern_accent.length;i++)
+		{
+			my_string = my_string.replace(pattern_accent[i],pattern_replace_accent[i]);
+		}
+		return my_string;
+}
+
     var arrayname= []; 
     function appelFonction(type1,name1,question1,reponse1,required1){
 
@@ -221,8 +242,8 @@ bloc.appendChild(nominatifquestion);
 <option value="radio">radio</option>
 </select>
 <input type="hidden" value="<?php echo $id; ?>" name="id">
-<span class="formuajout questionname">Identifiant (unique et sans espace) :</span>
- <input type="text" class="formuajout reponsename " id="name">
+<span class="formuajout questionname">Id (unique, sans espace, sans accents) :</span>
+<input type="text" class="formuajout reponsename " id="name" onkeydown="this.value=no_accent(this.value);this.value=this.value.replace(/ /g, '_');"  onkeyup="this.value=no_accent(this.value);this.value=this.value.replace(/ /g, '_');">
 
 <span class="formuajout questionquestion">Question :</span>
  <input type="text" class="formuajout reponsequestion" id="question">

@@ -6,7 +6,9 @@ if(isset($_POST['parent'])){
 }
 $recup_nb_form_onglet="SELECT formulaire.id_formulaire,project_formulaire.id_project,onglet.id_onglet FROM onglet LEFT JOIN formulaire ON formulaire.id_formulaire=onglet.id_formulaire LEFT JOIN project_formulaire ON formulaire.id_formulaire=project_formulaire.id_formulaire where id_onglet=".$id."";
 $result_nb = mysqli_query($link,$recup_nb_form_onglet);
+
 $temp_nb= mysqli_fetch_array($result_nb);
+$id_form=$temp_nb['id_formulaire'];
 $recup_question_onglet="SELECT * FROM ordre_question where id_onglet=".$id."";
 $result_question_onglet = mysqli_query($link,$recup_question_onglet);
 while($temp_question_onglet = mysqli_fetch_array($result_question_onglet))
@@ -39,19 +41,27 @@ $nom_table="donneeprojet".$temp_nb['id_project']."formulaire".$temp_nb['id_formu
         mysqli_query($link, $create_table);
 ?>
 
-<div id="page-wrapper">
-            <div class="main-page">
-                <div class="row">
-                   <?php           
-                   ?>
-                    
-                    
-                    
-                    
-                </div></div></div>
+			<div id="page-wrapper">
+				<div class="main-page">
+					<div class="row">
+						<div class="flat-table" style="margin:0 auto;margin-top:15%;width:18%;height:200px">
+							<div class="message"style="text-align:center ; font-weight:600;font-size:16px">L'onglet est en cours de suppression.<br /><br />
+								<div class="showbox">
+									<div class="loader">
+										<svg class="circular" viewBox="25 25 50 50">
+											<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 
 <?php
 include('html/mainfooter.html');
 ?>
+<meta http-equiv="refresh" content="3; URL=list_onglet.php?parent=<?php echo $id_form;?>">
