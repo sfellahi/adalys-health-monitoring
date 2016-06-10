@@ -233,7 +233,7 @@ bloc.appendChild(nominatifquestion);
 <span class="formuajout questionobligatoire">Champ obligatoire : </span>
 
 <input type="checkbox" class="boutoncheckbox"  name="required" id="oui" value="oui">
-<label for="oui" class="loadcheck miseenplace" style="margin-top:270px;margin-left:56%;" id="loadcheck">
+<label for="oui" class="loadcheck miseenplace" style="margin-top:360px;margin-left:11%;" id="loadcheck">
   <span class="entypo-cancel">&#10008;</span>
   <span class="load"></span>
   <span class="load"></span>
@@ -292,7 +292,8 @@ echo "<script>appelFonction('".$typequestion."','".$colonne_assoc."','".$questio
 ?>
 
    <INPUT TYPE="hidden" NAME="value1">
-   <input type="submit" class="btn btn-info" style="margin-left:25%" value="soumettre"/>
+   <input type="submit" class="btn btn-info" style="margin-left:65%" value="soumettre"/>
+   <div class="blocvide">&nbsp;</div>
 </form>       
 
     </div>
