@@ -52,9 +52,15 @@ if(isset($_POST['formulaire'])){
     .submit:hover{
         background-color:#65709D;
     }#ajoutpatient.label{
-        margin-left:20px;
+        margin-left:40px;
     }
-    
+    .question{
+        text-decoration: underline;
+        height:30px;
+    }
+    .checkboxajout{
+        margin-left:5%;
+    }
     </style>
 <div id="page-wrapper">
 			<div class="main-page" onload="window.print()">
@@ -96,10 +102,10 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		$solution_checkbox = explode(";", $temp_select_question[$aa]);
 	$i=0;
 	$k=count($solution_checkbox);
-		echo $temp_select_question['question'];?><br/><?php
+        ?><span class="question"><?phpecho $temp_select_question['question'];?></span>&nbsp;<?php
 	while($i<$k){
 ?>
-	<input type="checkbox" class="" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>" value="<?php echo $solution_checkbox[$i];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>"><?php echo $solution_checkbox[$i];?></label>
+        <span class="reponsesajout checkboxajout"><input type="checkbox" class="question_push" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>" value="<?php echo $solution_checkbox[$i];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>"><?php echo $solution_checkbox[$i];?></label></span>
 	<?php $i++;
 	}
 	echo "<br/>";
@@ -110,50 +116,52 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		$solution_radio = explode(";", $temp_select_question[$aa]);
 	$i2=0;
 	$k2=count($solution_radio);	
-	echo $temp_select_question['question'];?><br/><?php
+	?><span class="question"><?php echo $temp_select_question['question'];?></span>&nbsp;<?php
 	while($i2<$k2){
 ?>
-	<input type="radio" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i2; ?>" value="<?php echo $solution_radio[$i2];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i2; ?>"><?php echo $solution_radio[$i2];?></label>
-	<?php $i2++;
-	}	echo "<br/>";
+	<span class="reponsesajout checkboxajout"><input type="radio" class="question_push" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i2; ?>" value="<?php echo $solution_radio[$i2];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i2; ?>"><?php echo $solution_radio[$i2];?></label>
+        </span>
+            <?php $i2++;
+	}	echo "<br/>";echo "<br/>";
 		}
 		
 		elseif($temp_recup_question['type_question']=='text'){
-			echo $temp_select_question['question'];?><br/><?php
-		$aa="reponse_".$temp_recup_question['type_question']."";
+		?><span class="question"><?php echo $temp_select_question['question'];?></span>&nbsp;<?php
+	$aa="reponse_".$temp_recup_question['type_question']."";
 		if($temp_select_question[$aa]=='date'){
-		?><input type="<?php echo $temp_select_question[$aa]; ?>" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" placeholder="YYYY-MM-JJ" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"/><?php
+		?><input type="<?php echo $temp_select_question[$aa]; ?>" class="question_push" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" placeholder="YYYY-MM-JJ" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"/><?php
 		}
 		else
 		{
-		?><input type="<?php echo $temp_select_question[$aa]; ?>" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"/><?php 
+		?><input type="<?php echo $temp_select_question[$aa]; ?>" class="question_push" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"/><?php 
 		}
-		echo "<br/>";
+		echo "<br/>";echo "<br/>";
 		
 		}				
 		elseif($temp_recup_question['type_question']=='textarea'){
 		
 		$aa="reponse_".$temp_recup_question['type_question']."";
-		echo $temp_select_question[$aa];
-		?> 
-		<br/>
+                ?><span><?php echo $temp_select_question[$aa];?> </span>
+               
+	
+		&nbsp;
 		<textarea name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc']; ?>"></textarea>
 		<?php
-		echo "<br/>";
+		echo "<br/>";echo "<br/>";
 		}
 				elseif($temp_recup_question['type_question']=='selection'){
 		$aa="reponse_".$temp_recup_question['type_question']."";
 		$solution_select = explode(";", $temp_select_question[$aa]);
 	$i3=0;
 	$k3=count($solution_select);	
-	echo $temp_select_question['question'];?><br/>
+        ?><span class="question"><?php echo $temp_select_question['question'];?></span>&nbsp;
 	<select name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc']; ?>">
 	<?php
 	while($i3<$k3){
 ?>
 <option value="<?php echo $solution_select[$i3];?>"><?php echo $solution_select[$i3];?></option>
 	<?php $i3++;
-	}	echo "</select><br/>";
+	}	echo "</select><br/>";echo "<br/>";
 		}
 		
 		}

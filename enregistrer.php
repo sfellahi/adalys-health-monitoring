@@ -41,7 +41,7 @@ while ($i <= $nb ) {
     	mysqli_query($link2,'insert into text (question, reponse_text) VALUES ("'.$pieces[$i+2].'","'.$pieces[$i].'")');
         $result = mysqli_query($link2,'select max(id_text) as maxi from text');
         $row = mysqli_fetch_array($result);
-        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc, id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.$pieces[$i+1].'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
+        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc, id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.trim($pieces[$i+1]).'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
         {
             ?>
             <div id="page-wrapper">
@@ -58,7 +58,7 @@ while ($i <= $nb ) {
     	mysqli_query($link2,'insert into selection (question, reponse_selection) VALUES ("'.$pieces[$i+2].'","'.$pieces[$i+3].'")');
         $result = mysqli_query($link2,'select max(id_selection) as maxi from selection');
         $row = mysqli_fetch_array($result);
-        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc, id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.$pieces[$i+1].'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
+        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc, id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.trim($pieces[$i+1]).'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
         {
             ?>
             <div id="page-wrapper">
@@ -75,7 +75,7 @@ while ($i <= $nb ) {
     	mysqli_query($link2,'insert into text (question, reponse_text) VALUES ("'.$pieces[$i+2].'","'.$pieces[$i].'")');
         $result = mysqli_query($link2,"SELECT MAX(id_text) as maxi FROM text");
         $row = mysqli_fetch_array($result);
-        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.$pieces[$i+1].'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
+        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.trim($pieces[$i+1]).'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
         {
             ?>
             <div id="page-wrapper">
@@ -92,7 +92,7 @@ while ($i <= $nb ) {
     	mysqli_query($link2,'insert into textarea (question) VALUES ("'.$pieces[$i+2].'")');
         $result = mysqli_query($link2,"SELECT MAX(id_textarea) as maxi FROM textarea");
         $row = mysqli_fetch_array($result);
-        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.$pieces[$i+1].'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
+        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.trim($pieces[$i+1]).'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
         {
            ?>
             <div id="page-wrapper">
@@ -108,7 +108,7 @@ while ($i <= $nb ) {
     	mysqli_query($link2,'insert into checkbox (question,reponse_checkbox) VALUES ("'.$pieces[$i+2].'","'.$pieces[$i+3].'")');
         $result = mysqli_query($link2,"SELECT MAX(id_checkbox) as maxi FROM checkbox");
         $row = mysqli_fetch_array($result);
-        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.$pieces[$i+1].'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
+        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.trim($pieces[$i+1]).'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
         {
             ?>
             <div id="page-wrapper">
@@ -124,7 +124,7 @@ while ($i <= $nb ) {
         mysqli_query($link2,'insert into radio (question,reponse_radio) VALUES ("'.$pieces[$i+2].'","'.$pieces[$i+3].'")');
         $result = mysqli_query($link2,"SELECT MAX(id_radio) as maxi FROM radio");
         $row = mysqli_fetch_array($result);
-        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.$pieces[$i+1].'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
+        if (!mysqli_query($link2,'insert into ordre_question (type_question, id_type, colonne_assoc,id_onglet, id_formulaire) VALUES ("'.$pieces[$i].'","'.$row["maxi"].'","'.trim($pieces[$i+1]).'","'.$id.'","'.$dnn2['id_formulaire'].'")'))
         {
             ?>
             <div id="page-wrapper">
@@ -155,7 +155,7 @@ while ($i <= $nb ) {
         $create_table="CREATE TABLE donneeprojet".$dnn2['id_project']."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,";
         while($temp_name=  mysqli_fetch_array($result_table_formulaire)){
             
-         $create_table.="`".$temp_name['colonne_assoc']."` VARCHAR (255),";   
+         $create_table.="`".trim($temp_name['colonne_assoc'])."` VARCHAR (255)  CHARACTER SET utf8 COLLATE utf8_unicode_ci,";   
             
         }
         $create_table.="time_modification TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP";
