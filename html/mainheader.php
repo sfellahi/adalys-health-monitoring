@@ -323,6 +323,7 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                                                                                             
                                                                                                                                             
                                                                                                                                             ?>
+                                                                                                                                            <li style="margin-left:40px;">
                                                                   <form action="info_patient.php" method="POST">
                                                                                                                                             <input type="hidden" id="project" name="project" value="<?php echo $temp_formulaire_en_cours['id_project']; ?>">
                                                                                                                                                 <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">                                                                                                                                               
