@@ -102,7 +102,7 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		$solution_checkbox = explode(";", $temp_select_question[$aa]);
 	$i=0;
 	$k=count($solution_checkbox);
-        ?><span class="question"><?phpecho $temp_select_question['question'];?></span>&nbsp;<?php
+        ?><span class="question"><?php echo $temp_select_question['question'];?></span>&nbsp;<?php
 	while($i<$k){
 ?>
         <span class="reponsesajout checkboxajout"><input type="checkbox" class="question_push" name="<?php echo $temp_recup_question['colonne_assoc']; ?>" id="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>" value="<?php echo $solution_checkbox[$i];?>"/><label for="<?php echo $temp_recup_question['colonne_assoc'].$i; ?>"><?php echo $solution_checkbox[$i];?></label></span>
