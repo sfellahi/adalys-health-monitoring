@@ -22,9 +22,10 @@ $table = "donneeprojet".$id_projet."formulaire".$id_form;
     
     <div id="page-wrapper">
     <div class="main-page">Le fichier <?php echo $table.'.csv';?> a été exporté<br>
-    <a download="<?php echo $table.'.csv'?>" href="<?php echo $table.'.csv'?>">Clickez ici pour le telecharger</a>
+    <a href="<?php echo 'export/'.$table.'.csv'?>" download >Cliquez ici pour le telecharger</a>
    
     </div></div>
+    
     <?php
     mysqli_close($link);
  	
