@@ -226,37 +226,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<li>
 								<a href="index.php" class="active"><i class="fa fa-home nav_icon"></i>Accueil</a>
 							</li>
-							 <?php if($_SESSION['profil']=="medecin")
-							{ ?>
-							<li>
-								<a href="#"><i class="fa fa-book nav_icon"></i>Patients<span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level collapse">
-									<li>
-										<a href="">Ajouter un patient</a>
-									</li>
-									<li>
-										<a href="typography.html">Liste des patients</a>
-									</li>
-								</ul>
-								<!-- /nav-second-level -->
-							</li>
-							
-                            <?php 
-                        	}
-						?>
+							 
 						 <?php if($_SESSION['profil']=="super_admin")
 							{ ?>
-							<li>
-								<a href="#"><i class="fa fa-book nav_icon"></i>Patients<span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level collapse">
-									<li>
-										<a href="patient.php">Ajouter un patient</a>
-									</li>
-									<li>
-										<a href="typography.html">Liste des patients</a>
-									</li>
-								</ul>
-                                                        </li>
+							
                                                         <li>
 								<!-- /nav-second-level -->
 								<a href="#"><i class="fa fa-book nav_icon"></i>Administration<span class="fa arrow"></span></a>
@@ -327,7 +300,7 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                                                                                             
                                                                                                                                             ?>
                                                                                                                                         <li style="margin-left:40px;">
-                                                                                                                                            <form action="info_patient.php" method="POST">
+                                                                                                                                            <form action="ajout_patient.php" method="POST">
                                                                                                                                                 <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">                                                                                                                                               
                                                                   <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:45px;font-size:90%" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
                                                                                                                                             </form>
@@ -341,7 +314,8 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                   <a href="#"><i class="fa fa-hospital-o nav_icon"></i>Liste des patients<span class="fa arrow"></span></a>
                                                                    <ul class="nav nav-third-level collapse">
                                                                    <li style="margin-left:40px;">
-                                                                                                                                            <form action="ajout_patient.php" method="POST">
+                                                                                                                                            <form action="info_patient.php" method="POST">
+                                                                                                                                            <input type="hidden" id="project" name="project" value="<?php echo $temp_formulaire_en_cours['id_project']; ?>">
                                                                                                                                                 <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">                                                                                                                                               
                                                                   <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:45px;font-size:90%" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
                                                                                                                                             </form>

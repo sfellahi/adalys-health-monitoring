@@ -1,5 +1,4 @@
 <?php
-ob_start();
 include('html/mainheader.php');
 
 if(isset($_POST['formulaire']) and isset($_POST['project'])){
