@@ -140,8 +140,7 @@ $resultat_recup_question=mysqli_query($link,$recup_question) or die(mysqli_error
 		}				
 		elseif($temp_recup_question['type_question']=='textarea'){
 		
-		$aa="reponse_".$temp_recup_question['type_question']."";
-                ?><span><?php echo $temp_select_question['question'];?> </span>
+                ?><span class="question"><?php echo $temp_select_question['question'];?></span>
                
 	
 		&nbsp;
