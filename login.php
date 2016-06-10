@@ -61,27 +61,27 @@ $opseudo = '';
 <body class="login-bg">
 		<div class="login-body">
 			<div class="login-heading">
-				<h1>Login</h1>
+				<h1>Connexion</h1>
 			</div>
 			<div class="login-info">
 				<form action="login.php" method="post">
 					<input type="text" class="user" name="email" placeholder="Email" required="">
-					<input type="password" name="password" class="lock" placeholder="Password">
+					<input type="password" name="password" class="lock" placeholder="Mot de passe">
 					<div class="forgot-top-grids">
 						<div class="forgot-grid">
 							<ul>
 								<li>
 									<input type="checkbox" id="brand1" value="">
-									<label for="brand1"><span></span>Remember me</label><input type="checkbox" name="memorize" id="memorize" value="yes" /><br />
+									<label for="brand1"><span></span>Se souvenir de mes identifiants</label><input type="checkbox" name="memorize" id="memorize" value="yes" /><br />
 								</li>
 							</ul>
 						</div>
 						<div class="forgot">
-							<a href="pass_forgot.php">Forgot password?</a>
+							<a href="pass_forgot.php">Mot de passe oublié</a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
-					<input type="submit" name="Sign In" value="Login">
+					<input type="submit" name="Sign In" value="Connexion">
 					<?php
 						if($form)
 						{
@@ -103,7 +103,7 @@ $opseudo = '';
 						}
 					?>
 					<div class="signup-text">
-						<a href="signup.php">Don't have an account? Create one now</a>
+						<a href="signup.php">Créer un compte</a>
 					</div>
 				</form>
 			</div>

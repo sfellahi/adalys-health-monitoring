@@ -2495,19 +2495,19 @@ button#default-map-btn, button#green-map-btn, button#blue-map-btn,button#grey-ma
 .login-bg{
     background: url(../images/l4.jpg) no-repeat 0px 0px;
     background-size: cover;
-    padding: 7em 0;
+    padding: 16em 0;
 }
 .login-body{
 	width: 30%;
     margin:0 auto;
 }
 .login-heading{
-    background: #32CD32;
+    background: #7ACB01;
     padding: 3em 0em;
 }
 .login-heading h1{
     color: #FFFFFF;
-    font-size: 2em;
+    font-size: 2.5em;
 	text-align:center;
 }
 .login-info{
@@ -3812,7 +3812,7 @@ ul.nofitications-dropdown {
 		padding: 2em 1.5em 1em;
 	}
 	.login-bg {
-		padding: 3em 0;
+		padding: 4em 0;
 	}
 	.login-body {
 		width: 90%;
