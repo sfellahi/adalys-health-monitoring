@@ -5,56 +5,58 @@
         padding-left:5px;
         padding-top:15px;
         padding-bottom:15px;
+        margin-left:40%;
         width:56%; 
         display:block;
     font-size:110%;
     }
     .formuajout{
 float:left;
-margin-left:50%;
-	min-width: 150px;
+margin-left:5%;
+min-width: 150px;
 position:fixed;
 width:20%;
 
 }
 .questiontype{
 color:white;
+margin-top:90px;
 }
 
 .typeselect{
-margin-top:30px;
+margin-top:120px;
 
 }
 .questionname{
-margin-top:60px;
+margin-top:150px;
 color:white;
 }
 .reponsename{
-margin-top:90px;
+margin-top:180px;
 }
 .questionquestion{
-margin-top:120px;
+margin-top:210px;
 color:white;
 }
 .reponsequestion{
-margin-top:150px;
+margin-top:240px;
 }
 .questionreponse{
-margin-top:180px;
+margin-top:270px;
 color:white;
 }
 .reponsereponse{
-margin-top:210px;
+margin-top:300px;
 }
 
 .bouton_ajouter{
     
-    top:450px;
+    top:540px;
 }
 .bouton_supprimer{
 position:absolute;
 margin-top:20px;
-margin-left:35%;
+margin-left:70%;
 border:none;
 background-color:#EEEEEE;
 background-image: url(../images/boutonmoins.png);
@@ -65,25 +67,25 @@ width:50px;
 height:50px;
 }
 .questionobligatoire{
-margin-top:240px;
+margin-top:330px;
 
  }
 
 .reponseobligatoire1{
-top:375px;
-padding-left:50%;
+top:465px;
+padding-left:5%;
  }
  .reponseobligatoire2{
-top:375px;
+top:465px;
 
  }
  .questionobligatoiretext1{
-margin-top:270px;
+margin-top:360px;
 	font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;
  }
  .questionobligatoiretext2{
-margin-top:270px;
+margin-top:360px;
 	font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;
   padding-left:75px;
@@ -91,14 +93,15 @@ margin-top:270px;
 
  #blockdequestion{
 
-margin-left:50%;
+
 	min-width: 170px;
 position:fixed;
 width:25%;
 height:440px;
 border:8px solid #2a2f43;
-margin-left:48%;
-margin-top:-20px;
+margin-left:3%;
+margin-top:70px;
+
 background-color:#65709D;
 }
 
@@ -129,10 +132,11 @@ background-color:#65709D;
   display:none;
 }
 #loadcheck {
-  position:absolute;
+  position:fixed;
   left:0;
   right:0;
-  margin:30px auto;
+  margin:60px auto;
+ margin-top:90px;
 }
 
 .loadcheck {
@@ -202,4 +206,8 @@ span[class*="oui"]{
     
 position:relative;
 
+}
+.blocvide{
+    height:30px;
+    
 }

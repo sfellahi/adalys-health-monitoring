@@ -51,7 +51,10 @@ if(isset($_POST['formulaire'])){
     }
     .submit:hover{
         background-color:#65709D;
+    }#ajoutpatient.label{
+        margin-left:20px;
     }
+    
     </style>
 <div id="page-wrapper">
 			<div class="main-page" onload="window.print()">
@@ -67,7 +70,7 @@ $sql_num_projet="SELECT id_project FROM project_formulaire WHERE id_formulaire="
 $req_num_projet=  mysqli_query($link, $sql_num_projet);
 $temp_num_projet = mysqli_fetch_assoc($req_num_projet);
 ?> 
-<form method="POST" action="enregistrer_patient.php">
+<form method="POST" name="ajoutpatient" id="ajoutpatient" action="enregistrer_patient.php">
     <input type="hidden" name="formulaire" id="formulaire" value="<?php echo $formulaire;?>" >
    <input type="hidden" name="projet" id="projet" value="<?php echo $temp_num_projet['id_project'];?>" >
  <?php
