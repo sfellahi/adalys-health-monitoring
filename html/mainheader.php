@@ -264,6 +264,31 @@ if ($_SESSION ['profil'] == "super_admin") {
 									<li><a href="new_project.php">Créer un projet</a></li>
 									<li><a href="list_project.php">Liste des projets</a></li>
 								</ul> <!-- //nav-second-level --></li>
+                                                                                                                        <li>
+                                                                     <a href="#"><i class="fa fa-hospital-o nav_icon"></i>Liste des patients<span class="fa arrow"></span></a>
+                                                                  <ul class="nav nav-second-level collapse">
+                                                                  
+                                                                  <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,project_formulaire.id_project,formulaire.nom_formulaire,etat_formulaire ";
+                                                                                                                                                    $sql_formulaire.="FROM project_formulaire LEFT JOIN formulaire ";
+                                                                                                                                                    $sql_formulaire.="ON project_formulaire.id_formulaire=formulaire.id_formulaire ";
+                                                                                                                                                    $sql_formulaire.="WHERE etat_formulaire!='En création' "; 
+                                                                                                                                                    $result_liste_formulaire=mysqli_query($link, $sql_formulaire);
+                                                                                                                                                    while($temp_formulaire_en_cours=  mysqli_fetch_array($result_liste_formulaire)){
+                                                                                                                                                        
+                                                                                                                                                   
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                                            ?>
+                                                                                                                                            <li style="margin-left:40px;">
+                                                                  <form action="info_patient.php" method="POST">
+                                                                                                                                            <input type="hidden" id="project" name="project" value="<?php echo $temp_formulaire_en_cours['id_project']; ?>">
+                                                                                                                                                <input type="hidden" id="formulaire" name="formulaire" value="<?php echo $temp_formulaire_en_cours['id_formulaire']; ?>">                                                                                                                                               
+                                                                  <input type="submit" style="background-color:transparent;color:white;border:none;padding-top:7px;margin-left:45px;font-size:90%" value="Formulaire <?php echo $temp_formulaire_en_cours['nom_formulaire']; ?>">
+                                                                                                                                            </form>
+                                                                 </li>
+                                                                 <?php } ?>
+                                                                </ul>
+                                                                </li>
                                                         <?php
 						
 }
