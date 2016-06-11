@@ -1,5 +1,7 @@
 <meta http-equiv="refresh" content="2; URL=list_project.php">
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 //This page let display the list of topics of a category
 include('html/mainheader.php');
 

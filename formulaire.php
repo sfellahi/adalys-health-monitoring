@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 include('html/mainheader.php');
 mysqli_set_charset($link, "utf8");
 $id=$_GET['id'];

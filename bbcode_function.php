@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 //This function let convert BBcode to HTML
 function bbcode_to_html($text)
 {

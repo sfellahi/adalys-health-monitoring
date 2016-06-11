@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 include("html/mainheader.php");
 if(isset($_POST['formulaire'])){ $formulaire=$_POST['formulaire'];}
 if(isset($_POST['projet'])){ $projet=$_POST['projet'];}

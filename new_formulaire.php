@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 //This page let display the list of topics of a category
 include('html/mainheader.php');
 if(isset($_GET['parent']))

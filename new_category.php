@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 //This page let create a new category
 include('html/mainheader.php');
 if(isset($_SESSION['email']) and $_SESSION['email']==$admin)

@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 //This page let an user edit his profile
 include("html/mainheader.php");
 

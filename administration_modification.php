@@ -1,4 +1,6 @@
   <?php
+  // Cacher les warnings
+  ini_set("display_errors",0);error_reporting(0);
 include('html/mainheader.php');
 ?>
 <div id="page-wrapper">
@@ -10,7 +12,7 @@ include('html/mainheader.php');
 <body>
   <?php
     //connection au serveur:
-    $cnx = mysql_connect( "localhost", "root", "root" ) ;
+    $cnx = mysql_connect( "localhost", "root", "" ) ;
  
     //sélection de la base de données:
     $db = mysql_select_db( "adalys" ) ;

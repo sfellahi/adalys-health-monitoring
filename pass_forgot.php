@@ -1,4 +1,6 @@
 <?php
+// Cacher les warnings
+ini_set("display_errors",0);error_reporting(0);
 include("html/header.html");
 include("config.php");
 ini_set("max_execution_time", 60);  
