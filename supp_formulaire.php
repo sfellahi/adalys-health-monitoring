@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="2; URL=list_project.php">
 <?php
 //This page let display the list of topics of a category
 include('html/mainheader.php');
