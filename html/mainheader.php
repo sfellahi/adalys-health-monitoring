@@ -308,7 +308,7 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
                                                                 <ul class="nav nav-second-level collapse">
                                                                  <li>
                                                                 
-                                                                <a href="#"><i class="fa fa-user-md nav_icon"></i>Ajouters des patients<span class="fa arrow"></span></a>
+                                                                <a href="#"><i class="fa fa-user-md nav_icon"></i>Ajouter des patients<span class="fa arrow"></span></a>
                                                                    <ul class="nav nav-third-level collapse">
                                                                                                                                             
                                                                   <?php $sql_formulaire="SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
