@@ -18,7 +18,19 @@ if(isset($_GET['parent']))
 			if(mysqli_query($link,'insert into project_formulaire (id_project, id_formulaire) VALUES ("'.$id.'", "'.$dnn2['id_formulaire'].'")'))
 
 			{
-				echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL)";
+                            
+                            $create_onglet_init="INSERT INTO `onglet` (`id_formulaire`, `nom_onglet`) VALUES ('".$dnn2['id_formulaire']."', 'Initialisation')";
+                            mysqli_query($link, $create_onglet_init);
+                           echo  $dernier_onglet = mysql_insert_id ();
+                            $insert_question_init_ordre_question="";
+                            $insert_question1_init_text="INSERT INTO `text` (`id_text`, `question`, `reponse_text`) VALUES (NULL, 'Nom du patient :', 'text')";
+                            mysqli_query($link, $insert_question_init_text);
+                           echo  $dernier_text1 = mysql_insert_id ();
+                            echo $insert_question1_init_ordre_question="INSERT INTO `ordre_question` (`type_question`, `id_type`, `colonne_assoc`, `qrequired`, `id_formulaire`, `id_onglet`)";
+                            $insert_question1_init_ordre_question.="VALUES ('text', '$dernier_text1', 'nom', 'oui','".$dnn2['id_formulaire']."', '$dernier_onglet')";
+                            mysqli_query($link, $insert_question1_init_ordre_question);
+                            
+				echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL,nom VARCHAR(255) CHARSET UTF8";
 				mysqli_query($link,$sql_create_table_formulaire);
 				?>
 				<div id="page-wrapper">
@@ -39,7 +51,7 @@ if(isset($_GET['parent']))
 					</div>
 				</div>
 				<?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="4; URL=list_project.php">
+				<!-- <meta http-equiv="refresh" content="4; URL=list_project.php">-->
 				<?php
 			}
                 }
