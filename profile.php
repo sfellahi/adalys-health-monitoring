@@ -1,6 +1,4 @@
 <?php
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 //This page display the profile of an user
 include("html/mainheader.php");
 

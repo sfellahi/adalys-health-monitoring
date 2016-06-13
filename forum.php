@@ -1,6 +1,4 @@
 <?php
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 //This page displays the list of the forum's categories
 include('html/mainheader.php');
 ?>

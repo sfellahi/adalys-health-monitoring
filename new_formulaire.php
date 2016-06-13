@@ -1,5 +1,4 @@
 <?php
-// Cacher les warnings
 
 //This page let display the list of topics of a category
 include('html/mainheader.php');

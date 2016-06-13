@@ -1,6 +1,4 @@
 <?php
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 //This page let display the list of personnal message of an user
 include("html/mainheader.php");
 

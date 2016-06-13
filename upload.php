@@ -1,6 +1,4 @@
 <?php include("html/mainheader.php");
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 
       if(!empty($_FILES['fichier_upload']['name']))
       {

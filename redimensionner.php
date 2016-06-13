@@ -1,6 +1,4 @@
 <?php
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 function modif_taille_img($photo,$hauteur,$largeur, $rep_Dst, $img_Dst){
 				
 $chemin="$rep_Dst/$img_Dst";

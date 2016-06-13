@@ -1,6 +1,4 @@
 <?php
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 ob_start();
 //Cette page permet aux utilisateurs de se connecter ou de se deconnecter
 include('html/mainheader.php');

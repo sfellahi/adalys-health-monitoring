@@ -1,6 +1,4 @@
 <?php
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 //Cette page permet d'initialiser le site en verifiant par exemple si le membre est connecté
 session_start();
      mysqli_set_charset($link, "utf8");

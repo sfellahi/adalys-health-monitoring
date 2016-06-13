@@ -1,6 +1,4 @@
 <?php 
-// Cacher les warnings
-ini_set("display_errors",0);error_reporting(0);
 include("html/mainheader.php");
 $sql_nombre_projet='SELECT id_project FROM projects';
         $result_recup_nb_projet = mysqli_query($link,$sql_nombre_projet);
