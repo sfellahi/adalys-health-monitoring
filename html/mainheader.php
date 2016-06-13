@@ -377,6 +377,10 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
 								<a href="forum.php" class="community-nav"><i class="fa fa-users nav_icon"></i>Communaut&eacute</a>
 							</li>
 							
+							<li>
+								<a href="fiche_suivi.php" class="community-nav"><i class="fa fa-users nav_icon"></i>Communaut&eacute</a>
+							</li>
+							
 						
 						</ul>
 					</div>

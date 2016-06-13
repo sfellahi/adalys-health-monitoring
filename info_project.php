@@ -21,7 +21,8 @@ $dn1 = mysqli_query($link,'select id_user from project_user where id_project = "
 while($dnn1 = mysqli_fetch_array($dn1)){
 	$dn3 = mysqli_query($link,'select nom, prenom from users where id = "'.$dnn1['id_user'].'"');
 	$dnn3 = mysqli_fetch_array($dn3);
-	echo $dnn3['nom'] ." ". $dnn3['prenom'];?><br><?php
+	$nom_complet = $dnn3['nom'] ." ". $dnn3['prenom'];
+	echo $nom_complet ;
 }
 ?>
 </td>

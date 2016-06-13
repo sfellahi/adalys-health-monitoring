@@ -34,9 +34,9 @@ if ($rep['date_naissance']== $_POST['date']){
 		$mail->Host = "smtp.gmail.com";
 		$mail->Port = 587; 
 														  
-		$mail->From       = "hdovan95@gmail.com";
-		$mail->Username   = "hdovan95@gmail.com";     // SMTP server username
-		$mail->Password   = "******";//Met ton mail et pass
+		$mail->From       = "adalysisep@gmail.com";
+		$mail->Username   = "adalysisep@gmail.com";     // SMTP server username
+		$mail->Password   = "aqwxsz123";//Met ton mail et pass
 		$mail->FromName   = "Admin Adalys";
 		$mail->Subject    = "Nouveau Mot de passe";
 		$mail->AltBody    = "This is the body when user views in plain text format"; 
