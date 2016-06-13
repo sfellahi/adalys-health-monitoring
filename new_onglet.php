@@ -30,7 +30,7 @@ if(isset($_GET['parent']))
 				</div>
 			</div>
 			<?php include("html/mainfooter.html");?>
-			<meta http-equiv="refresh" content="4; URL=list_onglet.php?parent=<?php echo $id;?>">
+			<meta http-equiv="refresh" content="2; URL=list_onglet.php?parent=<?php echo $id;?>">
 			<?php
 
 		}

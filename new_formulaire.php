@@ -9,7 +9,7 @@ if(isset($_GET['parent']))
 	{
 		$nom = $_POST['formulaire'];
                   mysqli_set_charset($link, "utf8");
-               $insert_formulaire="insert into formulaire (nom_formulaire,etat_formulaire) VALUES ('".$nom."','En création')";
+               $insert_formulaire="insert into formulaire (nom_formulaire,etat_formulaire) VALUES ('".$nom."','En cr&eacute;ation')";
 		if(mysqli_query($link2,$insert_formulaire))
 		{
 			$dn2 = mysqli_query($link,'select id_formulaire from formulaire where nom_formulaire = "'.$nom.'"');
@@ -89,7 +89,7 @@ if(isset($_GET['parent']))
 					</div>
 				</div>
 				<?php include("html/mainfooter.html");?>
-				<meta http-equiv="refresh" content="4; URL=list_project.php">
+				<meta http-equiv="refresh" content="2; URL=list_project.php">
 				<?php
 			}
                 }

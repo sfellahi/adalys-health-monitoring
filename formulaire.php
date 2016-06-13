@@ -235,11 +235,11 @@ bloc.appendChild(nominatifquestion);
 <span class="formuajout questiontype">Type :</span>
 <select id="typequestion" class="formuajout typeselect" style="color:black;" Onchange="Formulaireadaptatif(this.value);">
 <option value="selection">Selection</option>
-<option value="text">texte</option>
-<option value="textarea">textarea</option>
-<option value="number">nombre</option>
-<option value="checkbox">checkbox</option>
-<option value="radio">radio</option>
+<option value="text">Champ de caractère</option>
+<option value="textarea">Grand champ de caractère</option>
+<option value="number">Champ de nombre uniquement</option>
+<option value="checkbox">Case à cocher</option>
+<option value="radio">Une seule réponse parmi plusieurs</option>
 </select>
 <input type="hidden" value="<?php echo $id; ?>" name="id">
 <span class="formuajout questionname">Id (unique, sans espace, sans accents) :</span>

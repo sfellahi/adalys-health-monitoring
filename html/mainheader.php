@@ -407,7 +407,7 @@ $sql_formulaire2 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 									class="fa fa-users nav_icon"></i>Communaut&eacute</a></li>
 
 							<li><a href="fiche_suivi.php" class="community-nav"><i
-									class="fa fa male nav_icon"></i>Suivi </a></li>
+									class="fa fa-male nav_icon"></i>Fiche de suivi</a></li>
 
 
 						</ul>
