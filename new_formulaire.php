@@ -1,4 +1,5 @@
 <?php
+
 //This page let display the list of topics of a category
 include('html/mainheader.php');
 if(isset($_GET['parent']))
@@ -16,7 +17,58 @@ if(isset($_GET['parent']))
 			if(mysqli_query($link,'insert into project_formulaire (id_project, id_formulaire) VALUES ("'.$id.'", "'.$dnn2['id_formulaire'].'")'))
 
 			{
-				echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL)";
+                            
+                            $create_onglet_init="INSERT INTO `onglet` (`id_formulaire`, `nom_onglet`) VALUES ('".$dnn2['id_formulaire']."', 'Initialisation')";
+                            mysqli_query($link, $create_onglet_init);
+                            
+                            
+                            // Recuperation dernier onglet
+                            
+                               $result_onglet = mysqli_query($link,'select max(id_onglet) as maxi from onglet');
+                                $dernier_onglet = mysqli_fetch_array($result_onglet);
+                         
+                                
+                                // Ajout nom 
+                            $insert_question1_init_text="INSERT INTO `text` (`id_text`, `question`, `reponse_text`) VALUES (NULL, 'Nom du patient :', 'text')";
+                            mysqli_query($link, $insert_question1_init_text);
+                            
+                         
+                               $result_text1 = mysqli_query($link,'select max(id_text) as maxi1 from text');
+                                $dernier_text1 = mysqli_fetch_array($result_text1);
+                         
+                           $insert_question1_init_ordre_question="INSERT INTO `ordre_question` (`type_question`, `id_type`, `colonne_assoc`, `qrequired`, `id_formulaire`, `id_onglet`)";
+                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text1['maxi1']."', 'nom', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
+                            mysqli_query($link, $insert_question1_init_ordre_question);
+                            
+                              // Ajout prenom      
+                            $insert_question2_init_text="INSERT INTO `text` (`question`, `reponse_text`) VALUES ('Prenom du patient :', 'text')";
+                            mysqli_query($link, $insert_question2_init_text);
+                            
+                         
+                               $result_text2 = mysqli_query($link,'select max(id_text) as maxi2 from text');
+                                $dernier_text2 = mysqli_fetch_array($result_text2);
+                         
+                           $insert_question1_init_ordre_question="INSERT INTO `ordre_question` (`type_question`, `id_type`, `colonne_assoc`, `qrequired`, `id_formulaire`, `id_onglet`)";
+                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text2['maxi2']."', 'nom', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
+                            mysqli_query($link, $insert_question1_init_ordre_question);
+                            
+                            // Ajout adresse 
+                            
+                                 $insert_question3_init_text="INSERT INTO `text` (`question`, `reponse_text`) VALUES ('Adresse du patient :', 'text')";
+                            mysqli_query($link, $insert_question3_init_text);
+                            
+                         
+                               $result_text3 = mysqli_query($link,'select max(id_text) as maxi3 from text');
+                                $dernier_text3 = mysqli_fetch_array($result_text3);
+                         
+                           $insert_question1_init_ordre_question="INSERT INTO `ordre_question` (`type_question`, `id_type`, `colonne_assoc`, `qrequired`, `id_formulaire`, `id_onglet`)";
+                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text3['maxi3']."', 'nom', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
+                            mysqli_query($link, $insert_question1_init_ordre_question);
+                            
+                            
+                            
+                            
+				echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL,nom VARCHAR(255) CHARSET UTF8)";
 				mysqli_query($link,$sql_create_table_formulaire);
 				?>
 				<div id="page-wrapper">

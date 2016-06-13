@@ -1,4 +1,5 @@
 <?php
+
 include('html/mainheader.php');
 
 if(isset($_POST['formulaire']) and isset($_POST['project'])){
@@ -22,11 +23,20 @@ $table = "donneeprojet".$id_projet."formulaire".$id_form;
     
     <div id="page-wrapper">
     <div class="main-page">Le fichier <?php echo $table.'.csv';?> a été exporté<br>
-    <a download="<?php echo $table.'.csv'?>" href="<?php echo $table.'.csv'?>">Clickez ici pour le telecharger</a>
+    <a href="<?php echo 'export/'.$table.'.csv'?>" download >Cliquez ici pour le telecharger</a>
    
     </div></div>
+    
     <?php
     mysqli_close($link);
  	
-}    
+}
+
+else {
+	?>
+	<div id="page-wrapper">
+	<div class="main-page">Il n'y a pas de formulaire disponible </div></div>
+	<?php
+	
+}
 include("html/mainfooter.html");?>

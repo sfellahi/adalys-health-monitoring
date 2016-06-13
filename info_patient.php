@@ -36,7 +36,15 @@ if(isset($_POST['formulaire']) and isset($_POST['project'])){
     echo "</table>\n";?>
     </div></div><?php
     
-
+	if ($i==0) {
+		?>
+					<div id="page-wrapper">
+					<div class="main-page">Il n'y a pas de donnée remplie </div></div>
+					<?php
+	}
+    
 mysqli_close($link);
 }
+
+
 include("html/mainfooter.html");?>
