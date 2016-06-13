@@ -49,7 +49,7 @@ if(isset($_GET['parent']))
                                 $dernier_text2 = mysqli_fetch_array($result_text2);
                          
                            $insert_question1_init_ordre_question="INSERT INTO `ordre_question` (`type_question`, `id_type`, `colonne_assoc`, `qrequired`, `id_formulaire`, `id_onglet`)";
-                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text2['maxi2']."', 'nom', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
+                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text2['maxi2']."', 'prenom', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
                             mysqli_query($link, $insert_question1_init_ordre_question);
                             
                             // Ajout adresse 
@@ -62,7 +62,7 @@ if(isset($_GET['parent']))
                                 $dernier_text3 = mysqli_fetch_array($result_text3);
                          
                            $insert_question1_init_ordre_question="INSERT INTO `ordre_question` (`type_question`, `id_type`, `colonne_assoc`, `qrequired`, `id_formulaire`, `id_onglet`)";
-                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text3['maxi3']."', 'nom', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
+                           echo   $insert_question1_init_ordre_question.="VALUES ('text', '".$dernier_text3['maxi3']."', 'adresse', 'oui','".$dnn2['id_formulaire']."', '".$dernier_onglet['maxi']."')";
                             mysqli_query($link, $insert_question1_init_ordre_question);
                             
                             
