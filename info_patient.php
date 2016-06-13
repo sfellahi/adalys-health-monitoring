@@ -39,4 +39,11 @@ if(isset($_POST['formulaire']) and isset($_POST['project'])){
 
 mysqli_close($link);
 }
+else {
+	?>
+	<div id="page-wrapper">
+	<div class="main-page">Il n'y a pas de donnée remplie </div></div>
+	<?php
+}
+
 include("html/mainfooter.html");?>

@@ -407,6 +407,10 @@ $sql_formulaire2 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 							<?php
 						}
 						?>
+						
+						<li><a href="suivi_de_suivi.php" class="community-nav"><i
+								class="fa fa-users nav_icon"></i>Communaut&eacute</a></li>
+								
 							<li><a href="forum.php" class="community-nav"><i
 								class="fa fa-users nav_icon"></i>Communaut&eacute</a></li>
 

@@ -30,5 +30,13 @@ $table = "donneeprojet".$id_projet."formulaire".$id_form;
     <?php
     mysqli_close($link);
  	
-}    
+}
+
+else {
+	?>
+	<div id="page-wrapper">
+	<div class="main-page">Il n'y a pas de formulaire disponible </div></div>
+	<?php
+	
+}
 include("html/mainfooter.html");?>
