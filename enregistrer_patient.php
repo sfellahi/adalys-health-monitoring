@@ -40,6 +40,7 @@ $test++;
 $ajout_sql.=") VALUE ('".$_POST[$array_test[0]]."'";
 $test2=1;
 while($test2<$aaa){
+    if(!isset($_POST[$array_test[$test2]])){$_POST[$array_test[$test2]]='';}
 $ajout_sql.=",'".$_POST[$array_test[$test2]]."'";
 
 $test2++;
