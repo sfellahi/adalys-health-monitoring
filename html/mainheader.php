@@ -297,7 +297,7 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
 $sql_formulaire = "SELECT project_formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
         $sql_formulaire .= "FROM project_formulaire LEFT JOIN formulaire ";
         $sql_formulaire .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire LEFT JOIN project_user ON project_formulaire.id_project=project_user.id_project ";
-        $sql_formulaire .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." ";
+        $sql_formulaire .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']." ";
 								$result_liste_formulaire = mysqli_query ( $link, $sql_formulaire );
 								while ( $temp_formulaire_en_cours = mysqli_fetch_array ( $result_liste_formulaire ) ) {									
 									?>
@@ -325,7 +325,7 @@ $sql_formulaire = "SELECT project_formulaire.id_formulaire,formulaire.nom_formul
 $sql_formulaire2 = "SELECT project_formulaire.id_formulaire,project_formulaire.id_project,formulaire.nom_formulaire,etat_formulaire ";
         $sql_formulaire2 .= "FROM project_formulaire LEFT JOIN formulaire ";
         $sql_formulaire2 .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire LEFT JOIN project_user ON project_formulaire.id_project=project_user.id_project ";
-        $sql_formulaire2 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." ";
+        $sql_formulaire2 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']." ";
 								$result_liste_formulaire2 = mysqli_query ( $link, $sql_formulaire2 );
 								while ( $temp_formulaire_en_cours2 = mysqli_fetch_array ( $result_liste_formulaire2 ) ) {
 									?>
@@ -366,7 +366,7 @@ $sql_formulaire2 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 $sql_formulaire3 = "SELECT project_formulaire.id_formulaire,project_formulaire.id_project,formulaire.nom_formulaire,etat_formulaire ";
         $sql_formulaire3 .= "FROM project_formulaire LEFT JOIN formulaire ";
         $sql_formulaire3 .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire LEFT JOIN project_user ON project_formulaire.id_project=project_user.id_project ";
-        $sql_formulaire3 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." ";
+        $sql_formulaire3 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']." ";
 								$result_liste_formulaire3 = mysqli_query ( $link, $sql_formulaire3 );
 								while ( $temp_formulaire_en_cours3 = mysqli_fetch_array ( $result_liste_formulaire3 ) ) {
 									?>
