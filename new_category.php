@@ -24,7 +24,7 @@ if(isset($_POST['name'], $_POST['description']) and $_POST['name']!='')
 	?>
 	<div id="page-wrapper">
 			<div class="main-page">
-				<div class="message">The category have successfully been created.<br />
+				<div class="message">La catégorie a été créée avec succès.<br />
 				<meta http-equiv="refresh" content="1; URL=forum.php">
 				</div>
 			</div>
@@ -33,7 +33,7 @@ if(isset($_POST['name'], $_POST['description']) and $_POST['name']!='')
 	}
 	else
 	{
-		echo 'An error occured while creating the category.';
+		echo 'Une erreur est survenue lors de la création de la catégorie.';
 	}
 }
 else
@@ -56,6 +56,6 @@ else
 }
 else
 {
-	echo '<h2>You must be logged as an administrator to access this page: <a href="login.php">Login</a> - <a href="signup.php">Sign Up</a></h2>';
+	echo '<h2>Vous devez être connecté en tant administrateur pour accéder à cette page: <a href="login.php">Login</a> - <a href="signup.php">Sign Up</a></h2>';
 }
 include("html/mainfooter.html");?>
