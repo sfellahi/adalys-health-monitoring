@@ -40,6 +40,8 @@ if(isset($_GET['parent']))
 	<div id="page-wrapper">
 		<div class="main-page">
 			<div class="row">
+                            <a href="list_onglet.php?parent=<?php echo $id; ?>" >Retour</a>
+                            
 				<div class="flat-table" style="margin:0 auto;margin-top:15%;width:15%;height:150px">
 
 					<form action="new_onglet.php?parent=<?php echo $id; ?>" method="post">
