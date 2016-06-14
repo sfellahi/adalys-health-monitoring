@@ -68,7 +68,7 @@ if(isset($_GET['parent']))
                             
                             
                             
-				echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL,nom VARCHAR(255) CHARSET UTF8)";
+				echo $sql_create_table_formulaire="CREATE TABLE donneeprojet".$id."formulaire".$dnn2['id_formulaire']." (id INT PRIMARY KEY NOT NULL,nom VARCHAR(255) CHARSET UTF8,prenom VARCHAR(255) CHARSET UTF8,adresse VARCHAR(255) CHARSET UTF8)";
 				mysqli_query($link,$sql_create_table_formulaire);
 				?>
 				<div id="page-wrapper">
