@@ -1,8 +1,6 @@
 <?php
 
 include("html/mainheader.php");
-
-
 $name = $_POST['nom'];
 $nom_c = explode("  ", $name);
 $nom = $nom_c[0];
@@ -37,37 +35,27 @@ for($i=0; $i<=$cn; $i++){
 
 $result = array_unique($proj);
 $result2 = array_unique($form);
-
-?><table><tr><th>Nom</th><th>Projet</th><?php
+?>
+<div id="page-wrapper">
+    <div class="main-page">
+<table><tr>
+<th>Projet</th>
+<th>Action</th>
+</tr>
+<tr>
+<?php
 foreach ($result as &$value) {
-	$sql_formulaire = "SELECT project_formulaire.id_formulaire,project_formulaire.id_project, formulaire.nom_formulaire,etat_formulaire ";
-	$sql_formulaire .= "FROM project_formulaire LEFT JOIN formulaire ";
-	$sql_formulaire .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire AND project_formulaire.id_project = ".$value."";
-
-$requete = mysqli_query ( $link, $sql_formulaire );
-while ( $row = mysqli_fetch_array ( $requete ) ) {
-	if($row['nom_formulaire'] !=' '){	
-	?><th><?php echo $row['nom_formulaire'];?></th><?php
-	}
-}
-	
+$result3 = mysqli_query($link2,"SELECT nom_project FROM projects WHERE id_project = ".$value."");
+$row3 = mysqli_fetch_array($result3);
+?>
+	<form action="recherche_projet.php" method="post">
+	<input type="hidden" value="<?php echo $name; ?>" name="nom">
+	<input type="hidden" value="<?php echo implode(',', $result2); ?>" name="form">
+	<td><input type="hidden" value="<?php echo $value; ?>" name="projet"><?php echo $row3['nom_project']; ?></td>
+	<td><button class="button" type="submit">Voir</button></td></tr>
+	</form>
+	<?php	
 }
 ?>
-</tr><tr><td><?php echo $name;?></td><?php
-foreach ($result2 as &$value2) {
-	$sql_formulaire2 = "SELECT formulaire.id_formulaire,formulaire.nom_formulaire,etat_formulaire ";
-	$sql_formulaire2 .= "FROM formulaire WHERE id_formulaire= ".$value2."";
-	
-	$requete2 = mysqli_query ( $link, $sql_formulaire2 );
-	while ( $row2 = mysqli_fetch_array ( $requete2 ) ) {
-		if($row2['nom_formulaire'] ==' '){
-			?><td><?php echo " ";?></td><?php
-		}
-		else
-		?><td><?php echo $row2['nom_formulaire'];?></td><?php
-	}
-}
-
-
-?></tr></table>
-</div></div>
+</table></div></div>
+<?php include("html/mainfooter.html");?>
