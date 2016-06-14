@@ -1,7 +1,7 @@
 <?php
 //This page let create a new category
 include('html/mainheader.php');
-if(isset($_SESSION['email']) and $_SESSION['email']==$admin)
+if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
 
 $nb_new_pm = mysqli_fetch_array(mysqli_query($link,'select count(*) as nb_new_pm from pm where ((user1="'.$_SESSION['userid'].'" and user1read="no") or (user2="'.$_SESSION['userid'].'" and user2read="no")) and id2="1"'));

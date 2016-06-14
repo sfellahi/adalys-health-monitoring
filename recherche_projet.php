@@ -31,7 +31,7 @@ for($y=1;$y<= $row['maxi'];$y++){
 		$sql_formulaire .= "FROM formulaire WHERE id_formulaire= ".$y."";
 		$requete = mysqli_query ( $link, $sql_formulaire );
 		while ( $row = mysqli_fetch_array ( $requete ) ) {
-				?><td><?php echo $row['nom_formulaire'];?></td></tr><td></td><?php
+				?><td><?php echo $row['nom_formulaire'];?></td></tr><?php
 			}
 	}
 }
