@@ -81,8 +81,8 @@ if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 <?php
 if(isset($_SESSION['email']) and $_SESSION['profil']=="admin")
 {
-?>
-                    <a href="new_category.php" class="btn btn-primary" align="center">Nouvelle Categorie</a>
+?><br/>
+                    <a href="new_category.php" class="btn btn-primary" style="margin-left:45%;" align="center">Nouvelle Categorie</a>
                     </div></div></div>
 <?php
 }

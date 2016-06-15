@@ -56,7 +56,7 @@ if(isset($_GET['parent']))
 				</br>
 
 				<div style="text-align:center">
-					<button class="button" type="submit">Créer l'onglet</button>
+					<button class="button" style="margin-left:45%;)" type="submit">Créer l'onglet</button>
 				</div>
 
 			</form>
