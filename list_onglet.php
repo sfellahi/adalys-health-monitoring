@@ -111,7 +111,7 @@ WHERE formulaire.id_formulaire=".$id."";
        
            <?php    
            }else{
-       ?>    
+       ?>    <br/>
                  <a href="new_onglet.php?parent=<?php echo $id; ?>" style="margin-left:45%;" class="btn btn-primary">Nouvel Onglet</a>
        <?php    
            } }
