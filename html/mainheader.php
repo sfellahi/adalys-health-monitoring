@@ -238,27 +238,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<li><a href="index.php" class="active"><i
 									class="fa fa-home nav_icon"></i>Accueil</a></li>
 							 
-						 <?php
-							
-if ($_SESSION ['profil'] == "super_admin") {
-								?>
-							
-                                                        <li>
-								<!-- /nav-second-level --> <a href="#"><i
-									class="fa fa-book nav_icon"></i>Administration<span
-									class="fa arrow"></span></a>
-								<ul class="nav nav-second-level collapse">
-									<li><a href="administration_modification.php">Modifier les
-											profils</a></li>
-									<li><a href="administration_suppression.php">Supprimer les
-											profils</a></li>
-								</ul>
-							</li>
-							
-							
-                            <?php
-							}
-							?>
+
 						<?php
 						if ($_SESSION ['profil'] == "admin") {
 							?>
