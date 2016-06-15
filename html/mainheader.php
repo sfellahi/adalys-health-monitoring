@@ -358,6 +358,10 @@ $sql_formulaire2 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 						}
 						
 						?>
+						
+							<li><a href="fiche_suivi.php" class="community-nav"><i
+									class="fa fa-male nav_icon"></i>Fiche de suivi</a></li>
+						
 							<li><a href="#"><i class="fa fa-archive nav_icon"></i>Exporter un
 									formulaire<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">
@@ -378,7 +382,7 @@ LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept=
 $sql_formulaire3 = "SELECT project_formulaire.id_formulaire,project_formulaire.id_project,formulaire.nom_formulaire,etat_formulaire ";
         $sql_formulaire3 .= "FROM project_formulaire LEFT JOIN formulaire ";
         $sql_formulaire3 .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire LEFT JOIN project_user ON project_formulaire.id_project=project_user.id_project ";
-        $sql_formulaire3 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']."  ";
+        $sql_formulaire3 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']."";
 								$result_liste_formulaire3 = mysqli_query ( $link, $sql_formulaire3 );
 								while ( $temp_formulaire_en_cours3 = mysqli_fetch_array ( $result_liste_formulaire3 ) ) {
 									?>
@@ -419,10 +423,7 @@ $sql_formulaire3 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 							<li><a href="forum.php" class="community-nav"><i
 									class="fa fa-users nav_icon"></i>Communaut&eacute</a></li>
 
-							<li><a href="fiche_suivi.php" class="community-nav"><i
-									class="fa fa-male nav_icon"></i>Fiche de suivi</a></li>
-
-
+				
 						</ul>
 					</div>
 					<!-- //sidebar-collapse -->
