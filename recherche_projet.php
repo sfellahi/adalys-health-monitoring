@@ -11,17 +11,23 @@ $result = mysqli_query($link2,"SELECT MAX(id_formulaire) as maxi FROM formulaire
 $row = mysqli_fetch_array($result);?>
 <div id="page-wrapper">
     <div class="main-page">
-<table><tr><th>Nom</th>
+        <table><tr>
+                <th>Nom</th>
 <?php
 	$sql_formulaire = "SELECT project_formulaire.id_formulaire,project_formulaire.id_project, formulaire.nom_formulaire,etat_formulaire ";
 	$sql_formulaire .= "FROM project_formulaire LEFT JOIN formulaire ";
 	$sql_formulaire .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire AND project_formulaire.id_project = ".$nb_proj."";
 	$requete = mysqli_query ( $link, $sql_formulaire );
 	while ( $row2 = mysqli_fetch_array ( $requete ) ) {
-		?><th><?php echo $row2['nom_formulaire'];?></th><?php		
+        if($row2['nom_formulaire']==''){}
+        else { 
+                    ?><th><?php echo $row2['nom_formulaire'];?></th><?php } 		
 	}
 	?>
-</tr><tr><td><?php echo $name;?></td><td></td>
+</tr>
+
+<tr>
+    <td><?php echo $name;?></td>
 <?php
 for($y=1;$y<= $row['maxi'];$y++){
 	$table = "donneeprojet".$nb_proj."formulaire".$y;
