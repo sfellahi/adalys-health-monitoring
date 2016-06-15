@@ -39,6 +39,9 @@ for($y=1;$y<= $row['maxi'];$y++){
 		{
 			?><td><i class="fa fa-check-square-o" aria-hidden="true"></i></td><?php
 		}
+		else {
+			?><td><i class="fa fa-square-o" aria-hidden="true"></i></td><?php
+		}
 	}
 }
 
