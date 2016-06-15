@@ -362,11 +362,23 @@ $sql_formulaire2 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 									formulaire<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level collapse">
 								<?php
+								$sql_select_projet_associé = "SELECT project_user.user_accept,
+projects.id_project,projects.nom_project,projects.nombre_patient,
+users.id,users.email,users.profil
+FROM project_user LEFT JOIN projects ON project_user.id_project=projects.id_project
+LEFT JOIN users ON project_user.id_user=users.id WHERE project_user.user_accept='yes' AND users.email='" . $_SESSION ['email'] . "'";
+								$result_projet_en_cours = mysqli_query ( $link, $sql_select_projet_associé );
+								while ( $temp_projet_medecin = mysqli_fetch_array ( $result_projet_en_cours ) ) {
+									?>
+									<li><a href="#"><i class="fa fa-file-text-o nav_icon"></i>Projets <?php echo $temp_projet_medecin['nom_project'];?><span
+																		class="fa arrow"></span></a> <!-- //nav-second-level -->
+																	<ul class="nav nav-second-level collapse">
+		<?php
 								
 $sql_formulaire3 = "SELECT project_formulaire.id_formulaire,project_formulaire.id_project,formulaire.nom_formulaire,etat_formulaire ";
         $sql_formulaire3 .= "FROM project_formulaire LEFT JOIN formulaire ";
         $sql_formulaire3 .= "ON project_formulaire.id_formulaire=formulaire.id_formulaire LEFT JOIN project_user ON project_formulaire.id_project=project_user.id_project ";
-        $sql_formulaire3 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']." ";
+        $sql_formulaire3 .= "WHERE etat_formulaire!='En création' AND project_user.id_user=".$_SESSION['userid']." AND project_formulaire.id_project=".$temp_projet_medecin['id_project']."  ";
 								$result_liste_formulaire3 = mysqli_query ( $link, $sql_formulaire3 );
 								while ( $temp_formulaire_en_cours3 = mysqli_fetch_array ( $result_liste_formulaire3 ) ) {
 									?>
@@ -386,9 +398,10 @@ $sql_formulaire3 = "SELECT project_formulaire.id_formulaire,project_formulaire.i
 								?>
 								</ul>
 							</li>
-						
+							<?php } ?>
+						</ul>
 						<?php
-						
+								
 						if (isset ( $_SESSION ['email'] )) {
 							
 							?>
